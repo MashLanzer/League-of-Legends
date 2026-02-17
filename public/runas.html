@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODAS LAS RUNAS | REPOSITORIO HEXTECH WILD RIFT</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .rune-category-section {
+            margin-bottom: 60px;
+        }
+
+        .rune-category-title {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--blue-magic);
+            border-bottom: 2px solid var(--gold-dark);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rune-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .rune-card {
+            background: rgba(1, 10, 19, 0.8);
+            border: 1px solid var(--gold-dark);
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rune-card:hover {
+            border-color: var(--blue-magic);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(10, 200, 185, 0.2);
+        }
+
+        .rune-icon-container {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--gold-hex);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        .rune-icon-container img {
+            width: 100%;
+            height: auto;
+            transition: 0.3s;
+        }
+
+        .rune-card:hover img {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px var(--blue-magic));
+        }
+
+        .rune-info h3 {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--gold-hex);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .rune-info p {
+            font-size: 0.75rem;
+            color: var(--gold-light);
+            line-height: 1.4;
+        }
+
+        .tier-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-weight: 900;
+            font-size: 0.7rem;
+            background: var(--gold-gradient);
+            color: black;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo" onclick="location.href='index.html'" style="cursor: pointer;">
+                <div class="logo-icon"><i>WR</i></div>
+                <span>GUÍA COMPLETA DE<br><small
+                        style="font-size: 0.9rem; color: var(--blue-magic); font-family: 'Cinzel Decorative';">WILD
+                        RIFT</small></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="campeones.html" class="nav-link">Campeones</a></li>
+                    <li><a href="runas.html" class="nav-link active">Runas</a></li>
+                    <li><a href="objetos.html" class="nav-link">Objetos</a></li>
+                    <li><a href="roles.html" class="nav-link">Roles</a></li>
+                    <li><a href="mapa.html" class="nav-link">Mapa</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main style="padding-top: 150px;">
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h1 class="fade-in">COMPENDIO COMPLETO DE RUNAS</h1>
+                <p class="fade-in">REPOSITORIO HEXTECH CON TODAS LAS COMBINACIONES DEL PARCHE 7.2</p>
+            </div>
+
+            <!-- KEYSTONES -->
+            <section class="rune-category-section fade-in">
+                <h2 class="rune-category-title"><span style="color: var(--gold-hex);">✦</span> RUNAS CLAVE (KEYSTONES)
+                </h2>
+                <div class="rune-grid" id="keystoneGrid"></div>
+            </section>
+
+            <!-- DOMINATION -->
+            <section class="rune-category-section fade-in">
+                <h2 class="rune-category-title"><span style="color: #ff4655;">⚔</span> RAMA DE DOMINACIÓN</h2>
+                <div class="rune-grid" id="dominationGrid"></div>
+            </section>
+
+            <!-- PRECISION -->
+            <section class="rune-category-section fade-in">
+                <h2 class="rune-category-title"><span style="color: #c89b3c;">🎯</span> RAMA DE PRECISIÓN</h2>
+                <div class="rune-grid" id="precisionGrid"></div>
+            </section>
+
+            <!-- RESOLVE -->
+            <section class="rune-category-section fade-in">
+                <h2 class="rune-category-title"><span style="color: #00ff88;">🛡</span> RAMA DE VALOR / RESOLUCIÓN</h2>
+                <div class="rune-grid" id="resolveGrid"></div>
+            </section>
+
+            <!-- INSPIRATION -->
+            <section class="rune-category-section fade-in">
+                <h2 class="rune-category-title"><span style="color: #0ac8b9;">❄</span> RAMA DE INSPIRACIÓN</h2>
+                <div class="rune-grid" id="inspirationGrid"></div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const runeData = {
+            keystone: [
+                { name: "Electrocutar", tier: "SS", img: "Electrocute", desc: "Golpear a un campeón con 3 ataques o habilidades otorga daño adaptativo adicional." },
+                { name: "Conquistador", tier: "SS", img: "Conqueror", desc: "Acumula fuerza adaptable al atacar. Al máximo, otorga omnivampirismo." },
+                { name: "Primer Golpe", tier: "SS", img: "FirstStrike", desc: "Dañar primero a un campeón otorga oro y daño verdadero adicional." },
+                { name: "Compás Letal", tier: "S", img: "LethalTempo", desc: "Aumenta la velocidad de ataque al atacar campeones. Se acumula hasta 6 veces." },
+                { name: "Aery", tier: "S", img: "SummonAery", desc: "Tus ataques y habilidades envían a Aery para dañar enemigos o proteger aliados." },
+                { name: "Sobre la Marcha", tier: "S", img: "FleetFootwork", desc: "Atacar y moverse genera energía. Al máximo, el siguiente ataque cura y otorga velocidad." },
+                { name: "Irrupción de Fase", tier: "A", img: "PhaseRush", desc: "Golpear con 3 ataques o habilidades otorga una gran ráfaga de velocidad de movimiento." },
+                { name: "Garras del Inmortal", tier: "A", img: "GraspOfTheUndying", desc: "Cada 4s en combate, tu próximo ataque básico inflige daño mágico y te cura." },
+                { name: "Reverberación", tier: "S", img: "Aftershock", desc: "Inmovilizar a un enemigo otorga defensas masivas y luego explota haciendo daño." },
+                { name: "Aumento Glacial", tier: "A", img: "GlacialAugment", desc: "Inmovilizar a un campeón crea rayos de escarcha que ralentizan a los enemigos." },
+                { name: "Cometa Arcano", tier: "A", img: "ArcaneComet", desc: "Golpear a un campeón con una habilidad lanza un cometa hacia su ubicación." },
+                { name: "Cosecha Oscura", tier: "S", img: "DarkHarvest", desc: "Dañar a un campeón con poca vida inflige daño adaptativo y cosecha su alma." },
+                { name: "Matamounstros", tier: "A", img: "KrakenSlayer", desc: "Cada tercer ataque contra un campeón inflige daño verdadero adicional." }
+            ],
+            domination: [
+                { name: "Impacto Súbito", tier: "S", img: "SuddenImpact", desc: "Otorga penetración tras usar un salto, teleport o sigilo." },
+                { name: "Colección de Globos Oculares", tier: "A", img: "EyeballCollection", desc: "Otorga daño permanente por cada derribo de campeón." },
+                { name: "Golpe Bajo", tier: "B", img: "CheapShot", desc: "Inflige daño verdadero adicional a enemigos con movimiento impedido." },
+                { name: "Brutal", tier: "S", img: "Brutal", desc: "Tus ataques básicos infligen daño adaptativo adicional al impacto." },
+                { name: "Guardián Zombi", tier: "B", img: "ZombieWard", desc: "Destruir un guardián enemigo hace que aparezca un Guardián Zombi aliado." },
+                { name: "Cazador Ingenioso", tier: "A", img: "IngeniousHunter", desc: "Otorga aceleración de objetos permanente por cada derribo único." }
+            ],
+            precision: [
+                { name: "Triunfo", tier: "SS", img: "Triumph", desc: "Los derribos restauran vida y otorgan oro adicional." },
+                { name: "Golpe de Gracia", tier: "A", img: "CoupDeGrace", desc: "Inflige más daño a campeones que tengan poca vida." },
+                { name: "Celeridad", tier: "A", img: "LegendAlacrity", desc: "Otorga velocidad de ataque permanente por cada derribo." },
+                { name: "Linaje", tier: "A", img: "LegendBloodline", desc: "Otorga omnivampirismo permanente por cada derribo." },
+                { name: "Tenacidad", tier: "S", img: "LegendTenacity", desc: "Otorga tenacidad permanente por cada derribo." },
+                { name: "Cazador de Gigantes", tier: "S", img: "GiantSlayer", desc: "Inflige daño adicional a campeones con mucha vida máxima." },
+                { name: "Último Esfuerzo", tier: "A", img: "LastStand", desc: "Inflige más daño cuando tienes poca vida." },
+                { name: "Claridad Mental", tier: "A", img: "PresenceOfMind", desc: "Infligir daño a un campeón aumenta la regeneración de maná." },
+                { name: "Tormenta Creciente", tier: "A", img: "GatheringStorm", desc: "Otorga daño adaptable de forma creciente cada 2 minutos." }
+            ],
+            resolve: [
+                { name: "Revestimiento de Huesos", tier: "SS", img: "BonePlating", desc: "Reduce el daño de los siguientes 3 ataques tras recibir daño." },
+                { name: "Condicionamiento", tier: "S", img: "Conditioning", desc: "Otorga armadura y resistencia mágica adicional tras 5 minutos." },
+                { name: "Sobrecrecimiento", tier: "A", img: "Overgrowth", desc: "Gana vida máxima de forma permanente por cada súbdito que muera cerca." },
+                { name: "Segundo Aire", tier: "S", img: "SecondWind", desc: "Tras recibir daño de un campeón, regenera vida según la salud faltante." },
+                { name: "Inquebrantable", tier: "A", img: "Unflinching", desc: "Otorga tenacidad y resistencia a ralentizaciones." },
+                { name: "Lealtad", tier: "B", img: "Loyalty", desc: "Otorga defensas a ti y a tu aliado más cercano." },
+                { name: "Caparazón Adaptable", tier: "S", img: "AdaptiveCarapace", desc: "Otorga defensas adicionales cuando tu vida baja del 50%." },
+                { name: "Fuente de Vida", tier: "A", img: "FontOfLife", desc: "Ralentizar a un enemigo lo marca; los aliados se curan al atacarlo." },
+                { name: "Fuerza del Coloso", tier: "S", img: "CourageOfTheColossus", desc: "Obtienes un escudo tras inmovilizar a un campeón enemigo." },
+                { name: "Orbe de Anulación", tier: "A", img: "NullifyingOrb", desc: "Obtienes un escudo mágico al recibir daño que te deje con poca vida." }
+            ],
+            inspiration: [
+                { name: "Banda de Maná", tier: "S", img: "ManaflowBand", desc: "Golpear a un campeón aumenta tu maná máximo de forma permanente." },
+                { name: "Trascendencia", tier: "S", img: "Transcendence", desc: "Otorga aceleración de habilidad en niveles clave." },
+                { name: "Destello Hextech", tier: "B", img: "HextechFlashtraption", desc: "Mientras Destello está en enfriamiento, se reemplaza por Destello Hextech." },
+                { name: "Dulce Fruto", tier: "S", img: "SweetTooth", desc: "Aumenta la curación de los Frutos de Miel y otorga oro adicional." },
+                { name: "Explorador", tier: "A", img: "Pathfinder", desc: "Otorga velocidad de movimiento en el río y arbustos fuera de combate." },
+                { name: "Mente Maestra", tier: "A", img: "Transcendence", desc: "Inflige daño verdadero adicional a monstruos épicos y torretas." },
+                { name: "Perspicacia Cósmica", tier: "B", img: "CosmicInsight", desc: "Otorga aceleración de hechizos de invocador y de objetos." },
+                { name: "Capa del Nimbo", tier: "A", img: "NimbusCloak", desc: "Otorga una ráfaga de velocidad tras usar un hechizo de invocador." },
+                { name: "Semillero Ixtalí", tier: "B", img: "IxtaliSeedjar", desc: "Recoge semillas de plantas para replantarlas en otras ubicaciones." }
+            ]
+        };
+
+        function renderRunes() {
+            for (const category in runeData) {
+                const grid = document.getElementById(`${category}Grid`);
+                runeData[category].forEach(rune => {
+                    const card = document.createElement('div');
+                    card.className = 'rune-card';
+                    card.innerHTML = `
+                        <div class="tier-indicator">${rune.tier}</div>
+                        <div class="rune-icon-container">
+                            <img src="imagen/runas/${rune.img}.png" alt="${rune.name}" onerror="this.src='imagen/logo.png'">
+                        </div>
+                        <div class="rune-info">
+                            <h3>${rune.name}</h3>
+                            <p>${rune.desc}</p>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+        document.addEventListener('DOMContentLoaded', renderRunes);
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

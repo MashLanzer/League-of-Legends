@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBJETOS | WILD RIFT GUIDE</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Shared Styles are inherited from styles.css */
+
+        .items-container-main {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .category-section {
+            margin-bottom: 80px;
+        }
+
+        .category-header-main {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 35px;
+            border-bottom: 2px solid var(--gold-dark);
+            padding-bottom: 15px;
+        }
+
+        .category-header-main h2 {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--gold-hex);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            font-size: 2rem;
+            border: none;
+        }
+
+        .items-grid-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .item-card-new {
+            background: rgba(1, 10, 19, 0.9);
+            border: 1px solid var(--gold-dark);
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .item-card-new:hover {
+            border-color: var(--blue-magic);
+            box-shadow: 0 0 20px rgba(10, 200, 185, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .item-card-new::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(10, 200, 185, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .item-icon-box {
+            width: 64px;
+            height: 64px;
+            border: 2px solid var(--gold-hex);
+            background: #000;
+            flex-shrink: 0;
+            padding: 2px;
+        }
+
+        .item-icon-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-info-new {
+            flex-grow: 1;
+        }
+
+        .item-name-new {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .item-stats-new {
+            color: var(--blue-magic);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Fix for Navigation */
+        .nav-menu {
+            display: flex !important;
+            gap: 20px !important;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 10px !important;
+            }
+
+            .nav-link {
+                font-size: 0.7rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"><i>WR</i></div>
+                <span>GUÍA COMPLETA DE<br><small
+                        style="font-size: 0.9rem; color: var(--blue-magic); font-family: 'Cinzel Decorative';">WILD
+                        RIFT</small></span>
+            </div>
+            <nav id="topNav">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="campeones.html" class="nav-link">Campeones</a></li>
+                    <li><a href="runas.html" class="nav-link">Runas</a></li>
+                    <li><a href="objetos.html" class="nav-link active">Objetos</a></li>
+                    <li><a href="roles.html" class="nav-link">Roles</a></li>
+                    <li><a href="mapa.html" class="nav-link">Mapa</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="items-container-main">
+        <div style="text-align: center; margin-bottom: 70px;" class="fade-in">
+            <h1 style="font-size: 4rem; margin-bottom: 10px; color: var(--gold-hex); font-family: 'Cinzel Decorative';">
+                ARMERÍA OBJETOS</h1>
+            <div style="width: 100px; height: 3px; background: var(--gold-hex); margin: 20px auto;"></div>
+            <p style="color: var(--gold-dark); text-transform: uppercase; letter-spacing: 4px; font-weight: 400;">
+                Arsenal de Combate de la Grieta - v7.2</p>
+        </div>
+
+        <div id="itemsContainer">
+            <!-- Items rendered via JavaScript -->
+            <p style="text-align: center; color: var(--gold-hex); font-size: 1.5rem;">Cargando inventario...</p>
+        </div>
+    </main>
+
+    <footer style="background: #010a13; border-top: 2px solid var(--gold-hex); padding: 60px 0; text-align: center;">
+        <p style="color: var(--gold-dark); font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 2px;">© 2026 GUÍA
+            DE WILD RIFT - DESARROLLADO POR PILOTOS HEXTECH</p>
+    </footer>
+
+    <script>
+        const itemData = {
+            "Ataque": [
+                { "name": "InfinityEdge", "es": "Filo del Infinito", "stats": "+55 AD | +25% Crítico" },
+                { "name": "TrinityForce", "es": "Fuerza de la Trinidad", "stats": "+35 AD | +25% AS | +333 Vida" },
+                { "name": "BladeOfTheRuinedKing", "es": "Rey Arruinado", "stats": "+20 AD | +35% AS | +10% Vamp" },
+                { "name": "PhantomDancer", "es": "Bailarín Espectral", "stats": "+25% Crítico | +35% AS" },
+                { "name": "MortalReminder", "es": "Recordatorio Mortal", "stats": "+45 AD | +30% Pen." },
+                { "name": "TheCollector", "es": "La Recaudadora", "stats": "+40 AD | +25% Crítico" },
+                { "name": "BlackCleaver", "es": "Cuchilla Negra", "stats": "+40 AD | +350 Vida | +20 Haste" },
+                { "name": "RavenousHydra", "es": "Hidra Voraz", "stats": "+70 AD | +15 Haste" },
+                { "name": "GuinsoosRageblade", "es": "Espada de Furia de Guinsoo", "stats": "+25% AS | +20 AD" },
+                { "name": "YoumuusGhostblade", "es": "Filo Fantasmal de Youmuu", "stats": "+55 AD | +15 Haste" },
+                { "name": "DuskbladeOfDraktharr", "es": "Hoja Crepuscular de Draktharr", "stats": "+55 AD | +15 Haste" },
+                { "name": "EssenceReaver", "es": "Segador de Esencia", "stats": "+40 AD | +25% Crítico" },
+                { "name": "Hullbreaker", "es": "Rompecascos", "stats": "+55 AD | +400 Vida" },
+                { "name": "Manamune", "es": "Manamune", "stats": "+35 AD | +500 Mana" },
+                { "name": "LordDominiksRegards", "es": "Recuerdos de Lord Dominik", "stats": "+35 AD | +25% Crítico" },
+                { "name": "RunaansHurricane", "es": "Huracán de Runaan", "stats": "+45% AS | +25% Crítico" },
+                { "name": "SeryldasGrudge", "es": "Rencor de Serylda", "stats": "+40 AD | +15 Haste" },
+                { "name": "Bloodthirster", "es": "La Sanguinaria", "stats": "+50 AD | +25% Crítico" },
+                { "name": "RapidFirecannon", "es": "Cañón de Fuego Rápido", "stats": "+35% AS | +25% Crítico" },
+                { "name": "StatikkShiv", "es": "Puñal de Statikk", "stats": "+35% AS | +25% Crítico" }
+            ],
+            "Magia": [
+                { "name": "RabadonsDeathcap", "es": "Sombrero de Rabadon", "stats": "+120 AP" },
+                { "name": "LudensEcho", "es": "Eco de Luden", "stats": "+85 AP | +300 Mana" },
+                { "name": "LiandrysTorment", "es": "Tormento de Liandry", "stats": "+70 AP | +250 Vida" },
+                { "name": "SeraphsEmbrace", "es": "Abrazo del Serafín", "stats": "+60 AP | +1200 Mana" },
+                { "name": "VoidStaff", "es": "Báculo del Vacío", "stats": "+70 AP | +45% Pen." },
+                { "name": "NashorsTooth", "es": "Diente de Nashor", "stats": "+70 AP | +45% AS" },
+                { "name": "RodOfAges", "es": "Bastón de las Edades", "stats": "+60 AP | +250 Vida" },
+                { "name": "InfinityOrb", "es": "Orbe del Infinito", "stats": "+60 AP | +5% Mov." },
+                { "name": "LichBane", "es": "Perdición del Liche", "stats": "+80 AP | +10 Haste" },
+                { "name": "Morellonomicon", "es": "Morellonomicon", "stats": "+75 AP | +150 Vida" },
+                { "name": "RylaisCrystalScepter", "es": "Cetro de Cristal de Rylai", "stats": "+70 AP | +350 Vida" },
+                { "name": "HorizonFocus", "es": "Enfoque al Horizonte", "stats": "+80 AP | +150 Vida" },
+                { "name": "Riftmaker", "es": "Agrietador", "stats": "+80 AP | +150 Vida | +15 Haste" },
+                { "name": "ZhonyasHourglass", "es": "Reloj de Arena de Zhonya", "stats": "+80 AP | +15 Haste" },
+                { "name": "MejaisSoulstealer", "es": "Ladrona de Almas de Mejai", "stats": "+20 AP | +100 Vida" }
+            ],
+            "Defensa": [
+                { "name": "RanduinsOmen", "es": "Presagio de Randuin", "stats": "+400 Vida | +55 Armadura" },
+                { "name": "SpiritVisage", "es": "Apariencia Espiritual", "stats": "+350 Vida | +50 RM" },
+                { "name": "Thornmail", "es": "Malla de Espinas", "stats": "+200 Vida | +75 Armadura" },
+                { "name": "DeadMansPlate", "es": "Coraza del Hombre Muerto", "stats": "+250 Vida | +50 Armadura" },
+                { "name": "IcebornGauntlet", "es": "Guantelete de Hielo", "stats": "+250 Vida | +50 Armadura" },
+                { "name": "ForceOfNature", "es": "Fuerza de la Naturaleza", "stats": "+350 Vida | +50 RM" },
+                { "name": "FrozenHeart", "es": "Corazón de Hielo", "stats": "+70 Armadura | +400 Mana" },
+                { "name": "MantleOfTheTwelfthHour", "es": "Manto de la 12ª Hora", "stats": "+200 Vida | +50 Arm/RM" },
+                { "name": "SunfireAegis", "es": "Égida de Fuego Solar", "stats": "+500 Vida | +15 Haste" },
+                { "name": "SteraksGage", "es": "Guantelete de Sterak", "stats": "+400 Vida" },
+                { "name": "GuardianAngel", "es": "Ángel Guardián", "stats": "+40 AD | +40 Armadura" },
+                { "name": "AmaranthsTwinguard", "es": "Protección de Amarante", "stats": "+55 Armadura | +55 RM" },
+                { "name": "WarmogsArmor", "es": "Armadura de Warmog", "stats": "+700 Vida" }
+            ],
+            "Soporte": [
+                { "name": "Redemption", "es": "Redención", "stats": "+250 Vida | +10 Haste" },
+                { "name": "LocketOfTheIronSolari", "es": "Solari de Hierro", "stats": "+10 Haste" },
+                { "name": "ArdentCenser", "es": "Incensario Ardiente", "stats": "+60 AP | +250 Vida" },
+                { "name": "ImperialMandate", "es": "Mandato Imperial", "stats": "+40 AP | +200 Vida" },
+                { "name": "ProtectorsVow", "es": "Promesa del Protector", "stats": "+350 Vida | +40 Armadura" },
+                { "name": "ZekesConvergence", "es": "Convergencia de Zeke", "stats": "+40 Armadura | +40 RM" },
+                { "name": "HarmonicEcho", "es": "Eco Armónico", "stats": "+75 AP | +300 Mana" },
+                { "name": "ShurelyasBattlesong", "es": "Canción de Batalla de Shurelya", "stats": "+50 AP | +15 Haste" }
+            ],
+            "Botas": [
+                { "name": "BootsOfSwiftness", "es": "Botas de Rapidez", "stats": "+50 Movimiento" },
+                { "name": "BootsOfSpeed", "es": "Botas de Velocidad", "stats": "+20 Movimiento" },
+                { "name": "BerserkersGreaves", "es": "Grebas de Berserker", "stats": "+35% AS" },
+                { "name": "PlatedSteelcaps", "es": "Punteras de Acero", "stats": "+35 Armadura" },
+                { "name": "MercurysTreads", "es": "Pasos de Mercurio", "stats": "+35 RM | +35% Tenacidad" },
+                { "name": "IonianBootsOfLucidity", "es": "Botas de Lucidez", "stats": "+15 Haste" },
+                { "name": "SorcerersShoes", "es": "Zapatos de Hechicero", "stats": "+18 Pen. Mágica" }
+            ]
+        };
+
+        function renderAllItems() {
+            const container = document.getElementById('itemsContainer');
+            if (!container) return;
+
+            console.log("Iniciando renderizado de objetos...");
+            container.innerHTML = '';
+
+            for (const category in itemData) {
+                const section = document.createElement('section');
+                section.className = 'category-section';
+
+                const items = itemData[category];
+
+                section.innerHTML = `
+                    <div class="category-header-main fade-in">
+                        <h2>${category}</h2>
+                    </div>
+                    <div class="items-grid-main">
+                        ${items.map(item => `
+                            <div class="item-card-new fade-in">
+                                <div class="item-icon-box">
+                                    <img src="imagen/objetos/${item.name}.png" alt="${item.es}" onerror="this.src='imagen/logo.png'">
+                                </div>
+                                <div class="item-info-new">
+                                    <span class="item-name-new">${item.es}</span>
+                                    <p class="item-stats-new">${item.stats}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(section);
+            }
+            console.log("Renderizado completado.");
+        }
+
+        // Multiple safety triggers to ensure the items render no matter what
+        window.addEventListener('load', renderAllItems);
+        document.addEventListener('DOMContentLoaded', renderAllItems);
+
+        // Immediate fallback
+        setTimeout(renderAllItems, 500);
+        setTimeout(renderAllItems, 2000);
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

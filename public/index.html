@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WILD RIFT | CENTRO DE MANDO HEXTECH v7.2</title>
+    <meta name="description"
+        content="Guía definitiva para dominar League of Legends: Wild Rift en 2026. Meta, campeones, estrategias y academia Challenger.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Local overrides for index specific premium effects */
+        .live-ticker {
+            background: rgba(1, 10, 19, 0.9);
+            border-bottom: 1px solid var(--blue-magic);
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--blue-magic);
+            margin-top: 80px;
+            /* Offset for header */
+        }
+
+        .ticker-scroll {
+            display: inline-block;
+            animation: scrollTicker 30s linear infinite;
+        }
+
+        @keyframes scrollTicker {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .meta-snapshot-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .meta-value {
+            color: #00ff88;
+            font-weight: bold;
+            font-size: 2.5rem;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .quote-wr {
+            border-left: 2px solid var(--gold-hex);
+            padding-left: 20px;
+            font-style: italic;
+            color: var(--gold-light);
+            margin: 40px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"><i>WR</i></div>
+                <span>GUÍA COMPLETA DE<br><small
+                        style="font-size: 0.9rem; color: var(--blue-magic); font-family: 'Cinzel Decorative';">WILD
+                        RIFT</small></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Inicio</a></li>
+                    <li><a href="campeones.html" class="nav-link">Campeones</a></li>
+                    <li><a href="runas.html" class="nav-link">Runas</a></li>
+                    <li><a href="objetos.html" class="nav-link">Objetos</a></li>
+                    <li><a href="roles.html" class="nav-link">Roles</a></li>
+                    <li><a href="mapa.html" class="nav-link">Mapa</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Ticker de Eventos en Vivo -->
+    <div class="live-ticker">
+        <div class="ticker-scroll">
+            • FINAL DE TEMPORADA 2026 EN: 12 DÍAS 04 HORAS • EVENTO LUNAR REVEL ACTIVO: +50% XP • NUEVA CAMPEONA NORRA:
+            DISPONIBLE AHORA • PARCHE 7.2.1: AJUSTES A LA JUNGLA •
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section Cinematográfica Expandida -->
+        <div class="hero-wr" style="position: relative; overflow: hidden; min-height: 80vh;">
+            <div class="rune-float" style="top: 20%; left: 10%;">⚔️</div>
+            <div class="rune-float" style="top: 15%; right: 15%; animation-delay: 2s;">✨</div>
+            <div class="rune-float" style="bottom: 25%; left: 20%; animation-delay: 4s;">🛡️</div>
+
+            <div
+                style="background: rgba(1, 10, 19, 0.7); padding: 80px 60px; border-radius: 5px; border: 2px solid var(--gold-hex); box-shadow: 0 0 50px rgba(0,0,0,0.8); max-width: 1000px; text-align: center;">
+                <span class="status-pill status-patch" style="margin-bottom: 20px;">ACTUALIZACIÓN 2026 DISPONIBLE</span>
+                <h1 class="fade-in">EL ASCENSO DEL INVOCADOR</h1>
+                <p class="fade-in"
+                    style="font-size: 1.3rem; color: var(--gold-light); max-width: 900px; margin: 20px auto 40px; font-weight: 300;">
+                    La Grieta del Invocador ha evolucionado. Nuestra academia Hextech te proporciona las herramientas,
+                    datos en tiempo real y estrategias de nivel profesional para conquistar el meta.
+                </p>
+                <div class="fade-in" style="display: flex; gap: 20px; justify-content: center;">
+                    <a href="#academia" class="wr-btn">ACCEDER A LA ACADEMIA</a>
+                    <a href="#meta" class="wr-btn"
+                        style="background: transparent; border-color: var(--blue-magic); color: var(--blue-magic);">VER
+                        META SNAPSHOT</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meta Snapshot Section -->
+        <section class="fade-in" id="meta" style="background: rgba(1, 10, 19, 0.95); padding: 100px 0;">
+            <div style="max-width: 1300px; margin: 0 auto; padding: 0 40px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px;">
+                    <div>
+                        <h2 style="border: none; margin-bottom: 10px;">META SNAPSHOT</h2>
+                        <p style="color: var(--gold-dark);">ANÁLISIS DE DATOS EN TIEMPO REAL - PARCHE 7.2</p>
+                    </div>
+                    <span class="status-pill status-online">LIVE DATA FEED</span>
+                </div>
+
+                <div class="meta-snapshot-container">
+                    <div class="glass-card">
+                        <small style="color: var(--gold-dark);">WINRATE DOMINANTE (MID)</small>
+                        <h3 style="color: var(--blue-magic); margin-top: 10px;">Norra</h3>
+                        <span class="meta-value">54.2%</span>
+                        <p style="font-size: 0.85rem; color: var(--gold-light);">Su capacidad de roam mediante portales
+                            ha redefinido la prioridad del carril central.</p>
+                    </div>
+                    <div class="glass-card">
+                        <small style="color: var(--gold-dark);">BAN RATE CRÍTICO (JUNGLA)</small>
+                        <h3 style="color: #ff4500; margin-top: 10px;">Lee Sin</h3>
+                        <span class="meta-value">68.1%</span>
+                        <p style="font-size: 0.85rem; color: var(--gold-light);">Presión insostenible en el juego
+                            temprano. Ban prioritario en Master+.</p>
+                    </div>
+                    <div class="glass-card">
+                        <small style="color: var(--gold-dark);">PICK RATE POPULAR (ADC)</small>
+                        <h3 style="color: var(--blue-magic); margin-top: 10px;">Kai'Sa</h3>
+                        <span class="meta-value">32.4%</span>
+                        <p style="font-size: 0.85rem; color: var(--gold-light);">Sigue siendo la opción más fiable
+                            gracias a su adaptabilidad AP/AD.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutorial / Quick Start Path -->
+        <section class="fade-in" style="background: rgba(10, 200, 185, 0.02); padding: 100px 0;">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+                <h2 class="heading-epic" style="text-align: center; margin-bottom: 80px;">TU SENDA AL PODER</h2>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+                    <div class="hextech-card">
+                        <div class="inner-content">
+                            <h3 style="color: var(--gold-hex); margin-bottom: 20px;">01. LA FUNDACIÓN</h3>
+                            <p>Domina los conceptos básicos: Last-hit, control de oleadas y visión. 80% de las partidas
+                                en rangos bajos se ganan solo por ventaja de oro.</p>
+                            <ul
+                                style="margin-top: 20px; color: var(--gold-light); list-style: square; padding-left: 20px;">
+                                <li>Práctica de farmeo bajo torre.</li>
+                                <li>Colocación de centinelas defensivos.</li>
+                                <li>Gestión de la primera vuelta a base (Flash Back).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hextech-card">
+                        <div class="inner-content">
+                            <h3 style="color: var(--blue-magic); margin-bottom: 20px;">02. EL MACROJUEGO</h3>
+                            <p>Aprende cuándo abandonar tu línea. El mapa es un tablero de ajedrez donde los objetivos
+                                neutrales valen más que las kills.</p>
+                            <ul
+                                style="margin-top: 20px; color: var(--gold-light); list-style: square; padding-left: 20px;">
+                                <li>Rotación al primer Dragón.</li>
+                                <li>Control del Heraldo de la Grieta.</li>
+                                <li>Presión dividida (Split-push) vs Teamfights.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academia Modules (Academy) -->
+        <section class="fade-in" id="academia" style="padding: 100px 0;">
+            <div style="max-width: 1300px; margin: 0 auto; padding: 0 40px;">
+                <div style="text-align: center; margin-bottom: 80px;">
+                    <h2 class="heading-epic">MÓDULOS ACADÉMICOS</h2>
+                    <p style="color: var(--gold-dark);">ESPECIALÍZATE EN LAS DISCIPLINAS HEXTECH</p>
+                </div>
+
+                <div class="card-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                    <div class="hextech-card" onclick="location.href='campeones.html'" style="cursor: pointer;">
+                        <div class="inner-content">
+                            <h3 style="color: var(--blue-magic);">CAMPEONES</h3>
+                            <p>Tier lists v7.2 y guías de maestría.</p>
+                            <span style="display: block; margin-top: 20px; color: var(--gold-hex);">EXPLORAR →</span>
+                        </div>
+                    </div>
+                    <div class="hextech-card" onclick="location.href='runas.html'" style="cursor: pointer;">
+                        <div class="inner-content">
+                            <h3 style="color: var(--blue-magic);">RUNAS</h3>
+                            <p>Configuraciones óptimas de pre-partida.</p>
+                            <span style="display: block; margin-top: 20px; color: var(--gold-hex);">CONFIGURAR →</span>
+                        </div>
+                    </div>
+                    <div class="hextech-card" onclick="location.href='objetos.html'" style="cursor: pointer;">
+                        <div class="inner-content">
+                            <h3 style="color: var(--blue-magic);">OBJETOS</h3>
+                            <p>Análisis de builds y Power Spikes.</p>
+                            <span style="display: block; margin-top: 20px; color: var(--gold-hex);">EQUIPAR →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #010a13; border-top: 2px solid var(--gold-hex); padding: 80px 0;">
+        <div class="nav-container"
+            style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; justify-items: start;">
+            <div>
+                <div class="logo">
+                    <div class="logo-icon"><i>WR</i></div>
+                    <span style="font-size: 1.2rem;">GUÍA HEXTECH<br><small
+                            style="font-size: 0.7rem; color: var(--gold-dark);">CENTRO DE MANDO</small></span>
+                </div>
+                <p style="color: var(--gold-dark); margin-top: 20px; font-size: 0.85rem; line-height: 1.8;">
+                    Analizamos cada píxel de la Grieta para asegurar tu victoria.
+                    Dedicados a la comunidad hispana de Wild Rift.
+                </p>
+            </div>
+            <div>
+                <h4 style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px;">Navegación</h4>
+                <ul style="list-style: none; font-size: 0.9rem; color: var(--gold-light);">
+                    <li style="margin-bottom: 12px;"><a href="campeones.html">Base de Datos</a></li>
+                    <li style="margin-bottom: 12px;"><a href="mapa.html">Estrategia de Mapa</a></li>
+                    <li style="margin-bottom: 12px;"><a href="objetos.html">Builds</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px;">Comunidad</h4>
+                <ul style="list-style: none; font-size: 0.9rem; color: var(--gold-light);">
+                    <li style="margin-bottom: 12px;"><a href="#">Discord Oficial</a></li>
+                    <li style="margin-bottom: 12px;"><a href="#">Reddit WR</a></li>
+                    <li style="margin-bottom: 12px;"><a href="#">Twitter Meta</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(200, 155, 60, 0.1);">
+            <p style="color: var(--gold-dark); font-size: 0.7rem;">© 2026 PROYECTO FAN HEXTECH. NO AFILIADO A RIOT
+                GAMES.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

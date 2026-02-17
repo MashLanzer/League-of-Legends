@@ -1,0 +1,13 @@
+{
+  "name": "wild-rift-guide",
+  "version": "1.0.0",
+  "description": "Guía completa para Wild Rift",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server public -p 8080",
+    "dev": "npx http-server public -p 8080"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

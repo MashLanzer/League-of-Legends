@@ -1,0 +1,367 @@
+/* styles.css - Wild Rift Premium Redesign */
+@import url('https://fonts.googleapis.com/css2?family=Beaufort+for+LoL:wght@400;700&family=Cinzel+Decorative:wght@400;700;900&family=Montserrat:wght@300;400;700&display=swap');
+
+:root {
+    /* Wild Rift Official Color Palette */
+    --gold-hex: #c89b3c;
+    --gold-light: #f0e6d2;
+    --gold-dark: #785a28;
+    --blue-magic: #0ac8b9;
+    --blue-deep: #005a82;
+    --blue-background: #010a13;
+    --dark-overlay: rgba(1, 10, 19, 0.85);
+
+    /* Gradients */
+    --gold-gradient: linear-gradient(to bottom, #c8aa6e, #785a28);
+    --blue-gradient: linear-gradient(to right, #0ac8b9, #005a82);
+    --border-gradient: linear-gradient(135deg, #c89b3c 0%, #785a28 50%, #c89b3c 100%);
+
+    /* Effects */
+    --magic-glow: 0 0 15px rgba(10, 200, 185, 0.4);
+    --gold-glow: 0 0 20px rgba(200, 155, 60, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--blue-background);
+    background-image:
+        radial-gradient(circle at top, rgba(10, 200, 185, 0.15) 0%, transparent 50%),
+        url('imagen/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: var(--gold-light);
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+.heading-epic {
+    font-family: 'Cinzel Decorative', cursive;
+    color: var(--gold-hex);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 2.2rem;
+    border-bottom: 2px solid var(--gold-dark);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Layout Elements */
+header {
+    background: var(--dark-overlay);
+    border-bottom: 2px solid var(--gold-hex);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+@keyframes runePulse {
+    0% {
+        filter: drop-shadow(0 0 5px var(--gold-hex));
+        opacity: 0.8;
+    }
+
+    50% {
+        filter: drop-shadow(0 0 15px var(--blue-magic));
+        opacity: 1;
+    }
+
+    100% {
+        filter: drop-shadow(0 0 5px var(--gold-hex));
+        opacity: 0.8;
+    }
+}
+
+.logo-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gold-gradient);
+    border: 2px solid var(--gold-hex);
+    border-radius: 5px;
+    transform: rotate(45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--gold-glow);
+    animation: runePulse 4s infinite ease-in-out;
+}
+
+.logo-icon i {
+    transform: rotate(-45deg);
+    font-family: 'Cinzel Decorative', cursive;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--blue-background);
+}
+
+.logo span {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.4rem;
+    color: var(--gold-hex);
+    text-shadow: 0 0 10px rgba(200, 155, 60, 0.5);
+    line-height: 1;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--gold-light);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    padding: 8px 0;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold-hex);
+    transition: 0.3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--gold-hex);
+    text-shadow: var(--gold-glow);
+}
+
+/* Hextech Cards */
+.hextech-card {
+    background: rgba(1, 10, 19, 0.9);
+    border: 1px solid var(--gold-dark);
+    padding: 2px;
+    position: relative;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.hextech-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--gold-hex);
+    pointer-events: none;
+    margin: 5px;
+}
+
+.inner-content {
+    padding: 30px;
+    background: rgba(30, 35, 40, 0.4);
+}
+
+.hextech-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--blue-magic);
+    box-shadow: var(--magic-glow);
+}
+
+/* Glassmorphism */
+.glass-card {
+    background: rgba(10, 200, 185, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(10, 200, 185, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    transition: 0.3s;
+}
+
+.glass-card:hover {
+    background: rgba(10, 200, 185, 0.1);
+    border-color: var(--blue-magic);
+    box-shadow: 0 0 30px rgba(10, 200, 185, 0.2);
+}
+
+/* Buttons */
+.wr-btn {
+    display: inline-block;
+    background: var(--gold-gradient);
+    color: #1a232c;
+    border: 2px solid var(--gold-hex);
+    padding: 15px 35px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.wr-btn:hover {
+    filter: brightness(1.2);
+    transform: perspective(1px) scale(1.05);
+    box-shadow: var(--gold-glow);
+}
+
+/* Sections */
+section {
+    padding: 100px 0;
+    margin: 50px 0;
+}
+
+.hero-wr {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Status & Pills */
+.status-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-online {
+    background: rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+    border: 1px solid #00ff88;
+}
+
+.status-patch {
+    background: rgba(200, 155, 60, 0.2);
+    color: var(--gold-hex);
+    border: 1px solid var(--gold-hex);
+}
+
+.rune-float {
+    position: absolute;
+    font-size: 1.5rem;
+    color: var(--blue-magic);
+    opacity: 0.2;
+    pointer-events: none;
+    animation: floatRune 6s infinite ease-in-out;
+}
+
+@keyframes floatRune {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(15deg);
+    }
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Footer & Global Links */
+footer a {
+    text-decoration: none;
+    transition: 0.3s;
+    color: var(--gold-light);
+}
+
+footer a:hover {
+    color: var(--blue-magic) !important;
+    text-shadow: 0 0 10px var(--blue-magic);
+}
+
+/* Tables */
+.wr-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(1, 10, 19, 0.95);
+    border: 1px solid var(--gold-dark);
+}
+
+.wr-table th {
+    background: var(--gold-dark);
+    color: black;
+    padding: 15px;
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+.wr-table td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(200, 155, 60, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    h1 {
+        font-size: 2.22rem;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr !important;
+    }
+}

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMPEONES | ARCHIVO HEXTECH WILD RIFT</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .champion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .champion-card {
+            text-align: center;
+            background: rgba(1, 10, 19, 0.8);
+            border: 1px solid var(--gold-dark);
+            padding: 10px;
+            position: relative;
+            transition: 0.3s;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .champion-card:hover {
+            border-color: var(--blue-magic);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(10, 200, 185, 0.3);
+        }
+
+        .champion-card img {
+            width: 100%;
+            border: 2px solid var(--gold-hex);
+            margin-bottom: 8px;
+            transition: 0.3s;
+        }
+
+        .champion-card:hover img {
+            border-color: var(--blue-magic);
+        }
+
+        .champion-name {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--gold-hex);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .champion-role {
+            font-size: 0.65rem;
+            color: var(--blue-magic);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: sticky;
+            top: 90px;
+            z-index: 100;
+            background: rgba(1, 10, 19, 0.9);
+            padding: 15px;
+            border-bottom: 1px solid var(--gold-dark);
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-btn {
+            background: rgba(1, 10, 19, 0.9);
+            border: 1px solid var(--gold-dark);
+            color: var(--gold-light);
+            padding: 6px 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--gold-hex);
+            color: var(--gold-hex);
+            background: rgba(200, 155, 60, 0.1);
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--gold-gradient);
+            color: black;
+            font-weight: 900;
+            padding: 1px 6px;
+            font-size: 0.6rem;
+            border-radius: 2px;
+            z-index: 2;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        #champSearch {
+            width: 100%;
+            background: rgba(1, 10, 19, 0.8);
+            border: 1px solid var(--gold-dark);
+            color: white;
+            padding: 12px 20px;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        #champSearch:focus {
+            border-color: var(--blue-magic);
+            box-shadow: 0 0 10px rgba(10, 200, 185, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon"><i>WR</i></div>
+                <span>GUÍA COMPLETA DE<br><small
+                        style="font-size: 0.9rem; color: var(--blue-magic); font-family: 'Cinzel Decorative';">WILD
+                        RIFT</small></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="campeones.html" class="nav-link active">Campeones</a></li>
+                    <li><a href="runas.html" class="nav-link">Runas</a></li>
+                    <li><a href="objetos.html" class="nav-link">Objetos</a></li>
+                    <li><a href="roles.html" class="nav-link">Roles</a></li>
+                    <li><a href="mapa.html" class="nav-link">Mapa</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main style="padding-top: 150px;">
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h1 class="fade-in">ARCHIVO DE CAMPEONES</h1>
+                <p class="fade-in" style="color: var(--gold-dark);">BASE DE DATOS COMPLETA HEXTECH | v7.2</p>
+            </div>
+
+            <div class="search-container fade-in">
+                <input type="text" id="champSearch" placeholder="BUSCAR CAMPEÓN (EJ: YASUO, AHRI, LUX...)">
+            </div>
+
+            <div class="filter-bar fade-in">
+                <button class="filter-btn active" data-role="all">TODOS</button>
+                <button class="filter-btn" data-role="baron">BARON LANE</button>
+                <button class="filter-btn" data-role="jungle">JUNGLA</button>
+                <button class="filter-btn" data-role="mid">MID LANE</button>
+                <button class="filter-btn" data-role="dragon">DRAGON LANE</button>
+                <button class="filter-btn" data-role="support">SOPORTE</button>
+            </div>
+
+            <div class="champion-grid fade-in" id="champGrid">
+                <!-- Data injected via script -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const champions = [
+            { name: "Aatrox", role: "baron", tier: "SS" },
+            { name: "Ahri", role: "mid", tier: "SS" },
+            { name: "Akali", role: "mid", tier: "A" },
+            { name: "Akshan", role: "mid", tier: "B" },
+            { name: "Alistar", role: "support", tier: "B" },
+            { name: "Amumu", role: "jungle", tier: "S" },
+            { name: "Annie", role: "mid", tier: "S" },
+            { name: "Ashe", role: "dragon", tier: "S" },
+            { name: "AurelionSol", role: "mid", tier: "A" },
+            { name: "Blitzcrank", role: "support", tier: "B" },
+            { name: "Brand", role: "mid", tier: "A" },
+            { name: "Braum", role: "support", tier: "A" },
+            { name: "Caitlyn", role: "dragon", tier: "S" },
+            { name: "Camille", role: "baron", tier: "S" },
+            { name: "Corki", role: "dragon", tier: "A" },
+            { name: "Darius", role: "baron", tier: "A" },
+            { name: "Diana", role: "jungle", tier: "B" },
+            { name: "DrMundo", role: "baron", tier: "B" },
+            { name: "Draven", role: "dragon", tier: "A" },
+            { name: "Ekko", role: "jungle", tier: "A" },
+            { name: "Evelynn", role: "jungle", tier: "B" },
+            { name: "Ezreal", role: "dragon", tier: "A" },
+            { name: "Fiora", role: "baron", tier: "S" },
+            { name: "Fizz", role: "mid", tier: "B" },
+            { name: "Galio", role: "mid", tier: "B" },
+            { name: "Garen", role: "baron", tier: "A" },
+            { name: "Gragas", role: "jungle", tier: "B" },
+            { name: "Graves", role: "jungle", tier: "A" },
+            { name: "Irelia", role: "baron", tier: "A" },
+            { name: "Janna", role: "support", tier: "B" },
+            { name: "JarvanIV", role: "jungle", tier: "SS" },
+            { name: "Jax", role: "baron", tier: "S" },
+            { name: "Jhin", role: "dragon", tier: "A" },
+            { name: "Jinx", role: "dragon", tier: "S" },
+            { name: "Kaisa", role: "dragon", tier: "A" },
+            { name: "Karma", role: "support", tier: "A" },
+            { name: "Kassadin", role: "mid", tier: "S" },
+            { name: "Katarina", role: "mid", tier: "A" },
+            { name: "Kayle", role: "baron", tier: "A" },
+            { name: "Kayn", role: "jungle", tier: "B" },
+            { name: "Kennen", role: "mid", tier: "A" },
+            { name: "Khazix", role: "jungle", tier: "S" },
+            { name: "LeeSin", role: "jungle", tier: "S" },
+            { name: "Leona", role: "support", tier: "B" },
+            { name: "Lucian", role: "dragon", tier: "A" },
+            { name: "Lulu", role: "support", tier: "SS" },
+            { name: "Lux", role: "support", tier: "B" },
+            { name: "Malphite", role: "baron", tier: "A" },
+            { name: "MasterYi", role: "jungle", tier: "A" },
+            { name: "MissFortune", role: "dragon", tier: "A" },
+            { name: "Morgana", role: "mid", tier: "A" },
+            { name: "Nami", role: "support", tier: "S" },
+            { name: "Nasus", role: "baron", tier: "A" },
+            { name: "Nautilus", role: "support", tier: "A" },
+            { name: "Olaf", role: "baron", tier: "S" },
+            { name: "Orianna", role: "mid", tier: "S" },
+            { name: "Pantheon", role: "jungle", tier: "B" },
+            { name: "Rakan", role: "support", tier: "A" },
+            { name: "Rammus", role: "jungle", tier: "A" },
+            { name: "Renekton", role: "baron", tier: "B" },
+            { name: "Rengar", role: "jungle", tier: "B" },
+            { name: "Riven", role: "baron", tier: "B" },
+            { name: "Seraphine", role: "support", tier: "A" },
+            { name: "Sett", role: "baron", tier: "B" },
+            { name: "Shen", role: "baron", tier: "A" },
+            { name: "Shyvana", role: "jungle", tier: "S" },
+            { name: "Singed", role: "baron", tier: "A" },
+            { name: "Sona", role: "support", tier: "A" },
+            { name: "Soraka", role: "support", tier: "A" },
+            { name: "Teemo", role: "baron", tier: "A" },
+            { name: "Thresh", role: "support", tier: "S" },
+            { name: "Tristana", role: "dragon", tier: "A" },
+            { name: "Tryndamere", role: "baron", tier: "A" },
+            { name: "TwistedFate", role: "mid", tier: "A" },
+            { name: "Varus", role: "dragon", tier: "A" },
+            { name: "Vayne", role: "dragon", tier: "S" },
+            { name: "Veigar", role: "mid", tier: "A" },
+            { name: "Vi", role: "jungle", tier: "S" },
+            { name: "Viktor", role: "mid", tier: "A" },
+            { name: "Vladimir", role: "mid", tier: "A" },
+            { name: "Wukong", role: "baron", tier: "SS" },
+            { name: "XinZhao", role: "jungle", tier: "A" },
+            { name: "Yasuo", role: "mid", tier: "A" },
+            { name: "Yone", role: "baron", tier: "A" },
+            { name: "Yuumi", role: "support", tier: "B" },
+            { name: "Zed", role: "mid", tier: "A" },
+            { name: "Ziggs", role: "mid", tier: "B" },
+            { name: "Zoe", role: "mid", tier: "S" },
+            { name: "Zyra", role: "mid", tier: "S" },
+            { name: "Pyke", role: "support", tier: "B" },
+            { name: "Sion", role: "baron", tier: "B" },
+            { name: "Samira", role: "dragon", tier: "A" },
+            { name: "KogMaw", role: "dragon", tier: "A" },
+            { name: "Nunu", role: "jungle", tier: "SS" },
+            { name: "Warwick", role: "baron", tier: "A" },
+            { name: "Lillia", role: "jungle", tier: "A" },
+            { name: "Volibear", role: "baron", tier: "S" },
+            { name: "Ornn", role: "baron", tier: "A" },
+            { name: "Urgot", role: "baron", tier: "A" },
+            { name: "Swain", role: "mid", tier: "S" },
+            { name: "Vex", role: "mid", tier: "S" },
+            { name: "Twitch", role: "dragon", tier: "A" },
+            { name: "Syndra", role: "mid", tier: "S" },
+            { name: "Kindred", role: "jungle", tier: "B" },
+            { name: "Kalista", role: "dragon", tier: "A" },
+            { name: "Viego", role: "jungle", tier: "S" },
+            { name: "Maokai", role: "support", tier: "A" },
+            { name: "Milio", role: "support", tier: "S" },
+            { name: "Ambessa", role: "baron", tier: "S" },
+            { name: "Heimerdinger", role: "mid", tier: "S" },
+            { name: "Mordekaiser", role: "baron", tier: "S" },
+            { name: "Norra", role: "mid", tier: "S" },
+            { name: "Smolder", role: "dragon", tier: "S" },
+            { name: "Aurora", role: "mid", tier: "SS" },
+            { name: "Hecarim", role: "jungle", tier: "A" },
+            { name: "Gnar", role: "baron", tier: "A" },
+            { name: "Poppy", role: "baron", tier: "SS" },
+            { name: "Rumble", role: "baron", tier: "SS" },
+            { name: "Lissandra", role: "mid", tier: "S" }
+        ].sort((a, b) => a.name.localeCompare(b.name));
+
+        function renderChampions(filter = 'all', search = '') {
+            const grid = document.getElementById('champGrid');
+            grid.innerHTML = '';
+
+            let filtered = filter === 'all'
+                ? champions
+                : champions.filter(c => c.role === filter);
+
+            if (search) {
+                filtered = filtered.filter(c => c.name.toLowerCase().includes(search.toLowerCase()));
+            }
+
+            filtered.forEach(c => {
+                const card = document.createElement('div');
+                card.className = 'champion-card';
+                card.innerHTML = `
+                    <div class="tier-badge">${c.tier}</div>
+                    <img src="imagen/campeones/${c.name}.png" alt="${c.name}" onerror="this.src='imagen/logo.png'">
+                    <div class="champion-name">${c.name}</div>
+                    <div class="champion-role">${c.role}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        const roleBtns = document.querySelectorAll('.filter-btn');
+        const searchInput = document.getElementById('champSearch');
+
+        roleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                btn.classList.add('active');
+                renderChampions(btn.dataset.role, searchInput.value);
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const activeRole = document.querySelector('.filter-btn.active').dataset.role;
+            renderChampions(activeRole, e.target.value);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => renderChampions());
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
