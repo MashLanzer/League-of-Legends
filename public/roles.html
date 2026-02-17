@@ -4,14 +4,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROLES | GUÍA HEXTECH</title>
+    <title>ROLES | ARCHIVO ESTRATÉGICO HEXTECH</title>
     <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700;900&family=Montserrat:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .role-header-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 1px solid var(--gold-hex);
+            margin-bottom: 20px;
+        }
+
+        .role-tag-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .role-tag {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            background: rgba(10, 200, 185, 0.1);
+            border: 1px solid var(--blue-magic);
+            color: var(--blue-magic);
+            text-transform: uppercase;
+        }
+
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .protocol-box {
+            background: rgba(1, 10, 19, 0.5);
+            border: 1px solid rgba(200, 155, 60, 0.2);
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .protocol-box h4 {
+            font-family: 'Cinzel Decorative';
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .protocol-list {
+            list-style: none;
+            padding: 0;
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+
+        .protocol-list li {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .protocol-list li::before {
+            content: '▹';
+            color: var(--gold-hex);
+        }
+
+        .champ-mini-list {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(200, 155, 60, 0.2);
+        }
+
+        .champ-mini-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold-dark);
+            transition: 0.3s;
+        }
+
+        .champ-mini-icon:hover {
+            border-color: var(--gold-hex);
+            transform: scale(1.1);
+        }
+
+        /* Modal Dossier Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .dossier-modal {
+            background: rgba(1, 10, 19, 0.95);
+            border: 2px solid var(--gold-hex);
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 0 50px rgba(200, 155, 60, 0.2);
+            padding: 40px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--gold-hex);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--blue-magic);
+            transform: scale(1.1);
+        }
+
+        .dossier-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 40px;
+        }
+
+        .role-big-preview {
+            width: 100%;
+            border: 2px solid var(--gold-hex);
+            box-shadow: var(--gold-glow);
+        }
+
+        .dossier-main h2 {
+            font-family: 'Cinzel Decorative';
+            color: var(--gold-hex);
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            border: none;
+            padding: 0;
+        }
+
+        .dossier-subtitle {
+            color: var(--blue-magic);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .dossier-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .info-box {
+            background: rgba(30, 35, 40, 0.5);
+            border-left: 3px solid var(--gold-dark);
+            padding: 15px;
+        }
+
+        .info-box h4 {
+            color: var(--gold-hex);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            font-size: 0.85rem;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .terminal-text {
+            font-family: 'monospace';
+            color: var(--blue-magic);
+            font-size: 0.8rem;
+            line-height: 1.6;
+            background: rgba(10, 200, 185, 0.05);
+            padding: 15px;
+            border-left: 2px solid var(--blue-magic);
+            margin: 20px 0;
+        }
+
+        @media (max-width: 850px) {
+            .dossier-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .dossier-modal {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <div class="nav-container">
-            <div class="logo">
+            <div class="logo" onclick="location.href='index.html'" style="cursor: pointer;">
                 <div class="logo-icon"><i>WR</i></div>
                 <span>GUÍA COMPLETA DE<br><small
                         style="font-size: 0.9rem; color: var(--blue-magic); font-family: 'Cinzel Decorative';">WILD
@@ -25,73 +246,471 @@
                     <li><a href="objetos.html" class="nav-link">Objetos</a></li>
                     <li><a href="roles.html" class="nav-link active">Roles</a></li>
                     <li><a href="mapa.html" class="nav-link">Mapa</a></li>
+                    <li><a href="avanzado.html" class="nav-link">Avanzado</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main style="padding-top: 150px;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <h1 class="fade-in">DIVISIÓN DE ROLES</h1>
-            <p class="fade-in" style="margin-bottom: 60px;">La clave de la victoria reside en la armonía de las
-                posiciones en la Grieta.</p>
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 40px;">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h1 class="fade-in">POSICIONES EN LA GRIETA</h1>
+                <p class="fade-in" style="color: var(--gold-dark); letter-spacing: 3px;">GUÍA DE ROLES COMPLETA PARA EL
+                    PARCHE 7.2</p>
+            </div>
 
-            <div class="card-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;">
+            <div class="role-grid">
                 <!-- Baron Lane -->
-                <div class="hextech-card fade-in">
+                <div class="hextech-card fade-in" style="cursor: pointer;" onclick="openRoleDossier('baron')">
                     <div class="inner-content">
-                        <h2 style="font-size: 1.5rem; margin-bottom: 20px;">CARRIL DE BARÓN</h2>
-                        <p>La isla del combate 1v1. Tu objetivo es la dominación territorial y el empuje dividido
-                            (split-push).</p>
-                        <ul style="margin-top: 15px; color: var(--gold-hex); list-style: none;">
-                            <li>• Campeones: Tanques, Luchadores</li>
-                            <li>• Prioridad: Supervivencia y Teletransporte</li>
-                        </ul>
+                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Garen_0.jpg"
+                            class="role-header-img" alt="Baron Lane">
+                        <div class="role-tag-box">
+                            <span class="role-tag">Top Lane</span>
+                            <span class="role-tag">Tanques / Luchadores</span>
+                        </div>
+                        <h3 style="margin-bottom: 15px;">CARRIL DE BARÓN</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 20px;">La "Isla del Duelo". Te centras
+                            en la gestión de oleadas y el empuje dividido (split push). Tu objetivo es ser una roca
+                            impenetrable en las peleas de equipo.</p>
+
+                        <div class="protocol-grid">
+                            <div class="protocol-box">
+                                <h4 style="color: var(--blue-magic);">✅ DEBERES</h4>
+                                <ul class="protocol-list">
+                                    <li>Presión lateral eficaz</li>
+                                    <li>Control del Heraldo</li>
+                                    <li>Flanqueo estratégico</li>
+                                </ul>
+                            </div>
+                            <div class="protocol-box">
+                                <h4 style="color: #ff4655;">⚠️ RIESGOS</h4>
+                                <ul class="protocol-list">
+                                    <li>Campéo del Jungla</li>
+                                    <li>Freeze de oleada</li>
+                                    <li>Teletransporte erróneo</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="champ-mini-list">
+                            <img src="imagen/campeones/Garen.png" class="champ-mini-icon" title="Garen">
+                            <img src="imagen/campeones/Darius.png" class="champ-mini-icon" title="Darius">
+                            <img src="imagen/campeones/Fiora.png" class="champ-mini-icon" title="Fiora">
+                        </div>
                     </div>
                 </div>
+
                 <!-- Jungle -->
-                <div class="hextech-card fade-in">
+                <div class="hextech-card fade-in" style="cursor: pointer;" onclick="openRoleDossier('jungle')">
                     <div class="inner-content">
-                        <h2 style="font-size: 1.5rem; margin-bottom: 20px;">LA JUNGLA</h2>
-                        <p>El motor invisible del equipo. Controlas el ritmo de la partida y aseguras los objetivos
-                            neutrales.</p>
-                        <ul style="margin-top: 15px; color: var(--blue-magic); list-style: none;">
-                            <li>• Campeones: Asesinos, Tanques, Guerreros</li>
-                            <li>• Prioridad: Dragones y Ganks tácticos</li>
-                        </ul>
+                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/LeeSin_0.jpg"
+                            class="role-header-img" alt="Jungle">
+                        <div class="role-tag-box">
+                            <span class="role-tag">Impacto Global</span>
+                            <span class="role-tag">Macro Game</span>
+                        </div>
+                        <h3 style="margin-bottom: 15px;">JUNGLA</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 20px;">El director de orquesta. Decides
+                            qué líneas ayudar y controlas los objetivos épicos del mapa. Sin ti, el equipo no tiene
+                            dirección.</p>
+
+                        <div class="protocol-grid">
+                            <div class="protocol-box">
+                                <h4 style="color: var(--blue-magic);">✅ DEBERES</h4>
+                                <ul class="protocol-list">
+                                    <li>Control de Obj. Épicos</li>
+                                    <li>Gankeos de precisión</li>
+                                    <li>Visión en jungla rival</li>
+                                </ul>
+                            </div>
+                            <div class="protocol-box">
+                                <h4 style="color: #ff4655;">⚠️ RIESGOS</h4>
+                                <ul class="protocol-list">
+                                    <li>Invasión enemiga</li>
+                                    <li>Fallo del Aplastar</li>
+                                    <li>Rutas predecibles</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="champ-mini-list">
+                            <img src="imagen/campeones/LeeSin.png" class="champ-mini-icon" title="Lee Sin">
+                            <img src="imagen/campeones/Evelynn.png" class="champ-mini-icon" title="Evelynn">
+                            <img src="imagen/campeones/Khazix.png" class="champ-mini-icon" title="Kha'Zix">
+                        </div>
                     </div>
                 </div>
+
                 <!-- Mid Lane -->
-                <div class="hextech-card fade-in">
+                <div class="hextech-card fade-in" style="cursor: pointer;" onclick="openRoleDossier('mid')">
                     <div class="inner-content">
-                        <h2 style="font-size: 1.5rem; margin-bottom: 20px;">CARRIL CENTRAL</h2>
-                        <p>El nexo de rotación. Debes limpiar oleadas rápidamente y apoyar las líneas laterales.</p>
-                        <ul style="margin-top: 15px; color: #ff0055; list-style: none;">
-                            <li>• Campeones: Magos, Asesinos</li>
-                            <li>• Prioridad: Control del mapa y Daño explosivo</li>
-                        </ul>
+                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg"
+                            class="role-header-img" alt="Mid Lane">
+                        <div class="role-tag-box">
+                            <span class="role-tag">Asesinos / Magos</span>
+                            <span class="role-tag">Rotaciones</span>
+                        </div>
+                        <h3 style="margin-bottom: 15px;">CARRIL CENTRAL</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 20px;">El corazón del mapa. Tienes la
+                            responsabilidad de rotar a ambas líneas laterales y ejercer presión con daño explosivo
+                            constante.</p>
+
+                        <div class="protocol-grid">
+                            <div class="protocol-box">
+                                <h4 style="color: var(--blue-magic);">✅ DEBERES</h4>
+                                <ul class="protocol-list">
+                                    <li>Prioridad de línea</li>
+                                    <li>Rotación lateral</li>
+                                    <li>Bursteo de carries</li>
+                                </ul>
+                            </div>
+                            <div class="protocol-box">
+                                <h4 style="color: #ff4655;">⚠️ RIESGOS</h4>
+                                <ul class="protocol-list">
+                                    <li>Gankeos 2v1</li>
+                                    <li>Falta de maná</li>
+                                    <li>Overextend sin visión</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="champ-mini-list">
+                            <img src="imagen/campeones/Ahri.png" class="champ-mini-icon" title="Ahri">
+                            <img src="imagen/campeones/Zed.png" class="champ-mini-icon" title="Zed">
+                            <img src="imagen/campeones/Akali.png" class="champ-mini-icon" title="Akali">
+                        </div>
                     </div>
                 </div>
-                <!-- ADC/Supp -->
-                <div class="hextech-card fade-in">
+
+                <!-- Dragon Lane -->
+                <div class="hextech-card fade-in" style="cursor: pointer;" onclick="openRoleDossier('dragon')">
                     <div class="inner-content">
-                        <h2 style="font-size: 1.5rem; margin-bottom: 20px;">CARRIL DE DRAGÓN</h2>
-                        <p>El dúo dinámico. El ADC provee el daño, mientras el Soporte garantiza su supervivencia.</p>
-                        <ul style="margin-top: 15px; color: #00ff88; list-style: none;">
-                            <li>• Campeones: Tiradores, Encantadores</li>
-                            <li>• Prioridad: Oro (CS) y Control de visión</li>
-                        </ul>
+                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ezreal_0.jpg"
+                            class="role-header-img" alt="Dragon Lane">
+                        <div class="role-tag-box">
+                            <span class="role-tag">Tirador (ADC)</span>
+                            <span class="role-tag">Late Game DPS</span>
+                        </div>
+                        <h3 style="margin-bottom: 15px;">CARRIL DE DRAGÓN</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 20px;">Tu objetivo es el daño
+                            sostenido. Debes sobrevivir al inicio de la partida para convertirte en la amenaza
+                            definitiva al final.</p>
+
+                        <div class="protocol-grid">
+                            <div class="protocol-box">
+                                <h4 style="color: var(--blue-magic);">✅ DEBERES</h4>
+                                <ul class="protocol-list">
+                                    <li>Farmeo perfecto (CS)</li>
+                                    <li>Posicionamiento seguro</li>
+                                    <li>DPS en peleas equipo</li>
+                                </ul>
+                            </div>
+                            <div class="protocol-box">
+                                <h4 style="color: #ff4655;">⚠️ RIESGOS</h4>
+                                <ul class="protocol-list">
+                                    <li>Target primordial</li>
+                                    <li>Falta de protección</li>
+                                    <li>Posición adelantada</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="champ-mini-list">
+                            <img src="imagen/campeones/Ezreal.png" class="champ-mini-icon" title="Ezreal">
+                            <img src="imagen/campeones/Kaisa.png" class="champ-mini-icon" title="Kai'Sa">
+                            <img src="imagen/campeones/Vayne.png" class="champ-mini-icon" title="Vayne">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support -->
+                <div class="hextech-card fade-in" style="cursor: pointer;" onclick="openRoleDossier('support')">
+                    <div class="inner-content">
+                        <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_0.jpg"
+                            class="role-header-img" alt="Support">
+                        <div class="role-tag-box">
+                            <span class="role-tag">Utilidad / CC</span>
+                            <span class="role-tag">Visión</span>
+                        </div>
+                        <h3 style="margin-bottom: 15px;">SOPORTE</h3>
+                        <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 20px;">Proteges al Tirador y controlas
+                            la visión del mapa. Eres el cerebro táctico que salva aliados y asegura iniciaciones
+                            perfectas.</p>
+
+                        <div class="protocol-grid">
+                            <div class="protocol-box">
+                                <h4 style="color: var(--blue-magic);">✅ DEBERES</h4>
+                                <ul class="protocol-list">
+                                    <li>Dominio de visión</li>
+                                    <li>Protección (Peeling)</li>
+                                    <li>Control de masas</li>
+                                </ul>
+                            </div>
+                            <div class="protocol-box">
+                                <h4 style="color: #ff4655;">⚠️ RIESGOS</h4>
+                                <ul class="protocol-list">
+                                    <li>Quedarse sin wards</li>
+                                    <li>Farmeo innecesario</li>
+                                    <li>Abandono del carry</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="champ-mini-list">
+                            <img src="imagen/campeones/Thresh.png" class="champ-mini-icon" title="Thresh">
+                            <img src="imagen/campeones/Lulu.png" class="champ-mini-icon" title="Lulu">
+                            <img src="imagen/campeones/Nami.png" class="champ-mini-icon" title="Nami">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer
-        style="background: #010a13; border-top: 2px solid var(--gold-hex); padding: 50px 0; text-align: center; margin-top: 100px;">
-        <p style="color: var(--gold-dark);">© 2026 ARCHIVOS DE ROLES HEXTECH</p>
+    <footer style="background: #010a13; border-top: 2px solid var(--gold-hex); padding: 80px 0;">
+        <div class="nav-container"
+            style="max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding: 0 40px; justify-items: start;">
+            <div>
+                <div class="logo">
+                    <div class="logo-icon"><i>WR</i></div>
+                    <span style="font-size: 1.2rem;">GUÍA HEXTECH<br><small
+                            style="font-size: 0.7rem; color: var(--gold-dark);">CENTRO DE MANDO</small></span>
+                </div>
+                <p style="color: var(--gold-dark); margin-top: 20px; font-size: 0.85rem; line-height: 1.8;">
+                    Analizamos cada píxel de la Grieta para asegurar tu victoria.
+                    El recurso más completo para la comunidad de Wild Rift.
+                </p>
+            </div>
+            <div>
+                <h4
+                    style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px; font-size: 0.8rem; letter-spacing: 2px;">
+                    Recursos</h4>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 12px;"><a href="campeones.html"
+                            style="color: #ccc; text-decoration: none;">Campeones</a></li>
+                    <li style="margin-bottom: 12px;"><a href="runas.html"
+                            style="color: #ccc; text-decoration: none;">Runas</a></li>
+                    <li style="margin-bottom: 12px;"><a href="objetos.html"
+                            style="color: #ccc; text-decoration: none;">Objetos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px; font-size: 0.8rem; letter-spacing: 2px;">
+                    Estrategia</h4>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 12px;"><a href="mapa.html" style="color: #ccc; text-decoration: none;">El
+                            Mapa</a></li>
+                    <li style="margin-bottom: 12px;"><a href="roles.html"
+                            style="color: #ccc; text-decoration: none;">Roles</a></li>
+                    <li style="margin-bottom: 12px;"><a href="avanzado.html"
+                            style="color: #ccc; text-decoration: none;">Guía Elite</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px; font-size: 0.8rem; letter-spacing: 2px;">
+                    Comunidad</h4>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 12px;"><a href="#" style="color: #ccc; text-decoration: none;">Discord</a>
+                    </li>
+                    <li style="margin-bottom: 12px;"><a href="#" style="color: #ccc; text-decoration: none;">Reddit</a>
+                    </li>
+                    <li style="margin-bottom: 12px;"><a href="#" style="color: #ccc; text-decoration: none;">Patch
+                            Notes</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(200, 155, 60, 0.1);">
+            <p style="color: var(--gold-dark); font-size: 0.7rem;">© 2026 PROYECTO FAN HEXTECH. LEAGUE OF LEGENDS: WILD
+                RIFT ES PROPIEDAD DE RIOT GAMES.</p>
+        </div>
     </footer>
 
+    <div class="modal-overlay" id="roleModal">
+        <div class="dossier-modal">
+            <span class="modal-close" onclick="closeRoleModal()">&times;</span>
+            <div class="dossier-layout">
+                <div class="dossier-sidebar">
+                    <img id="modalRoleImg" src="" class="role-big-preview" alt="Role">
+                    <div class="info-box" style="margin-top: 25px;">
+                        <h4>Prioridad de Impacto</h4>
+                        <p id="modalRoleImpact">Cargando análisis...</p>
+                    </div>
+                </div>
+                <div class="dossier-main">
+                    <h2 id="modalRoleTitle">CARRIL DE BARÓN</h2>
+                    <span class="dossier-subtitle" id="modalRoleTags">ISLA DEL DUELO | SPLIT PUSH</span>
+
+                    <div class="terminal-text">
+                        > CALCULANDO VECTOR DE INFLUENCIA EN EL MAPA...<br>
+                        > ANALIZANDO RESPONSABILIDADES TÁCTICAS v7.2...<br>
+                        > PROTOCOLO DE POSICIONAMIENTO VALIDADO.
+                    </div>
+
+                    <div class="dossier-grid">
+                        <div class="info-box">
+                            <h4>Visión Estratégica</h4>
+                            <p id="modalRoleVision">...</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>Macro Game</h4>
+                            <p id="modalRoleMacro">...</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>Early Game (Fase 1)</h4>
+                            <p id="modalRoleEarly">...</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>Mid Game (Fase 2)</h4>
+                            <p id="modalRoleMid">...</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>Late Game (Final)</h4>
+                            <p id="modalRoleLate">...</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>Objetivos Críticos</h4>
+                            <p id="modalRoleObjectives">...</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box" style="margin-top: 20px; border-left-color: var(--blue-magic);">
+                        <h4>Protocolo de Pelea de Equipo</h4>
+                        <p id="modalRoleTeamfight">...</p>
+                    </div>
+
+                    <div class="info-box"
+                        style="margin-top: 20px; border-left-color: var(--gold-hex); background: rgba(200, 155, 60, 0.05);">
+                        <h4>💡 CONSEJO DE MAESTRÍA (PRO-TIP)</h4>
+                        <p id="modalRoleProTip" style="color: var(--gold-light); font-style: italic;">...</p>
+                    </div>
+
+                    <div class="info-box" style="margin-top: 20px;">
+                        <h4>Sinergias Recomendadas</h4>
+                        <p id="modalRoleSynergy">...</p>
+                    </div>
+
+                    <div style="margin-top: 40px; text-align: center;">
+                        <button class="wr-btn" onclick="closeRoleModal()"
+                            style="padding: 10px 30px; font-size: 0.8rem;">CERRAR ARCHIVO</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const roleData = {
+            baron: {
+                title: "CARRIL DE BARÓN",
+                tags: "DUELISTA | PRESIÓN LATERAL",
+                img: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Garen_0.jpg",
+                impact: "Crítico en Mid/Late Game (Split Push)",
+                vision: "Controlar arbustos del río y la zona del Heraldo. Un centinela profundo en la jungla enemiga previene gankeos tempranos y permite detectar rotaciones del mid enemigo.",
+                macro: "Utilizar el Teletransporte para unirse a peleas de equipo o castigar estructuras si el enemigo se agrupa demasiado. El control de masas colateral es vital aquí.",
+                early: "Enfócate en el farmeo y en ganar intercambios cortos. No uses tus habilidades de escape ofensivamente si no tienes visión del jungla enemigo.",
+                mid: "Comienza a presionar líneas laterales opuestas al objetivo vivo (Dragón). Obliga al enemigo a enviar a 2 personas a detenerte.",
+                late: "Tu presencia en peleas debe ser de flanqueo o protección total del carry. El empuje dividido puede ganar la partida si el enemigo no responde rápido.",
+                teamfight: "Actuar como la vanguardia (frontline) para absorber daño inicial o buscar un flanqueo agresivo para eliminar a los tiradores enemigos.",
+                objectives: "Control prioritario del Heraldo de la Grieta y protección de las torres de la base y el inhibidor.",
+                proTip: "Aprende a hacer 'Freeze' de oleada cerca de tu torre. Esto obliga al rival a adelantarse, exponiéndolo a gankeos de tu jungla de forma garantizada.",
+                synergy: "Funciona excelente con junglas de CC (Jarvan IV, Vi) que permitan castigar al top enemigo cuando este pierde recursos."
+            },
+            jungle: {
+                title: "JUNGLA",
+                tags: "IMPACTO GLOBAL | MACRO",
+                img: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/LeeSin_0.jpg",
+                impact: "Determinante en Early Game (Presión Dinámica)",
+                vision: "Responsable de la visión profunda en la jungla enemiga para predecir movimientos rivales. Control total de los Escurridizos es obligatorio.",
+                macro: "Dictar el ritmo de la partida. Identificar qué línea competitiva potenciar (Win Condition) para asegurar la victoria mediante gankeos sistemáticos.",
+                early: "Optimiza tu ruta de limpieza (Pathing) para terminar cerca de una línea vulnerable a nivel 3 o 4. No pierdas tiempo en gankeos imposibles.",
+                mid: "Control absoluto de los tiempos de aparición del Dragón y Heraldo. Mantén el ritmo de farmeo entre gankeos para no quedar atrás en nivel.",
+                late: "Tu rol es asegurar el Castigo (Smite) en el Barón o Dragón Anciano. Una muerte tuya al final puede costar el objetivo más importante.",
+                teamfight: "Inicia el combate si eres un tanque, o espera a que los enfriamientos clave del enemigo se gasten si eres un asesino para limpiar la pelea.",
+                objectives: "Dragones Elementales, Heraldo, Barón Nashor y control de los bufos azul/rojo propios y enemigos.",
+                proTip: "El contrajungla (Counter-jungle) no solo te da oro, sino que le quita experiencia al rival. Si ves al jungla enemigo en el mapa opuesto, róbale sus campamentos.",
+                synergy: "Combina mejor con Mid laners con CC confiable (Galio, Twisted Fate) para asegurar muertes en cada rotación.",
+                synergy: "Sinergia con Mid Lanes de alta movilidad para invadir juntos la jungla rival."
+            },
+            mid: {
+                title: "CARRIL CENTRAL",
+                tags: "PODER EXPLOSIVO | ROTACIÓN",
+                img: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg",
+                impact: "Máximo en todas las etapas",
+                vision: "Centros de control a ambos lados del carril. Utiliza Wardings profundos en los campamentos de dagarracos enemigos para saber dónde están.",
+                macro: "Rotar (Roaming) de forma constante para crear superioridad numérica. Tienes el trayecto más corto a cualquier punto del mapa.",
+                early: "Busca la prioridad de línea (limpiar rápido) para asistir a tu jungla en el río. El primer escurridizo suele decidirse en el Mid.",
+                mid: "Participa en escaramuzas pequeñas. Tu daño de ráfaga es lo que asegura las bajas rápidas antes de que el enemigo pueda reaccionar.",
+                late: "Posicionamiento perfecto. No puedes ser el primero en morir. Espera tu oportunidad para entrar y borrar al ADC enemigo en un combo.",
+                teamfight: "Eliminar objetivos prioritarios (Burst) y proporcionar daño en área masivo para suavizar al equipo enemigo.",
+                objectives: "Asistir al jungla en cada pelea de río, asegurar la torre central y controlar las zonas de paso hacia los objetivos épicos.",
+                proTip: "Mira el minimapa cada 5 segundos. Como Mid, eres el radar del equipo. Avisa de los movimientos enemigos incluso si no son hacia tu línea.",
+                synergy: "Junglas agresivos (Lee Sin, Xin Zhao) y soportes de rotación (Thresh, Pyke) para dominar el mapa."
+            },
+            dragon: {
+                title: "CARRIL DE DRAGÓN",
+                tags: "TIRADOR | DAÑO SOSTENIDO",
+                img: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ezreal_0.jpg",
+                impact: "Absoluto en Late Game",
+                vision: "Depende mayormente del soporte, pero debe mantener visión defensiva propia si el support rota. El Blue Ward es tu mejor amigo.",
+                macro: "Maximizar el farmeo (CS) sin exponerse. Rotar a la línea de Baron tras derribar la primera torre para seguir presionando con ventaja.",
+                early: "Prioriza el último golpe a los súbditos. Supervivencia > Agresión. Un ADC muerto es oro gratis para el carry rival.",
+                mid: "Busca recolectar oleadas de forma segura. No te muevas solo por la jungla sin visión. Tu daño comienza a ser relevante ahora.",
+                late: "Eres el seguro de vida del equipo. En peleas de 5v5, tu vida es lo más valioso. Golpea lo que tengas delante sin arriesgar tu posición.",
+                teamfight: "Mantenerse en la retaguardia extrema. Tu objetivo es aplicar DPS continuo a los tanques y limpiar la pelea al final.",
+                objectives: "Eliminación veloz de estructuras, Dragones Elementales y daño sostenido al Barón Nashor.",
+                proTip: "Aprende a 'Kitear' (moverse mientras disparas). Mantener la distancia máxima de tu autoataque es la diferencia entre un ADC plata y uno challenger.",
+                synergy: "Soportes que ofrezcan protección (Lulu, Janna) o iniciaciones seguras (Leona, Nautilus)."
+            },
+            support: {
+                title: "SOPORTE",
+                tags: "UTILIDAD | CONTROL DE VISIÓN",
+                img: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Thresh_0.jpg",
+                impact: "Táctico y Cerebral",
+                vision: "Dueño absoluto del mapa. Mantener 3 centinelas activos y eliminar los enemigos (Lente del Oráculo) es tu máxima prioridad constante.",
+                macro: "Asistir al ADC en fase de líneas. Identificar cuándo rotar con el Jungla para crear jugadas de 'dive' o asegurar visión de objetivos.",
+                early: "Presión de zona. Gana el carril mediante el control de los arbustos y el acoso (poke) constante sin quitarle farmeo a tu ADC.",
+                mid: "Seguimiento constante del Jungla aliado. Ayuda a asegurar el Heraldo y controla los flancos para evitar emboscadas.",
+                late: "Protege a tu carry más fuerte. No siempre es el ADC; identifica quién está ganando la partida y no lo dejes morir bajo ninguna circunstancia.",
+                teamfight: "Proteger al carry (Peeling) usando tu CC defensivamente, o iniciar la pelea si detectas un enemigo fuera de posición.",
+                objectives: "Asegurar zona de Dragón con visión anticipada (30s antes) y asistir en la toma de objetivos con curaciones o escudos.",
+                proTip: "No te quedes estancado en la línea si tu ADC está a salvo o en base. Una rotación al Mid a minuto 4 puede ganar esa línea para tu equipo.",
+                synergy: "Cualquier carry que se beneficie de tu kit (ADC de ráfaga con soportes de CC, ADC de escalado con soportes de utilidad)."
+            }
+        };
+
+        function openRoleDossier(role) {
+            const data = roleData[role];
+            if (!data) return;
+
+            const modal = document.getElementById('roleModal');
+            document.getElementById('modalRoleTitle').innerText = data.title;
+            document.getElementById('modalRoleTags').innerText = data.tags;
+            document.getElementById('modalRoleImg').src = data.img;
+            document.getElementById('modalRoleImpact').innerText = data.impact;
+            document.getElementById('modalRoleVision').innerText = data.vision;
+            document.getElementById('modalRoleMacro').innerText = data.macro;
+            document.getElementById('modalRoleEarly').innerText = data.early;
+            document.getElementById('modalRoleMid').innerText = data.mid;
+            document.getElementById('modalRoleLate').innerText = data.late;
+            document.getElementById('modalRoleTeamfight').innerText = data.teamfight;
+            document.getElementById('modalRoleObjectives').innerText = data.objectives;
+            document.getElementById('modalRoleProTip').innerText = data.proTip;
+            document.getElementById('modalRoleSynergy').innerText = data.synergy;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRoleModal() {
+            document.getElementById('roleModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 

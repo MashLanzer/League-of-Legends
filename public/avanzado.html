@@ -4,14 +4,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía Avanzada | Guía Wild Rift</title>
+    <title>AVANZADO | ACADEMIA CHALLENGER HEXTECH</title>
     <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700;900&family=Montserrat:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .hero-advanced {
+            height: 60vh;
+            background: linear-gradient(rgba(1, 10, 19, 0.8), rgba(1, 10, 19, 0.95)), url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Zed_15.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-bottom: 2px solid var(--blue-magic);
+        }
+
+        .advanced-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: -100px;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 900px) {
+            .advanced-grid {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+            }
+        }
+
+        .dossier-section {
+            background: rgba(1, 10, 19, 0.9);
+            border: 1px solid var(--blue-magic);
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(10, 200, 185, 0.1);
+        }
+
+        .terminal-text {
+            font-family: 'monospace';
+            color: var(--blue-magic);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            border-left: 2px solid var(--blue-magic);
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+
+        .faq-accordion {
+            margin-top: 50px;
+        }
+
+        .faq-item {
+            border: 1px solid rgba(200, 155, 60, 0.1);
+            margin-bottom: 10px;
+            background: rgba(10, 200, 185, 0.02);
+        }
+
+        .faq-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: var(--gold-hex);
+            transition: 0.3s;
+        }
+
+        .faq-header:hover {
+            background: rgba(10, 200, 185, 0.05);
+            color: var(--blue-magic);
+        }
+
+        .faq-content {
+            padding: 0 20px 20px;
+            display: none;
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-content {
+            display: block;
+        }
+
+        .mental-card {
+            background: linear-gradient(135deg, rgba(10, 200, 185, 0.05), rgba(1, 10, 19, 0.8));
+            border-right: 4px solid var(--blue-magic);
+        }
+
+        /* Macro Section Enhancements */
+        .macro-module {
+            background: rgba(1, 10, 19, 0.8);
+            border: 1px solid rgba(200, 155, 60, 0.2);
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .macro-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(200, 155, 60, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .macro-header i {
+            font-size: 1.5rem;
+            color: var(--gold-hex);
+        }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+
+        .tech-table th {
+            text-align: left;
+            color: var(--gold-hex);
+            text-transform: uppercase;
+            padding: 12px;
+            border-bottom: 2px solid var(--gold-dark);
+        }
+
+        .tech-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #ccc;
+        }
+
+        .tech-table tr:hover {
+            background: rgba(10, 200, 185, 0.02);
+        }
+
+        .cc-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-right: 5px;
+        }
+
+        .cc-hard {
+            background: rgba(255, 70, 85, 0.2);
+            color: #ff4655;
+            border: 1px solid #ff4655;
+        }
+
+        .cc-soft {
+            background: rgba(10, 200, 185, 0.2);
+            color: var(--blue-magic);
+            border: 1px solid var(--blue-magic);
+        }
+
+        .cc-special {
+            background: rgba(200, 155, 60, 0.2);
+            color: var(--gold-hex);
+            border: 1px solid var(--gold-hex);
+        }
+
+        .stat-badge {
+            background: #111;
+            padding: 5px 12px;
+            border: 1px solid var(--gold-dark);
+            color: var(--gold-hex);
+            font-family: 'monospace';
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <div class="container nav-container">
-            <div class="logo">WILD RIFT GUIDE</div>
+        <div class="nav-container">
+            <div class="logo" onclick="location.href='index.html'" style="cursor: pointer;">
+                <div class="logo-icon"><i>WR</i></div>
+                <span>GUÍA COMPLETA DE<br><small
+                        style="font-size: 0.9rem; color: var(--blue-magic); font-family: 'Cinzel Decorative';">WILD
+                        RIFT</small></span>
+            </div>
             <nav>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link">Home</a></li>
@@ -20,97 +200,466 @@
                     <li><a href="objetos.html" class="nav-link">Objetos</a></li>
                     <li><a href="roles.html" class="nav-link">Roles</a></li>
                     <li><a href="mapa.html" class="nav-link">Mapa</a></li>
-                    <li><a href="recursos.html" class="nav-link">Recursos</a></li>
-                    <li><a href="estrategias.html" class="nav-link">Estrategias</a></li>
-                    <li><a href="eventos.html" class="nav-link">Eventos</a></li>
                     <li><a href="avanzado.html" class="nav-link active">Avanzado</a></li>
-                    <li><a href="glosario.html" class="nav-link">Glosario</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container" style="margin-top: 120px;">
-        <section class="visible">
-            <h1>Estrategias de Nivel Maestro</h1>
-            <p>Si ya conoces lo básico, es hora de profundizar en las tácticas que te llevarán a Diamante, Maestro y más
-                allá.</p>
-
-            <div class="card-grid" style="margin-top: 50px;">
-                <div class="card">
-                    <h3>Counter-Picking</h3>
-                    <p>No elijas a tu campeón a ciegas. Espera a ver qué elige el enemigo. Si eligen a un campeón con
-                        mucha movilidad (como Akali), un campeón con aturdimiento directo (como Vex) será su peor
-                        pesadilla.</p>
-                </div>
-                <div class="card">
-                    <h3>Gestión de Oleadas Avanzada</h3>
-                    <p><strong>Freezing:</strong> Mantén la oleada cerca de tu torre para obligar al enemigo a
-                        exponerse.</p>
-                    <p><strong>Slow Push:</strong> Acumula una oleada gigante para bucear (dive) bajo torre con ayuda
-                        del jungla.</p>
-                </div>
+    <main>
+        <!-- Elite Hero Section -->
+        <section class="hero-advanced fade-in">
+            <div class="container">
+                <span class="status-pill status-online" style="margin-bottom: 20px;">PROTOCOLO CHALLENGER ACTIVO</span>
+                <h1 style="font-size: 4rem; margin-bottom: 20px;">MÁS ALLÁ DEL LÍMITE</h1>
+                <p
+                    style="max-width: 700px; margin: 0 auto; color: var(--gold-light); font-size: 1.1rem; line-height: 1.8;">
+                    No es suficiente con jugar bien. Para alcanzar la cima, debes entender los sistemas invisibles que
+                    rigen la Grieta. Bienvenido a la Academia Maestro.
+                </p>
             </div>
         </section>
 
-        <section>
-            <h2>Análisis del Parche 7.2</h2>
-            <div style="background: var(--bg-card); padding: 30px; border: 1px solid var(--secondary);">
-                <h3>Meta de Tanques</h3>
-                <p>Con los recientes cambios a la armadura, los tanques están dominando el carril de Barón. Objetos como
-                    el <em>Corazón de Acero</em> son compras prioritarias en casi todos los iniciadores.</p>
-                <br>
-                <h3>El Poder de Norra</h3>
-                <p>Norra ha cambiado el juego medio. Sus portales permiten flancos imposibles de predecir si no tienes
-                    visión profunda en la jungla enemiga.</p>
-            </div>
-        </section>
+        <div class="container" style="max-width: 1300px; margin: 0 auto; padding: 0 40px;">
+            <!-- Knowledge Dossiers -->
+            <div class="advanced-grid fade-in">
+                <div class="dossier-section">
+                    <span class="section-tag" style="color: var(--blue-magic);">ARCHIVO TÁCTICO 01</span>
+                    <h2 style="border: none; margin-bottom: 20px;">MICRO-DECISIONES</h2>
+                    <p style="color: #888; font-size: 0.9rem;">El arte de ganar la línea antes de que comience la pelea.
+                    </p>
 
-        <section>
-            <h2>Consejos de Mentalidad (Mental Game)</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Evita el Tilt</h3>
-                    <p>Una mala partida no define tu habilidad. Si pierdes dos seguidas, toma un descanso. La
-                        frustración nubla el juicio táctico.</p>
+                    <div class="terminal-text">
+                        > Analizando: Counter-Picking Automático<br>
+                        > Elige campeones con CC directo (estun) contra asesinos de movilidad.<br>
+                        > Prioriza la sinergia de equipo sobre la victoria individual en línea.
+                    </div>
+
+                    <div class="protocol-box">
+                        <h4 style="color: var(--gold-hex); margin-bottom: 10px;">Gestión de Oleadas</h4>
+                        <ul class="protocol-list">
+                            <li><strong>Freezing:</strong> Congela cerca de tu torre para denegar oro al rival.</li>
+                            <li><strong>Slow Push:</strong> Acumula 2 oleadas para forzar un dive con el jungla.</li>
+                            <li><strong>Proxy:</strong> Farmea entre torres (Nivel Experto) para ganar tiempo de
+                                rotación.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>One-Tricking vs Versatilidad</h3>
-                    <p>Especializarte en 1 o 2 campeones (One-Trick) te permite dominar sus mecánicas al 100%, pero ser
-                        versátil te permite adaptarte a lo que el equipo necesita.</p>
+
+                <div class="dossier-section" style="border-color: var(--gold-hex);">
+                    <span class="section-tag">ARCHIVO MACRO 02</span>
+                    <h2 style="border: none; margin-bottom: 20px;">ANÁLISIS DE PARCHE 7.2</h2>
+                    <p style="color: #888; font-size: 0.9rem;">Actualización de sistemas y variaciones del meta actual.
+                    </p>
+
+                    <div class="protocol-box" style="margin-top: 30px;">
+                        <h4 style="color: #ff4655;">EL META DE TANQUES</h4>
+                        <p style="font-size: 0.85rem; line-height: 1.6; color: #ccc;">La introducción de nuevos objetos
+                            de vida ha desplazado el meta hacia iniciadores resistentes. El <em>Corazón de Acero</em> no
+                            es opcional; es la base del poder actual en Top y Jungla.</p>
+                    </div>
+
+                    <div class="protocol-box" style="margin-top: 20px;">
+                        <h4 style="color: var(--blue-magic);">ROTACIÓN DE PORTALES (NORRA)</h4>
+                        <p style="font-size: 0.85rem; line-height: 1.6; color: #ccc;">Norra no es solo daño. Sus
+                            portales redefinen el macro-game de juego medio. Aprende a predecir flancos de 4 jugadores
+                            desapareciendo instantáneamente de la visión enemiga.</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section>
-            <h2>Preguntas Frecuentes de Nivel Alto (FAQ)</h2>
-            <div class="accordion" onclick="toggleSection(this)"
-                style="cursor: pointer; padding: 20px; background: var(--primary); margin-bottom: 10px;">
-                <strong>¿Cuándo debo abandonar mi línea para ayudar?</strong>
-            </div>
-            <div class="panel"
-                style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: var(--bg-card); padding: 0 20px;">
-                <p style="padding: 20px 0;">Siempre que la oleada esté empujada bajo la torre enemiga y veas una
-                    oportunidad clara en el río o carriles adyacentes. Nunca abandones la línea si vas a perder una
-                    torre completa.</p>
+            <!-- Mathematical Theory Sections -->
+            <div style="margin-top: 80px;">
+                <div style="text-align: center; margin-bottom: 50px;">
+                    <span class="section-tag" style="color: var(--gold-hex);">LOGÍSTICA DE COMBATE</span>
+                    <h2 class="heading-epic" style="border: none;">TEORÍA DE SISTEMAS Y MACRO</h2>
+                </div>
+
+                <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <!-- Resistances Module -->
+                    <div class="macro-module">
+                        <div class="macro-header">
+                            <i>🛡️</i>
+                            <h3 style="margin:0; color: var(--gold-hex); font-size: 1.2rem;">MATEMÁTICA DE RESISTENCIAS
+                            </h3>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #888;">Entender cómo 100 de armadura no es el doble de 50.
+                            El rendimiento decreciente explicado.</p>
+
+                        <table class="tech-table">
+                            <thead>
+                                <tr>
+                                    <th>Resistencia</th>
+                                    <th>Reducción Real</th>
+                                    <th>Multiplicador de Vida Efectiva</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="stat-badge">50</span></td>
+                                    <td>33.3%</td>
+                                    <td>1.5x Salud</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="stat-badge">100</span></td>
+                                    <td style="color: var(--blue-magic); font-weight: 700;">50.0%</td>
+                                    <td>2.0x Salud</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="stat-badge">200</span></td>
+                                    <td>66.6%</td>
+                                    <td>3.0x Salud</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="stat-badge">300</span></td>
+                                    <td>75.0%</td>
+                                    <td>4.0x Salud</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="terminal-text" style="font-size: 0.75rem;">
+                            > FORMULA: Daño Recibido = Daño Original * (100 / (100 + Resist))<br>
+                            > TIP: Cada punto de armadura otorga un 1% de Vida Efectiva extra contra ese tipo de daño.
+                        </div>
+                    </div>
+
+                    <!-- Tower Mechanics Module -->
+                    <div class="macro-module" style="border-color: var(--blue-magic);">
+                        <div class="macro-header">
+                            <i>🏰</i>
+                            <h3 style="margin:0; color: var(--blue-magic); font-size: 1.2rem;">LOGÍSTICA DE ASEDIO
+                                (TORRETAS)</h3>
+                        </div>
+                        <div class="protocol-box">
+                            <h4 style="font-size: 0.8rem; color: var(--gold-hex);">Calentamiento de Disparos</h4>
+                            <p style="font-size: 0.85rem; color: #ccc;">Cada disparo consecutivo al mismo campeón
+                                aumenta el daño un <strong>40%</strong>, acumulándose hasta un máximo de
+                                <strong>120%</strong> de daño adicional.
+                            </p>
+                        </div>
+                        <div class="protocol-box" style="margin-top: 15px;">
+                            <h4 style="font-size: 0.8rem; color: var(--gold-hex);">Radio de Escaneo y Visión</h4>
+                            <ul style="font-size: 0.85rem; color: #888; padding-left: 20px;">
+                                <li>Rango de Ataque: <span style="color: #eee;">7.75 Unidades</span></li>
+                                <li>Rango de Visión (True Sight): <span style="color: #eee;">9.0 Unidades</span></li>
+                                <li>Placas de Torre: Otorgan <span style="color: #eee;">40 de Armadura/RM</span> por
+                                    cada aliado cercano adicional tras caer una placa.</li>
+                            </ul>
+                        </div>
+                        <div class="terminal-text" style="font-size: 0.75rem;">
+                            > ADVERTENCIA: Las torres ignoran el 30% de tu armadura.<br>
+                            > PROTOCOLO: El primer disparo siempre es el más "barato" en un dive.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CC Dictionary Module -->
+                <div class="macro-module" style="margin-top: 40px; border-color: #ff4655;">
+                    <div class="macro-header">
+                        <i>⚡</i>
+                        <h3 style="margin:0; color: #ff4655; font-size: 1.2rem;">DICCIONARIO DE CONTROL DE MASAS (CC)
+                        </h3>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div>
+                            <table class="tech-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tipo de CC</th>
+                                        <th>Efecto</th>
+                                        <th>Tenacidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="cc-tag cc-hard">ATURDIR</span></td>
+                                        <td>Inhabilita ataque y movimiento.</td>
+                                        <td style="color: #00ff88;">SÍ</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="cc-tag cc-special">SUPRESIÓN</span></td>
+                                        <td>Inhabilita TODO (Venganza de Warwick).</td>
+                                        <td style="color: #ff4655;">NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="cc-tag cc-special">SUSPENSIÓN</span></td>
+                                        <td>Derribo aéreo (Yasuo interaction).</td>
+                                        <td style="color: #ff4655;">NO</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="cc-tag cc-soft">PROVOCACIÓN</span></td>
+                                        <td>Forzar ataque al lanzador (Rammus).</td>
+                                        <td style="color: #00ff88;">SÍ</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="protocol-box">
+                            <h4 style="color: var(--gold-hex);">Nota sobre Desplazamientos</h4>
+                            <p style="font-size: 0.85rem; color: #ccc;">Empujones (Knockbacks) y Derribos (Knockups) son
+                                los CCs más potentes porque no pueden ser reducidos por la Tenacidad ni limpiados por
+                                hechizos de invocador básicos.</p>
+                            <div class="terminal-text" style="font-size: 0.75rem;">
+                                > ESTADO: Tenacidad reduce la duración máxima un 60%.<br>
+                                > EXCEPCIÓN: Supresión y Suspensión ignoran tu nivel de Tenacidad.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="accordion" onclick="toggleSection(this)"
-                style="cursor: pointer; padding: 20px; background: var(--primary); margin-bottom: 10px;">
-                <strong>¿Cómo lidiar con un equipo que no sigue órdenes?</strong>
-            </div>
-            <div class="panel"
-                style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: var(--bg-card); padding: 0 20px;">
-                <p style="padding: 20px 0;">Usa las señales de "Pings" de forma asertiva pero no excesiva. A veces,
-                    seguir una mala decisión en equipo es mejor que tomar una buena decisión solo.</p>
-            </div>
-        </section>
+            <!-- Mental Game Section -->
+            <section class="fade-in" style="margin-top: 100px;">
+                <div style="text-align: center; margin-bottom: 60px;">
+                    <span class="section-tag">INNER GAME</span>
+                    <h2 class="heading-epic" style="border: none;">PSICOLOGÍA DEL COMPETIDOR</h2>
+                </div>
+
+                <div class="grid-6" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                    <div class="hextech-card mental-card">
+                        <div class="inner-content">
+                            <h3 style="color: var(--blue-magic);">RESILIENCIA TÁCTICA</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.8;">El "Tilt" es la mayor pérdida de oro del
+                                juego. Una muerte no es el fin; perder la concentración sí lo es. Aprende a jugar desde
+                                atrás (playing safe) para permitir que tu equipo te cargue.</p>
+                        </div>
+                    </div>
+                    <div class="hextech-card mental-card">
+                        <div class="inner-content">
+                            <h3 style="color: var(--gold-hex);">EL DILEMA DEL MAIN</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.8;">Ser One-Trick te da el techo mecánico más
+                                alto, pero la versatilidad te gana los drafts. En el meta actual de bans, tener un pool
+                                de 3 campeones dominados es el estándar profesional.</p>
+                        </div>
+                    </div>
+                    <div class="hextech-card mental-card">
+                        <div class="inner-content">
+                            <h3 style="color: #ff4655;">COMUNICACIÓN ASÉPTICA</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.8;">La toxicidad drena recursos cognitivos.
+                                Mutea a la primera señal de negatividad. Tu energía debe estar en el mini-mapa, no en el
+                                chat. La comunicación mínima por pings es la más eficiente.</p>
+                        </div>
+                    </div>
+                    <div class="hextech-card mental-card">
+                        <div class="inner-content">
+                            <h3 style="color: var(--blue-magic);">LIDERAZGO SIN EGO</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.8;">Tomar decisiones (Shotcalling) requiere
+                                humildad. Si alguien propone un Barón y tú no estás de acuerdo, a veces es mejor seguir
+                                un plan imperfecto juntos que dividirse en dos planes correctos.</p>
+                        </div>
+                    </div>
+                    <div class="hextech-card mental-card">
+                        <div class="inner-content">
+                            <h3 style="color: var(--gold-hex);">ESTADO DE FLUJO (FLOW)</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.8;">La concentración extrema ocurre cuando el
+                                desafío iguala tu habilidad. Elimina distracciones externas. Una partida de alto nivel
+                                requiere tu presencia absoluta en cada segundo del cronómetro.</p>
+                        </div>
+                    </div>
+                    <div class="hextech-card mental-card">
+                        <div class="inner-content">
+                            <h3 style="color: #ff4655;">ANÁLISIS DEL FRACASO</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.8;">Una derrota es una transferencia de datos.
+                                En lugar de culpar al emparejamiento, busca el error en tu primera muerte o en la
+                                rotación que no hiciste. El crecimiento real ocurre en la autocrítica.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section Redesign -->
+            <section class="fade-in" style="margin-top: 100px; margin-bottom: 120px;">
+                <h2 class="heading-epic" style="text-align: center; border: none; margin-bottom: 40px;">CENTRO DE
+                    CONSULTA ELITE</h2>
+
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+                            ¿Cuándo debo abandonar mi línea para ayudar?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-content">
+                            La respuesta estándar es cuando la oleada está bajo la torre enemiga, pero a nivel avanzado,
+                            debes buscar "timing windows" basadas en el spawn del jungla enemigo. Si sabes que el jungla
+                            rival está en el lado opuesto, tu rotación es 100% segura.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+                            ¿Cómo lidiar con un equipo que no sigue órdenes?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-content">
+                            Deja de usar el chat. Usa señales específicas sobre objetivos y, lo más importante, lidera
+                            con el ejemplo. En Wild Rift, los jugadores tienden a seguir al miembro del equipo que tiene
+                            mayor racha de asesinatos u oro. Conviértete en ese foco.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+                            ¿Es mejor el Baron o el Dragón Anciano?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-content">
+                            En el parche 7.2, el Dragón Anciano tiene mayor valor de ejecución en peleas de equipo,
+                            mientras que el Barón es superior para asedios lentos. Si el enemigo tiene buena limpieza de
+                            oleadas, prioriza el Anciano para ganar la pelea directamente.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+                            ¿Qué es el "Cross-mapping" y cuándo usarlo?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-content">
+                            Es intercambiar objetivos en lados opuestos del mapa. Si el enemigo está iniciando el Dragón
+                            y no puedes llegar a tiempo o vas por detrás, lanza el Heraldo o destruye torres en el
+                            carril de Barón. Nunca regales un objetivo sin sacar algo a cambio en el otro lado.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+                            ¿Cómo ajustar mi build según la partida?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-content">
+                            No sigas builds fijas. Si el enemigo tiene 2 o más campeones de curación (Aatrox, Soraka),
+                            el *Recordatorio Mortal* o *Morellonomicon* debe ser tu segundo o tercer objeto. Anticipar
+                            los picos de poder enemigos y comprar resistencia específica es lo que separa a un Diamante
+                            de un Maestro.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+                            ¿Cómo manejar a un Split-pusher enemigo imparable?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-content">
+                            No envíes a 3 personas a por él si hay un objetivo mayor vivo (Barón). La clave es
+                            "colapsar" rápido o forzar una pelea 5vs4 en el otro lado del mapa. Si logras ganar la pelea
+                            5vs4, la torre que pierdas por el split-pusher valdrá la pena si consigues el Nexo o el
+                            Barón.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+                            Gestión del "Tempo": ¿Cómo optimizar los regresos a base?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-content">
+                            Nunca vuelvas a base de forma aleatoria. El back perfecto ocurre tras empujar la oleada bajo
+                            la torre enemiga (crash) o justo 30 segundos antes de que aparezca un objetivo importante.
+                            Volver a base con la oleada en el centro del carril te costará al menos 150-200 de oro en
+                            experiencia perdida.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+                            Win Conditions: ¿Cómo identificar nuestra condición de victoria?
+                            <span>+</span>
+                        </div>
+                        <div class="faq-content">
+                            Analiza tu equipo. ¿Tienen mejor escalado? Juega defensivo y protege al ADC. ¿Tienen mejor
+                            iniciación? Fuerza peleas en espacios cerrados como el río. Identificar si tu victoria
+                            depende de "hacer tiempo" o de "acelerar el cierre" es la diferencia entre un estratega y un
+                            jugador promedio.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+                            Control de Visión Tardío: Visión Ofensiva vs Defensiva
+                            <span>+</span>
+                        </div>
+                        <div class="faq-content">
+                            En el late game, un centinela en tu propia jungla es defensivo (por si vas perdiendo), pero
+                            un centinela en los arbustos de salida de la base enemiga es ofensivo. Si vas ganando, tu
+                            visión debe "ahogar" al enemigo, impidiéndoles salir de su base sin ser detectados.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+                            Posicionamiento de Élite: La técnica del "Tethering"
+                            <span>+</span>
+                        </div>
+                        <div class="faq-content">
+                            Es mantenerte justo en el borde del rango de ataque del enemigo. Si ellos avanzan, tú
+                            retrocedes la misma distancia; si ellos retroceden, tú avanzas. Dominar esta "distancia
+                            invisible" te permite lanzar habilidades sin recibir daño de vuelta, una técnica esencial
+                            para magos y ADCs.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <footer>
-        <div class="container footer-content">
-            <div class="logo">WILD RIFT GUIDE</div>
-            <p class="footer-credits">© 2026 Guía Completa de Wild Rift. Contenido Avanzado.</p>
+    <footer style="background: #010a13; border-top: 2px solid var(--gold-hex); padding: 80px 0;">
+        <div class="nav-container"
+            style="max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding: 0 40px; justify-items: start;">
+            <div>
+                <div class="logo">
+                    <div class="logo-icon"><i>WR</i></div>
+                    <span style="font-size: 1.2rem;">GUÍA HEXTECH<br><small
+                            style="font-size: 0.7rem; color: var(--gold-dark);">CENTRO DE MANDO</small></span>
+                </div>
+                <p style="color: var(--gold-dark); margin-top: 20px; font-size: 0.85rem; line-height: 1.8;">
+                    Analizamos cada píxel de la Grieta para asegurar tu victoria.
+                    El recurso más completo para la comunidad de Wild Rift.
+                </p>
+            </div>
+            <div>
+                <h4
+                    style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px; font-size: 0.8rem; letter-spacing: 2px;">
+                    Recursos</h4>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 12px;"><a href="campeones.html"
+                            style="color: #ccc; text-decoration: none;">Campeones</a></li>
+                    <li style="margin-bottom: 12px;"><a href="runas.html"
+                            style="color: #ccc; text-decoration: none;">Runas</a></li>
+                    <li style="margin-bottom: 12px;"><a href="objetos.html"
+                            style="color: #ccc; text-decoration: none;">Objetos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px; font-size: 0.8rem; letter-spacing: 2px;">
+                    Estrategia</h4>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 12px;"><a href="mapa.html" style="color: #ccc; text-decoration: none;">El
+                            Mapa</a></li>
+                    <li style="margin-bottom: 12px;"><a href="roles.html"
+                            style="color: #ccc; text-decoration: none;">Roles</a></li>
+                    <li style="margin-bottom: 12px;"><a href="avanzado.html"
+                            style="color: #ccc; text-decoration: none;">Guía Elite</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px; font-size: 0.8rem; letter-spacing: 2px;">
+                    Comunidad</h4>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 12px;"><a href="#" style="color: #ccc; text-decoration: none;">Discord</a>
+                    </li>
+                    <li style="margin-bottom: 12px;"><a href="#" style="color: #ccc; text-decoration: none;">Reddit</a>
+                    </li>
+                    <li style="margin-bottom: 12px;"><a href="#" style="color: #ccc; text-decoration: none;">Patch
+                            Notes</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(200, 155, 60, 0.1);">
+            <p style="color: var(--gold-dark); font-size: 0.7rem;">© 2026 PROYECTO FAN HEXTECH. LEAGUE OF LEGENDS: WILD
+                RIFT ES PROPIEDAD DE RIOT GAMES.</p>
         </div>
     </footer>
 

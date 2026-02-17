@@ -126,6 +126,441 @@
             border-color: var(--blue-magic);
             box-shadow: 0 0 10px rgba(10, 200, 185, 0.2);
         }
+
+        /* Modal Dossier Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .dossier-modal {
+            background: rgba(1, 10, 19, 0.95);
+            border: 2px solid var(--gold-hex);
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 0 50px rgba(200, 155, 60, 0.2);
+            padding: 40px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--gold-hex);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--blue-magic);
+            transform: scale(1.1);
+        }
+
+        .dossier-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+        }
+
+        .dossier-sidebar img {
+            width: 100%;
+            border: 3px solid var(--gold-hex);
+            box-shadow: var(--gold-glow);
+        }
+
+        .dossier-tier {
+            background: var(--gold-gradient);
+            color: black;
+            text-align: center;
+            font-weight: 900;
+            padding: 10px;
+            margin-top: 15px;
+            font-family: 'Cinzel Decorative';
+        }
+
+        .dossier-main h2 {
+            font-family: 'Cinzel Decorative';
+            color: var(--gold-hex);
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            border: none;
+            padding: 0;
+        }
+
+        .dossier-role {
+            color: var(--blue-magic);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .dossier-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .info-box {
+            background: rgba(30, 35, 40, 0.5);
+            border-left: 3px solid var(--gold-dark);
+            padding: 15px;
+        }
+
+        .info-box h4 {
+            color: var(--gold-hex);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            font-size: 0.85rem;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .dossier-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(10, 200, 185, 0.1);
+            border: 1px solid var(--blue-magic);
+            color: var(--blue-magic);
+            font-size: 0.7rem;
+            margin-right: 5px;
+            margin-top: 10px;
+        }
+
+        /* Technical Dossier Enhancements */
+        .tech-section {
+            margin-top: 30px;
+            border-top: 1px solid rgba(200, 155, 60, 0.2);
+            padding-top: 20px;
+        }
+
+        .tech-title {
+            font-family: 'Cinzel Decorative';
+            color: var(--gold-hex);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .scaling-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+        }
+
+        .scaling-item {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            border: 1px solid rgba(10, 200, 185, 0.1);
+        }
+
+        .scaling-label {
+            font-size: 0.6rem;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+        }
+
+        .scaling-value {
+            font-size: 0.85rem;
+            color: var(--blue-magic);
+            font-weight: 700;
+        }
+
+        .damage-bar-container {
+            height: 8px;
+            background: #111;
+            border-radius: 4px;
+            margin-top: 5px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .damage-bar {
+            height: 100%;
+        }
+
+        .damage-physical {
+            background: #ff4655;
+        }
+
+        .damage-magic {
+            background: var(--blue-magic);
+        }
+
+        .damage-true {
+            background: #ffffff;
+        }
+
+        .aa-reset-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #00ff8822;
+            border: 1px solid #00ff88;
+            color: #00ff88;
+            font-size: 0.65rem;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        .combo-box {
+            background: rgba(200, 155, 60, 0.05);
+            border: 1px dashed var(--gold-dark);
+            padding: 15px;
+            margin-top: 10px;
+            font-family: 'monospace';
+            font-size: 0.8rem;
+            color: #eee;
+        }
+
+        .combo-key {
+            color: var(--gold-hex);
+            font-weight: 700;
+        }
+
+        /* Narrative Dossier Enhancements */
+        .lore-section {
+            margin-top: 35px;
+            padding: 20px;
+            background: linear-gradient(to right, rgba(200, 155, 60, 0.05), transparent);
+            border-left: 2px solid var(--gold-hex);
+        }
+
+        .lore-title {
+            font-family: 'Cinzel Decorative';
+            color: var(--gold-hex);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .lore-text {
+            font-size: 0.85rem;
+            color: #bbb;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .interaction-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .interaction-item {
+            background: rgba(1, 10, 19, 0.5);
+            padding: 12px;
+            border: 1px solid rgba(200, 155, 60, 0.1);
+        }
+
+        .interaction-label {
+            font-size: 0.65rem;
+            color: var(--blue-magic);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .interaction-value {
+            font-size: 0.8rem;
+            color: #eee;
+        }
+
+        .special-mission {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 70, 85, 0.05);
+            border: 1px dashed #ff4655;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mission-icon {
+            font-size: 1.5rem;
+            color: #ff4655;
+        }
+
+        .mission-info h4 {
+            font-size: 0.75rem;
+            color: #ff4655;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .mission-info p {
+            font-size: 0.75rem;
+            color: #ccc;
+        }
+
+        /* Patch History Styles */
+        .patch-history {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(1, 10, 19, 0.5);
+            border: 1px solid rgba(200, 155, 60, 0.1);
+            text-align: left;
+        }
+
+        /* Matchups Section Styles */
+        .matchup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .matchup-box {
+            background: rgba(1, 15, 25, 0.6);
+            border: 1px solid rgba(200, 155, 60, 0.1);
+            padding: 20px;
+        }
+
+        .matchup-title {
+            font-size: 0.75rem;
+            color: var(--gold-hex);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+        }
+
+        .counter-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .counter-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .counter-item:last-child {
+            border-bottom: none;
+        }
+
+        .counter-img {
+            width: 35px;
+            height: 35px;
+            border: 1px solid var(--gold-dark);
+            border-radius: 2px;
+        }
+
+        .counter-info h5 {
+            font-size: 0.75rem;
+            color: #eee;
+            margin-bottom: 1px;
+            text-transform: uppercase;
+            font-family: 'Cinzel';
+        }
+
+        .counter-info p {
+            font-size: 0.65rem;
+            color: #888;
+            line-height: 1.2;
+        }
+
+        .synergy-tag {
+            background: rgba(10, 200, 185, 0.1);
+            color: var(--blue-magic);
+            border: 1px solid var(--blue-magic);
+            padding: 4px 10px;
+            font-size: 0.65rem;
+            display: inline-block;
+            margin: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .patch-label {
+            font-size: 0.65rem;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .patch-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .patch-version {
+            font-family: 'monospace';
+            font-size: 0.9rem;
+            color: #eee;
+        }
+
+        .patch-badge {
+            padding: 2px 8px;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .patch-buff {
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+            border: 1px solid #00ff88;
+        }
+
+        .patch-nerf {
+            background: rgba(255, 70, 85, 0.15);
+            color: #ff4655;
+            border: 1px solid #ff4655;
+        }
+
+        .patch-adj {
+            background: rgba(200, 155, 60, 0.15);
+            color: var(--gold-hex);
+            border: 1px solid var(--gold-hex);
+        }
+
+        @media (max-width: 800px) {
+            .dossier-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .dossier-modal {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -140,12 +575,13 @@
             </div>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="campeones.html" class="nav-link active">Campeones</a></li>
                     <li><a href="runas.html" class="nav-link">Runas</a></li>
                     <li><a href="objetos.html" class="nav-link">Objetos</a></li>
                     <li><a href="roles.html" class="nav-link">Roles</a></li>
                     <li><a href="mapa.html" class="nav-link">Mapa</a></li>
+                    <li><a href="avanzado.html" class="nav-link">Avanzado</a></li>
                 </ul>
             </nav>
         </div>
@@ -315,6 +751,7 @@
             filtered.forEach(c => {
                 const card = document.createElement('div');
                 card.className = 'champion-card';
+                card.onclick = () => openDossier(c);
                 card.innerHTML = `
                     <div class="tier-badge">${c.tier}</div>
                     <img src="imagen/campeones/${c.name}.png" alt="${c.name}" onerror="this.src='imagen/logo.png'">
@@ -323,6 +760,1029 @@
                 `;
                 grid.appendChild(card);
             });
+        }
+
+        const detailedChampionData = {
+            Aatrox: {
+                scaling: [
+                    { label: "Q: Filo de los Oscuros", val: "80% - 130% AD" },
+                    { label: "W: Cadenas Infernales", val: "40% AD" },
+                    { label: "E: Deslizamiento", val: "Curación 20% Daño" },
+                    { label: "Enfriamiento Q", val: "12s → 6s" }
+                ],
+                damage: { phys: 90, mag: 0, true: 10 },
+                aaReset: "E (Deslizamiento) resetea el AA",
+                combos: [
+                    "<span class='combo-key'>Q1</span> → <span class='combo-key'>W</span> → <span class='combo-key'>Q2</span> (con E para ajustar) → <span class='combo-key'>Q3</span>"
+                ],
+                synergy: "Composiciones con mucho CC para asegurar sus Q.",
+                warn: "Extremadamente vulnerable a Heridas Graves.",
+                lore: "Un guerrero caído que una vez defendió Shurima, ahora un espíritu atrapado en su propia espada, buscando el fin de toda existencia para encontrar su propia paz.",
+                rivals: "Pantheon, Tryndamere, Zoe",
+                synergyNarr: "Darkin (Kayn, Varus)",
+                specialMission: null,
+                matchups: {
+                    counters: [
+                        { name: "Fiora", reason: "Su W bloquea el CC de las Q y el daño es verdadero." },
+                        { name: "Ignite", reason: "Las heridas graves anulan su curación pasiva." },
+                        { name: "Vayne", reason: "Su movilidad hace casi imposible acertar las Q." }
+                    ],
+                    synergies: ["Malphite", "Jarvan IV", "Lulu"],
+                    survival: "No intentes pelear largas distancias; usa tus Q solo cuando el enemigo se comprometa a un trade."
+                }
+            },
+            Ahri: {
+                scaling: [
+                    { label: "Q: Orbe de Engaño", val: "45% AP + 45% AP" },
+                    { label: "W: Fuego Zorruno", val: "30% AP" },
+                    { label: "E: Beso del Demonio", val: "60% AP" },
+                    { label: "Enfriamiento R", val: "90s → 60s" }
+                ],
+                damage: { phys: 0, mag: 85, true: 15 },
+                aaReset: "W (Fuego Zorruno) prioriza campeones",
+                combos: [
+                    "<span class='combo-key'>E</span> → <span class='combo-key'>Flash</span> (Animación oculta) → <span class='combo-key'>Q</span> → <span class='combo-key'>W</span>"
+                ],
+                synergy: "Excelentes con junglas agresivos como Vi o Lee Sin.",
+                warn: "Depende totalmente de acertar el Beso (E) para ganar intercambios.",
+                lore: "Una vastaya conectada con la magia del mundo espiritual, Ahri busca rastros de su linaje mientras domina su capacidad de consumir los recuerdos y la esencia de otros.",
+                rivals: "Thresh (por atrapar almas)",
+                synergyNarr: "Yasuo (Compañero de viaje)",
+                specialMission: null,
+                matchups: {
+                    counters: [
+                        { name: "Yasuo", reason: "El muro de viento bloquea su E y Q completamente." },
+                        { name: "Zoe", reason: "Más rango y capacidad de burst a larga distancia." },
+                        { name: "Vi", reason: "CC inevitable que interrumpe su movilidad." }
+                    ],
+                    synergies: ["Lee Sin", "Vi", "Leona"],
+                    survival: "Guarda tu R para reposicionarte, no solo para daño. Si fallas el Beso, retírate."
+                }
+            },
+            LeeSin: {
+                scaling: [
+                    { label: "Q: Onda Sónica", val: "100% AD + Ejecución" },
+                    { label: "W: Salvaguarda", val: "60% AP (Escudo)" },
+                    { label: "E: Tempestad", val: "100% AD" },
+                    { label: "Enfriamiento W", val: "14s → 10s" }
+                ],
+                damage: { phys: 95, mag: 5, true: 0 },
+                aaReset: "Pasiva otorga 40% Vel. Ataque tras habilidades",
+                combos: [
+                    "<span class='combo-key'>Q</span> → <span class='combo-key'>Q (vuelo)</span> → <span class='combo-key'>Ward</span> → <span class='combo-key'>W</span> → <span class='combo-key'>R</span> (Insec Combo)"
+                ],
+                synergy: "Mid laners con daño explosivo para seguir sus gankeos.",
+                warn: "Su utilidad cae drásticamente en el ultra-late game.",
+                lore: "Un monje ciego que domina la esencia del espíritu del dragón, Lee Sin lucha para proteger el equilibrio de Jonia de cualquier invasión externa.",
+                rivals: "Udyr (Duelo de espíritus)",
+                synergyNarr: "Irelia, Karma",
+                specialMission: null,
+                matchups: {
+                    counters: [
+                        { name: "Pantheon", reason: "Su bloqueo y CC directo le ganan el duelo 1v1." },
+                        { name: "Jax", reason: "El contraataque anula el daño de ataque básico del Lee." },
+                        { name: "Rammus", reason: "Demasiada armadura y CC contra atacantes físicos." }
+                    ],
+                    synergies: ["Yasuo", "Ahri", "Orianna"],
+                    survival: "Aprovecha tu movilidad temprana. Si no consigues ventaja antes del minuto 12, prioriza peel."
+                }
+            },
+            Yasuo: {
+                scaling: [
+                    { label: "Q: Tempestad de Acero", val: "100% AD (Puede Crit)" },
+                    { label: "W: Muro de Viento", val: "Escalado Duración" },
+                    { label: "E: Hoja Cortante", val: "20% AP + 25% AD" },
+                    { label: "Crit Chance", val: "x2 Pasiva" }
+                ],
+                damage: { phys: 90, mag: 0, true: 10 },
+                aaReset: "Q resetea el AA interno perfectamente",
+                combos: [
+                    "<span class='combo-key'>E</span> → <span class='combo-key'>Q (Círculo)</span> → <span class='combo-key'>Flash</span> (Beyblade) → <span class='combo-key'>R</span>"
+                ],
+                synergy: "Campeones con derribos aéreos (Malphite, Yone, Diana).",
+                warn: "Muy vulnerable a CC directo si no tiene súbditos para deslizarse.",
+                lore: "Un ágil espadachín errante, Yasuo fue acusado injustamente del asesinato de su maestro, viéndose obligado a vagar mientras es perseguido por su propio pasado.",
+                rivals: "Yone (Hermano), Riven (Supuesta asesina)",
+                synergyNarr: "Ahri, Braum",
+                specialMission: {
+                    title: "DUELO DE HONOR: VIENTO Y SANGRE",
+                    desc: "Si Yasuo y Yone se enfrentan en niveles altos, el ganador recibe un gesto especial y gloria eterna en el marcador de la partida."
+                },
+                matchups: {
+                    counters: [
+                        { name: "Renekton", reason: "Burst masivo y CC que Yasuo no puede mitigar." },
+                        { name: "Pantheon", reason: "Su escudo bloquea Q y su W es CC instantáneo." },
+                        { name: "Annie", reason: "Daño mágico explosivo y stun inevitable con Tibbers." }
+                    ],
+                    synergies: ["Malphite", "Yone", "Diana"],
+                    survival: "Usa el muro de viento con paciencia. En líneas difíciles, farmea con Q a distancia."
+                }
+            },
+            Gragas: {
+                scaling: [
+                    { label: "Q: Barril Rodante", val: "70% AP" },
+                    { label: "W: Furia Ebria", val: "50% AP + 8% Vida Max" },
+                    { label: "E: Lanzamiento de Barriga", val: "60% AP" },
+                    { label: "R: Tonel Explosivo", val: "80% AP" }
+                ],
+                damage: { phys: 10, mag: 90, true: 0 },
+                aaReset: "W resetea el AA y reduce daño",
+                combos: [
+                    "<span class='combo-key'>E</span> → <span class='combo-key'>Flash</span> (Ineludible) → <span class='combo-key'>R</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>W (AA)</span>"
+                ],
+                synergy: "Composiciones de WOMBO COMBO con Yasuo.",
+                warn: "Fallar la E suele resultar en una muerte segura por mala posición.",
+                lore: "Un cervecero de proporciones épicas que busca el ingrediente perfecto para su brebaje definitivo, Gragas recorre Freljord aplastando a cualquiera que se interponga entre él y un barril.",
+                rivals: "Jax (Compañeros de bebida)",
+                synergyNarr: "Braum, Jarvan IV",
+                matchups: {
+                    counters: [
+                        { name: "Vayne", reason: "Daño por HP máximo y movilidad para esquivar barriles." },
+                        { name: "Morgana", reason: "Su escudo negro anula todo el CC de Gragas." },
+                        { name: "Dr. Mundo", reason: "Demasiada regeneración contra su burst." }
+                    ],
+                    synergies: ["Yasuo", "Kalista", "Samira"],
+                    survival: "Usa tu pasiva para curarte constantemente. No necesitas ganar la línea, solo sobrevivir."
+                },
+                specialMission: null
+            },
+            Khazix: {
+                scaling: [
+                    { label: "Q: Gusto por la Sangre", val: "110% AD" }
+                ],
+                damage: { phys: 100, mag: 0, true: 0 },
+                lore: "Un depredador del Vacío que evoluciona con cada muerte.",
+                rivals: "Rengar",
+                synergyNarr: "Malzahar",
+                specialMission: {
+                    title: "LA CAZA HA COMENZADO",
+                    desc: "Si Rengar y Kha'Zix están en la misma partida, se activa un duelo al nivel 15. Si Kha'Zix gana, obtiene una 4ª evolución definitiva."
+                },
+                lastPatch: { version: "5.3a", status: "buff" },
+                matchups: {
+                    counters: [
+                        { name: "Lee Sin", reason: "Su visión con la Q y E revela a Kha'Zix incluso en sigilo." },
+                        { name: "Rammus", reason: "Interrumpe sus saltos y tiene demasiada armadura." },
+                        { name: "Lulu", reason: "Su polimorfia y escudos anulan el burst de asesinato." }
+                    ],
+                    synergies: ["Yuumi", "Orianna", "Ahri"],
+                    survival: "Busca enemigos aislados. Si no hay aislamiento, no saltes; espera a que la pelea se desordene."
+                }
+            },
+            Aurora: {
+                scaling: [
+                    { label: "Q: Abjuración Lineal", val: "45% AP + 5% Vida Max" },
+                    { label: "W: Salto de Espíritu", val: "Invisibilidad 1.5s" },
+                    { label: "R: Entre Mundos", val: "60% AP" }
+                ],
+                damage: { phys: 0, mag: 100, true: 0 },
+                aaReset: "Pasiva otorga velocidad de ataque por acumulaciones",
+                combos: [
+                    "<span class='combo-key'>Q</span> → <span class='combo-key'>E</span> → <span class='combo-key'>Q (Recast)</span> → <span class='combo-key'>AA</span>"
+                ],
+                synergy: "Campeones que atrapen enemigos en su R (Jarvan, Camille).",
+                warn: "Su movilidad depende de acertar habilidades en campeones.",
+                lore: "Una coneja vastaya que puede cruzar el velo entre el mundo espiritual y el material, Aurora utiliza su curiosidad para corregir desequilibrios mágicos.",
+                rivals: "Hecarim, Viego",
+                synergyNarr: "Ornn (Viejo amigo)",
+                specialMission: null,
+                lastPatch: { version: "5.3b", status: "nerf" },
+                matchups: {
+                    counters: [
+                        { name: "Hecarim", reason: "Su velocidad le permite atraparla fuera de su zona de salto." },
+                        { name: "Lux", reason: "Poke excesivo que Aurora no puede responder fácilmente." },
+                        { name: "Veigar", reason: "Su jaula limita severamente el área de movimiento en la R." }
+                    ],
+                    synergies: ["Jarvan IV", "Camille", "Galio"],
+                    survival: "Usa tu salto (W) para esquivar habilidades clave, no solo para moverte entre líneas."
+                }
+            },
+            Ambessa: {
+                scaling: [
+                    { label: "Q: Tajo Cortante", val: "70% AD" },
+                    { label: "W: Reprimenda", val: "80% AD (Escudo)" },
+                    { label: "R: Ejecución Pública", val: "100% AD" }
+                ],
+                damage: { phys: 100, mag: 0, true: 0 },
+                aaReset: "Pasiva resetea AA tras cada dash de habilidad",
+                combos: [
+                    "<span class='combo-key'>Q1</span> → <span class='combo-key'>Dash</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>Q2</span> → <span class='combo-key'>Dash</span> → <span class='combo-key'>AA</span>"
+                ],
+                synergy: "Composiciones de dive agresivo.",
+                warn: "Si no encadenas las pasivas, pierdes el 50% de tu daño.",
+                lore: "La matriarca de la guerra de Noxus, Ambessa Medarda, es una estratega implacable que valora la fuerza por encima de cualquier otra virtud.",
+                rivals: "Mel Medarda (Hija), Urgot",
+                synergyNarr: "Swain, Darius",
+                specialMission: null,
+                lastPatch: { version: "5.3b", status: "adj" },
+                matchups: {
+                    counters: [
+                        { name: "Caitlyn", reason: "Su rango le permite castigar los dashes de Ambessa." },
+                        { name: "Jax", reason: "Puede bloquear sus básicos cargados con la E." },
+                        { name: "Morgana", reason: "El escudo negro anula el CC de su definitiva." }
+                    ],
+                    synergies: ["Nautilus", "Leona", "Seraphine"],
+                    survival: "Busca flancos en peleas de equipo. En línea, no gastes tu W defensiva de forma agresiva."
+                }
+            },
+            Norra: {
+                scaling: [
+                    { label: "Q: Portal Explosivo", val: "65% AP" },
+                    { label: "E: Invocación de Yuumi", val: "Utilidad Variable" },
+                    { label: "R: Reino de los Portales", val: "Suministro de aliados" }
+                ],
+                damage: { phys: 0, mag: 100, true: 0 },
+                aaReset: null,
+                combos: [
+                    "<span class='combo-key'>R</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>E (Buff)</span>"
+                ],
+                synergy: "Composiciones que requieren rotación rápida de mapa.",
+                warn: "Sus portales pueden ser usados por el enemigo si no se posicionan bien.",
+                lore: "La maestra perdida de Yuumi y una poderosa maga de Bandle City, Norra viaja a través de los portales buscando el equilibrio de la magia yordle.",
+                rivals: "Veigar (Amistad complicada)",
+                synergyNarr: "Yuumi (Su mascota)",
+                specialMission: null,
+                lastPatch: { version: "5.3a", status: "buff" },
+                matchups: {
+                    counters: [
+                        { name: "Zed", reason: "Puede seguirla a través de portales y borrarla instantáneamente." },
+                        { name: "Kassadin", reason: "Su gran movilidad y escudo mágico anulan el poke de Norra." },
+                        { name: "Vi", reason: "CC directo que no puede ser esquivado con portales simples." }
+                    ],
+                    synergies: ["Veigar", "Lulu", "Yuumi"],
+                    survival: "Posiciona tus portales cerca de aliados, nunca en zonas sin visión enemiga profunda."
+                }
+            },
+            Smolder: {
+                scaling: [
+                    { label: "Q: Aliento de Fuego", val: "100% AD + Escalado Pasiva" }
+                ],
+                damage: { phys: 80, mag: 10, true: 10 },
+                lore: "Un joven dragón que busca a su madre mientras aprende a dominar su aliento ígneo.",
+                rivals: "Cualquier amenaza para su madre",
+                synergyNarr: "Dragones de la Grieta",
+                matchups: {
+                    counters: [
+                        { name: "Draven", reason: "Opresión extrema en línea que Smolder no puede manejar." },
+                        { name: "Braum", reason: "Su escudo bloquea completamente el aliento de fuego (Q)." },
+                        { name: "Thresh", reason: "Un hook suele significar la muerte por la fragilidad de Smolder." }
+                    ],
+                    synergies: ["Lulu", "Janna", "Braum"],
+                    survival: "Prioriza las acumulaciones de tu pasiva. Si vas por detrás, quédate bajo torre y farmea con Q."
+                }
+            },
+            Caitlyn: {
+                scaling: [{ label: "Q: Pacificador", val: "130% AD" }, { label: "Pasiva: Disparo a la Cabeza", val: "Escalado por Crítico" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                aaReset: "Trampas y Red activan Disparo a la Cabeza",
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA</span>"],
+                lore: "La mejor pacificadora de Piltover, armada con su rifle de repetición y una puntería inigualable.",
+                matchups: {
+                    counters: [{ name: "Sivir", reason: "Su escudo bloquea tu Q o R." }, { name: "Tristana", reason: "All-in explosivo que Caitlyn no aguanta." }],
+                    synergies: ["Lux", "Morgana", "Seraphine"],
+                    survival: "Mantén la distancia máxima. Usa tus trampas (W) para zonear el río y evitar gankeos."
+                }
+            },
+            Jinx: {
+                scaling: [{ label: "Q: ¡Cambio de Armas!", val: "110% AD (Cohete)" }, { label: "R: Supermegacohete mortal", val: "Daño por Vida Faltante" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                combos: ["<span class='combo-key'>W</span> → <span class='combo-key'>E</span> → <span class='combo-key'>AA (Cohete)</span>"],
+                lore: "Una criminal impulsiva de Zaun que vive para sembrar el caos con su arsenal de armas artesanales.",
+                matchups: {
+                    counters: [{ name: "Draven", reason: "Demasiado daño temprano para Jinx." }, { name: "Vi", reason: "CC directo que la atrapa fácilmente." }],
+                    synergies: ["Lulu", "Thresh", "Braum"],
+                    survival: "No te sobreextiendas sin tu pasiva activa. Espera a que el equipo enemigo gaste sus CCs antes de entrar."
+                }
+            },
+            Ezreal: {
+                scaling: [{ label: "Q: Disparo Místico", val: "125% AD + 30% AP" }, { label: "E: Desplazamiento Arcano", val: "Movilidad Pura" }],
+                damage: { phys: 80, mag: 20, true: 0 },
+                combos: ["<span class='combo-key'>W</span> → <span class='combo-key'>E</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA</span>"],
+                lore: "Un explorador temerario con un guantelete mágico que le permite disparar ráfagas de energía arcana.",
+                matchups: {
+                    counters: [{ name: "Kalista", reason: "Esquiva fácilmente todas tus habilidades (Q/W)." }, { name: "Yasuo", reason: "Muro de viento bloquea todo tu kit." }],
+                    synergies: ["Karma", "Lux", "Yuumi"],
+                    survival: "Usa tu E de forma defensiva el 90% de las veces. Tu prioridad es pokear con la Q desde lejos."
+                }
+            },
+            Vayne: {
+                scaling: [{ label: "W: Proyectiles de Plata", val: "12% Vida Max (Verdadero)" }],
+                damage: { phys: 60, mag: 0, true: 40 },
+                aaReset: "Q (Voltereta) resetea el AA",
+                combos: ["<span class='combo-key'>AA</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>E (Aturdir)</span>"],
+                lore: "Una cazadora de monstruos implacable que juró exterminar a los que practican las artes oscuras.",
+                matchups: {
+                    counters: [{ name: "Caitlyn", reason: "Range superior que deniega tu farmeo." }, { name: "Malphite", reason: "Reducción de AS y R inevitable." }],
+                    synergies: ["Lulu", "Janna", "Nami"],
+                    survival: "Sé paciente. Tu objetivo es llegar al nivel 9 y 2 objetos sin morir más de 2 veces."
+                }
+            },
+            Lulu: {
+                scaling: [{ label: "E: ¡Ayuda, Pix!", val: "Escudo + Daño" }, { label: "R: Crecimiento Gigante", val: "Vida Extra + Knockup" }],
+                damage: { phys: 0, mag: 100, true: 0 },
+                lore: "Una maga yordle que camina por el mundo con su hada Pix, transformando la realidad en algo fantástico.",
+                matchups: {
+                    counters: [{ name: "Soraka", reason: "Curación superior a tu escudo en trades largos." }, { name: "Blitzcrank", reason: "Un hook significa muerte instantánea." }],
+                    synergies: ["Jinx", "Vayne", "Kog'Maw"],
+                    survival: "Usa tu W (Polimorfia) para el asesino enemigo que se acerque a tu carry, no para dar velocidad."
+                }
+            },
+            Thresh: {
+                scaling: [{ label: "Q: Sentencia", val: "Hook 1.5s" }, { label: "Pasiva: Condenación", val: "Armadura/AP por Almas" }],
+                damage: { phys: 30, mag: 70, true: 0 },
+                aaReset: "E (Desollar) tiene pasiva de daño",
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>E</span> → <span class='combo-key'>R</span> → <span class='combo-key'>W (para aliado)</span>"],
+                lore: "Un carcelero espectral del pasado que busca almas para torturar eternamente en su linterna.",
+                matchups: {
+                    counters: [{ name: "Morgana", reason: "Escudo negro anula tu Q y E." }, { name: "Alistar", reason: "No le importa que lo hookees, counter-inicia." }],
+                    synergies: ["Draven", "Lucian", "Jinx"],
+                    survival: "Recoge almas a distancia con la W si la zona es peligrosa. No tires el hook a menos que sea 80% seguro."
+                }
+            },
+            Nautilus: {
+                scaling: [{ label: "Q: Línea de Dragado", val: "Hook + Desplazamiento" }, { label: "R: Carga de Profundidad", val: "CC Inevitable" }],
+                damage: { phys: 20, mag: 80, true: 0 },
+                aaReset: "Pasiva inmoviliza con el primer AA",
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>AA (Root)</span> → <span class='combo-key'>E</span> → <span class='combo-key'>W</span>"],
+                lore: "Un titán blindado que vaga por las oscuras aguas de las Islas de la Sombra cobrando sus deudas.",
+                matchups: {
+                    counters: [{ name: "Olaf", reason: "Inmune a CC con su R." }, { name: "Fiora", reason: "W bloquea tu hook y te estunea a ti." }],
+                    synergies: ["Yasuo", "Kai'Sa", "Samira"],
+                    survival: "Eres el iniciador principal. Si fallas el hook, usa tu W para mitigar el daño mientras retrocedes."
+                }
+            },
+            Lux: {
+                scaling: [{ label: "Q: Hechizo Luminoso", val: "Root de 2s" }, { label: "R: Chispa Final", val: "100% AP Escalado" }],
+                damage: { phys: 0, mag: 100, true: 0 },
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>E</span> → <span class='combo-key'>R</span> → <span class='combo-key'>E (Explosion)</span>"],
+                lore: "Una maga de Demacia que oculta sus poderes en una sociedad que teme a la magia.",
+                matchups: {
+                    counters: [{ name: "Fizz", reason: "Su E esquiva todo tu combo." }, { name: "Zed", reason: "Movilidad extrema contra tus skillshots." }],
+                    synergies: ["Ezreal", "Caitlyn", "Jhin"],
+                    survival: "Mantente siempre detrás de tus tanques. Si te acercan, estás muerta."
+                }
+            },
+            Zed: {
+                scaling: [{ label: "Q: Navaja Shuriken", val: "100% AD" }, { label: "R: Marca de la Muerte", val: "Daño Acumulado" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                combos: ["<span class='combo-key'>W</span> → <span class='combo-key'>E</span> → <span class='combo-key'>Q</span> (Para pokear)"],
+                lore: "El líder de la Orden de la Sombra que domina la magia prohibida de las sombras.",
+                matchups: {
+                    counters: [{ name: "Zhonyas", reason: "Anula completamente el daño de tu R." }, { name: "Akali", reason: "Su humo te impide marcarla con la R." }],
+                    synergies: ["Vi", "Malphite", "Jarvan IV"],
+                    survival: "Usa tu W con inteligencia. Si la usas para fallar un combo, eres vulnerable por 20 segundos."
+                }
+            },
+            Akali: {
+                scaling: [{ label: "Q: Ráfaga de los Cinco Filos", val: "Daño en Abanico" }, { label: "R: Ejecución Perfecta", val: "Daño por Ejecución" }],
+                damage: { phys: 20, mag: 80, true: 0 },
+                combos: ["<span class='combo-key'>R1</span> → <span class='combo-key'>E</span> → <span class='combo-key'>E2</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>R2</span>"],
+                lore: "Una asesina que abandonó la Orden Kinkou para luchar por Jonia a su manera.",
+                matchups: {
+                    counters: [{ name: "Lee Sin", reason: "Revela tu posición en el humo." }, { name: "Lulu", reason: "Te polimorfea e impide tu burst." }],
+                    synergies: ["Lee Sin", "Evelynn", "Gragas"],
+                    survival: "Usa el humo (W) para esperar tus enfriamientos de energía. No te precipites al entrar."
+                }
+            },
+            Garen: {
+                scaling: [{ label: "E: Juicio", val: "Daño en Giro" }, { label: "R: Justicia de Demacia", val: "Daño Verdadero por Vida Faltante" }],
+                damage: { phys: 70, mag: 0, true: 30 },
+                aaReset: "Q resetea el AA y silencia",
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>E</span> → <span class='combo-key'>R</span>"],
+                lore: "El epítome de la fuerza militar de Demacia, un guerrero que lucha con honor y valentía.",
+                matchups: {
+                    counters: [{ name: "Camille", reason: "Daño verdadero y movilidad superior." }, { name: "Darius", reason: "Te gana en trades largos por la pasiva." }],
+                    synergies: ["Yuumi", "Jarvan IV", "Lux"],
+                    survival: "Usa tu pasiva. Si pierdes un trade, retrocede 10 segundos para recuperar vida gratis."
+                }
+            },
+            Darius: {
+                scaling: [{ label: "Q: Diezmar", val: "Curación por impacto" }, { label: "R: Guillotina Noxiana", val: "Daño Verdadero Masivo" }],
+                damage: { phys: 70, mag: 0, true: 30 },
+                aaReset: "W resetea el AA",
+                combos: ["<span class='combo-key'>AA</span> → <span class='combo-key'>W</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>E</span> → <span class='combo-key'>R</span>"],
+                lore: "El símbolo del poder de Noxus, un comandante temido que no conoce la piedad.",
+                matchups: {
+                    counters: [{ name: "Vayne", reason: "No te deja acercarte." }, { name: "Renekton", reason: "Trades cortos y escape antes de que cargues la pasiva." }],
+                    synergies: ["Ghost (Hechizo)", "Thresh", "Nautilus"],
+                    survival: "Apunta el borde exterior de tu Q para curarte. Sin esa curación, pierdes el duelo."
+                }
+            },
+            Jax: {
+                scaling: [{ label: "E: Contraataque", val: "Esquiva AA" }, { label: "R: La Fuerza del Maestro", val: "Resistencias Extra" }],
+                damage: { phys: 80, mag: 20, true: 0 },
+                aaReset: "W resetea el AA",
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>W</span> → <span class='combo-key'>E (Stun)</span>"],
+                lore: "El último maestro de armas de Icathia, buscando guerreros dignos para luchar contra el Vacío.",
+                matchups: {
+                    counters: [{ name: "Malphite", reason: "Reduce tu Attack Speed drásticamente." }, { name: "Garen", reason: "Su Q silencia tu E (saltas y no puedes esquivar)." }],
+                    synergies: ["Orianna", "Lulu", "Yuumi"],
+                    survival: "Tu pico de poder es el late game. No busques peleas innecesarias antes del segundo objeto."
+                }
+            },
+            MasterYi: {
+                scaling: [{ label: "Q: Golpe Fulminante", val: "Daño en cadena" }, { label: "E: Estilo Wuju", val: "Daño Verdadero" }],
+                damage: { phys: 70, mag: 0, true: 30 },
+                aaReset: "Pasiva da un golpe doble",
+                combos: ["<span class='combo-key'>R</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA...</span>"],
+                lore: "Un maestro del arte del Wuju que entrena a la próxima generación de guerreros jonienses.",
+                matchups: {
+                    counters: [{ name: "Rammus", reason: "Te matas a ti mismo pegándole." }, { name: "Jax", reason: "Su E bloquea todos tus ataques." }],
+                    synergies: ["Lulu", "Yuumi", "Morgana"],
+                    survival: "Usa tu Q para esquivar CCs clave (ej: R de Malphite), no solo para acercarte."
+                }
+            },
+            Vi: {
+                scaling: [{ label: "Q: Rompebóvedas", val: "Carga + Desplazamiento" }, { label: "R: Asalto y Lesiones", val: "CC Inevitable" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                aaReset: "E resetea el AA",
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>E</span> → <span class='combo-key'>R</span>"],
+                lore: "Una exdelincuente de Zaun que ahora mantiene el orden en Piltover con sus guanteletes de fuerza hextech.",
+                matchups: {
+                    counters: [{ name: "Morgana", reason: "Su escudo negro anula tu R." }, { name: "Jax", reason: "Tus AA son clave para reducir enfriamientos y él los bloquea." }],
+                    synergies: ["Yasuo", "Ahri", "Orianna"],
+                    survival: "Comunícate con tu equipo antes de usar tu R. Si entras sola, morirás antes de que lleguen."
+                }
+            },
+            Malphite: {
+                scaling: [{ label: "E: Golpe en el Suelo", val: "Reducción AS 50%" }, { label: "R: Fuerza Imparable", val: "CC de Área Masivo" }],
+                damage: { phys: 20, mag: 80, true: 0 },
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>R</span> → <span class='combo-key'>E</span> → <span class='combo-key'>AA (con W)</span>"],
+                lore: "Una criatura masiva de piedra que busca imponer el orden en un mundo caótico.",
+                matchups: {
+                    counters: [{ name: "Sylas", reason: "Te roba la R y la usa mejor contra tu equipo." }, { name: "Vayne", reason: "Te destruye antes de que llegues a ella (si no tienes R)." }],
+                    synergies: ["Yasuo", "Orianna", "Miss Fortune"],
+                    survival: "En línea, usa tu Q solo para activar el Escudo de Reliquia o para desgastar si tienes maná de sobra. Tu valor real empieza en las peleas de equipo."
+                }
+            },
+            Orianna: {
+                scaling: [{ label: "R: Onda de Choque", val: "CC de Succión" }, { label: "Pasiva: Cuerda de Reloj", val: "Daño Mágico en AA" }],
+                damage: { phys: 0, mag: 100, true: 0 },
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>W</span> → <span class='combo-key'>R</span>", "<span class='combo-key'>E (en aliado)</span> → <span class='combo-key'>R</span>"],
+                lore: "Una maravilla de la ingeniería mecánica, Orianna es una mujer de metal que busca su propósito.",
+                matchups: {
+                    counters: [{ name: "Zed", reason: "Su movilidad le permite esquivar tu bola fácilmente." }, { name: "Ahri", reason: "Puede salir de tu R con sus dashes." }],
+                    synergies: ["Jarvan IV", "Malphite", "Wukong"],
+                    survival: "Mantén la bola siempre cerca de ti o de un aliado que necesite protección. No la dejes olvidada en el carril."
+                }
+            },
+            Seraphine: {
+                scaling: [{ label: "R: Bis", val: "CC que se extiende por aliados/enemigos" }, { label: "Pasiva: Presencia Escénica", val: "Doble hechizo" }],
+                damage: { phys: 0, mag: 100, true: 0 },
+                combos: ["<span class='combo-key'>E (Doble)</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA</span>"],
+                lore: "Una cantante de Piltover que puede oír las almas de los demás y busca unirlos con su música.",
+                matchups: {
+                    counters: [{ name: "Pyke", reason: "Su movilidad y ejecución son tu peor pesadilla." }, { name: "Yasuo", reason: "Su muro de viento bloquea tu R completamente." }],
+                    synergies: ["Ezreal", "Ashe", "Sona"],
+                    survival: "Tu R es una de las mejores del juego. Úsala cuando los enemigos estén alineados en pasillos estrechos."
+                }
+            },
+            Karma: {
+                scaling: [{ label: "Q: Fuego Interno", val: "Poke + Slow" }, { label: "R: Abrazo del Destino", val: "CC Circular" }],
+                damage: { phys: 0, mag: 100, true: 0 },
+                combos: ["<span class='combo-key'>W</span> → <span class='combo-key'>E</span> → <span class='combo-key'>Q (Mantra)</span>"],
+                lore: "La encarnación espiritual de Jonia, Karma utiliza su voluntad para proteger a su pueblo.",
+                matchups: {
+                    counters: [{ name: "Blitzcrank", reason: "Te saca de posición antes de que puedas usar tu E." }, { name: "Soraka", reason: "Anula tu poke con sus curaciones." }],
+                    synergies: ["Ezreal", "Varus", "Caitlyn"],
+                    survival: "Aprovecha tu velocidad de movimiento para baitear habilidades enemigas y castigarlas con tu Q."
+                }
+            },
+            Jhin: {
+                scaling: [{ label: "Pasiva: Murmullo", val: "Crítico Fijo + Velocidad" }, { label: "R: Llamado del Destino", val: "Ejecución a larga distancia" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                combos: ["<span class='combo-key'>AA</span> → <span class='combo-key'>W (Root)</span> → <span class='combo-key'>E</span> → <span class='combo-key'>AA</span>"],
+                lore: "Un artista psicópata que cree que el asesinato es una forma de arte perfecta.",
+                matchups: {
+                    counters: [{ name: "Draven", reason: "Su daño constante vence a tu daño por ráfagas." }, { name: "Yasuo", reason: "Muro de viento bloquea tus 4 balas de la R." }],
+                    synergies: ["Lux", "Yuumi", "Nautilus"],
+                    survival: "Cuenta tus balas. La cuarta bala es tu mayor herramienta de disuasión; no la gastes en súbditos si hay un enemigo cerca."
+                }
+            },
+            Lucian: {
+                scaling: [{ label: "Pasiva: Balas de Luz", val: "Doble disparo tras habilidad" }, { label: "R: El Sacrificio", val: "Ráfaga de disparos" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                aaReset: "Pasiva actua como pseudo-reset",
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>W</span> → <span class='combo-key'>AA</span>"],
+                lore: "Un centinela de la luz que caza espectros con sus pistolas gemelas purificadoras.",
+                matchups: {
+                    counters: [{ name: "Vayne", reason: "Te outscala rápido si no consigues ventaja temprana." }, { name: "Braum", reason: "Su escudo bloquea tu R por completo." }],
+                    synergies: ["Nami", "Braum", "Lulu"],
+                    survival: "Lucian es un campeón de Early/Mid game. Si llegas al minuto 20 sin ventaja, prioriza sobrevivir y atacar lo que tengas delante."
+                }
+            },
+            Kaisa: {
+                scaling: [{ label: "Pasiva: Segunda Piel", val: "Evolución de Habilidades" }, { label: "Q: Lluvia de Icathia", val: "Daño Mútipe" }],
+                damage: { phys: 50, mag: 50, true: 0 },
+                combos: ["<span class='combo-key'>W</span> → <span class='combo-key'>R</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>Q</span>"],
+                lore: "Una superviviente del Vacío que utiliza una armadura orgánica para cazar depredadores dimensionales.",
+                matchups: {
+                    counters: [{ name: "Draven", reason: "Demasiada presión temprana para que Kai'Sa evolucione." }, { name: "Tristana", reason: "Te salta encima y te borra antes de que pongas marcas." }],
+                    synergies: ["Nautilus", "Thresh", "Leona"],
+                    survival: "Tu prioridad absoluta es conseguir la evolución de la Q (100 AD extra). Farmea de forma segura hasta entonces."
+                }
+            },
+            Leona: {
+                scaling: [{ label: "Q: Escudo del Amanecer", val: "Stun de proximidad" }, { label: "R: Llamarada Solar", val: "Stun de área remoto" }],
+                damage: { phys: 20, mag: 80, true: 0 },
+                aaReset: "Q resetea el AA para destruir wards",
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>R</span> → <span class='combo-key'>W</span>"],
+                lore: "La guerrera sagrada del Sol que protege el Monte Targon con su escudo inquebrantable.",
+                matchups: {
+                    counters: [{ name: "Alistar", reason: "Te empuja fuera cada vez que intentas entrar (E)." }, { name: "Morgana", reason: "Escudo negro anula todo tu CC." }],
+                    synergies: ["Draven", "Kai'Sa", "Tristana"],
+                    survival: "No guardes tu W. Úsala justo antes de entrar para mitigar el burst inicial de los enemigos."
+                }
+            },
+            Braum: {
+                scaling: [{ label: "E: Inquebrantable", val: "Bloqueo de Proyectiles" }, { label: "R: Fisura Glacial", val: "CC de Levantamiento" }],
+                damage: { phys: 30, mag: 70, true: 0 },
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>R</span> → <span class='combo-key'>W (para volver)</span>"],
+                lore: "Un héroe de Freljord con un corazón tan grande como sus músculos y su escudo mágico.",
+                matchups: {
+                    counters: [{ name: "Brand", reason: "Su daño de área ignora en parte tu escudo." }, { name: "Vayne", reason: "Te ignora con su daño verdadero." }],
+                    synergies: ["Lucian", "Ezreal", "Ashe"],
+                    survival: "Tu labor es el PEEL. No intentes ser el iniciador si tu equipo no tiene daño para seguirte."
+                }
+            },
+            Sett: {
+                scaling: [{ label: "W: ¡Hay Tablas!", val: "Daño Verdadero por Daño Recibido" }, { label: "Pasiva: Coraje del Foso", val: "Regeneración por Vida Faltante" }],
+                damage: { phys: 80, mag: 0, true: 20 },
+                aaReset: "Q resetea AA y da velocidad",
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>W</span>"],
+                lore: "Un líder del bajo mundo criminal de Jonia que utiliza sus puños para resolver cualquier problema.",
+                matchups: {
+                    counters: [{ name: "Renekton", reason: "Su W rompe tu escudo de la W." }, { name: "Vayne", reason: "Te kitea hasta la muerte." }],
+                    synergies: ["Jarvan IV", "Vi", "Orianna"],
+                    survival: "Guarda tu W para el final de un intercambio corto. Es tu herramienta de 'fuera de aquí'."
+                }
+            },
+            Fiora: {
+                scaling: [{ label: "Pasiva: Baile de Duelista", val: "Daño Verdadero por % Vida" }, { label: "W: Estocada", val: "Bloqueo de CC + Stun" }],
+                damage: { phys: 60, mag: 0, true: 40 },
+                aaReset: "E resetea el AA",
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>E</span> → <span class='combo-key'>AA</span>"],
+                lore: "La duelista más temida de Demacia, conocida por su rapidez y precisión quirúrgica.",
+                matchups: {
+                    counters: [{ name: "Pantheon", reason: "Opresión extrema y escudo que bloquea tu daño." }, { name: "Jax", reason: "Su E bloquea tus básicos fundamentales." }],
+                    synergies: ["Solo Carry", "Junglas con mucho CC"],
+                    survival: "Tu W es tu habilidad más importante. No la tires por daño, tírale para bloquear el CC principal del enemigo."
+                }
+            },
+            Pyke: {
+                scaling: [{ label: "R: De lo Profundo", val: "Ejecución + Oro Extra" }, { label: "Pasiva: Don de los Ahogados", val: "Gris de vida recuperable" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                combos: ["<span class='combo-key'>Q (Carga)</span> → <span class='combo-key'>E</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>R</span>"],
+                lore: "Un arponero de las Islas de la Serpiente que regresó de la muerte para tachar nombres de su lista.",
+                matchups: {
+                    counters: [{ name: "Soraka", reason: "Su E (Silencio) te corta la carga de la Q o E." }, { name: "Lulu", reason: "Polimorfia te impide ejecutar a nadie." }],
+                    synergies: ["Draven", "Lucian", "Tristana"],
+                    survival: "Eres papel. Entra, haz tu combo y sal con tu W. No intentes pelear cuerpo a cuerpo por mucho tiempo."
+                }
+            },
+            Yone: {
+                scaling: [{ label: "Q: Acerocero", val: "CC de Empuje" }, { label: "E: Alma Desatada", val: "Daño Acumulado tras vuelta" }],
+                damage: { phys: 50, mag: 50, true: 0 },
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>Q3 (Cargada)</span> → <span class='combo-key'>W</span> → <span class='combo-key'>R</span> → <span class='combo-key'>E (Vuelta)</span>"],
+                lore: "El hermano mayor de Yasuo, un cazador de azakana que utiliza dos espadas para purificar espíritus.",
+                matchups: {
+                    counters: [{ name: "Renekton", reason: "Opresión y stun instantáneo." }, { name: "Jax", reason: "Su E bloquea tu Q y tus AA." }],
+                    synergies: ["Malphite", "Jarvan IV", "Diana"],
+                    survival: "Tu E es un punto débil. Los enemigos saben exactamente a dónde vas a volver. Úsala desde una posición segura."
+                }
+            },
+            Evelynn: {
+                scaling: [{ label: "Pasiva: Sombras Demoníacas", val: "Sigilo Permanente (Nivel 5)" }, { label: "R: Última Caricia", val: "Daño por Ejecución + Escape" }],
+                damage: { phys: 0, mag: 100, true: 0 },
+                combos: ["<span class='combo-key'>W</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>E</span> → <span class='combo-key'>R</span>"],
+                lore: "Un demonio súcubo que acecha en las sombras de Runaterra buscando el sufrimiento humano.",
+                matchups: {
+                    counters: [{ name: "Lee Sin", reason: "Te revela con sus habilidades." }, { name: "Pink Wards", reason: "Localizan tu posición de sigilo." }],
+                    synergies: ["Akali", "Lulu", "Yuumi"],
+                    survival: "Juega alrededor de tu invisibilidad. Si el enemigo tiene visión de ti, has perdido el 80% de tu ventaja táctica."
+                }
+            },
+            JarvanIV: {
+                scaling: [{ label: "E/Q: Estandarte/Lanza", val: "CC de Levantamiento" }, { label: "R: Cataclismo", val: "Muro Circular" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>R</span>"],
+                lore: "El príncipe de Demacia que lidera a sus ejércitos con honor desde la vanguardia.",
+                matchups: {
+                    counters: [{ name: "Vayne", reason: "Sale de tu R con piruetas." }, { name: "Ezreal", reason: "Salto gratuito fuera de tu R." }],
+                    synergies: ["Yasuo", "Orianna", "Miss Fortune"],
+                    survival: "Tu combo E-Q es tu vida. Si lo fallas, quedas vendido en medio del equipo enemigo. Úsalo con precisión."
+                }
+            },
+            Irelia: {
+                scaling: [{ label: "Q: Embate de Palas", val: "Reset por marca/muerte" }, { label: "R: Filo de la Vanguardia", val: "Desarme + Ralentización" }],
+                damage: { phys: 80, mag: 20, true: 0 },
+                aaReset: "Q actua como reset táctico",
+                combos: ["<span class='combo-key'>E1</span> → <span class='combo-key'>R</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>E2</span> → <span class='combo-key'>Q</span>"],
+                lore: "La bailarina de las cuchillas que lidera la resistencia jonia contra la invasión noxiana.",
+                matchups: {
+                    counters: [{ name: "Jax", reason: "Bloquea tus básicos pasivos." }, { name: "Fiora", reason: "Puede bloquear tu E y estunearte." }],
+                    synergies: ["Lulu", "Yuumi", "Lee Sin"],
+                    survival: "Tu pasiva (4 cargas) es tu fuente de daño. No pelees si no tienes las cuchillas cargadas."
+                }
+            },
+            Camille: {
+                scaling: [{ label: "Q: Protocolo de Precisión", val: "Daño Verdadero Masivo" }, { label: "R: Ultimátum Hextech", val: "Área Cerrada" }],
+                damage: { phys: 40, mag: 0, true: 60 },
+                aaReset: "Q resetea el AA",
+                combos: ["<span class='combo-key'>Q1</span> → <span class='combo-key'>E (Pared)</span> → <span class='combo-key'>E2</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>Q2</span>"],
+                lore: "Una agente de élite de Piltover que utiliza sus piernas de cuchilla para mantener el orden social.",
+                matchups: {
+                    counters: [{ name: "Jax", reason: "Esquiva tus Q2." }, { name: "Renekton", reason: "Duelo temprano muy difícil." }],
+                    synergies: ["Galio", "Diana", "Orianna"],
+                    survival: "Espera siempre al segundo tick de la Q para hacer daño verdadero. La paciencia es tu mejor arma."
+                }
+            },
+            Renekton: {
+                scaling: [{ label: "Q: Preferencia por el Débil", val: "Curación + Daño Circular" }, { label: "W: Depredador Implacable", val: "Stun + Rompe Escudos" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                aaReset: "W resetea el AA",
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>W (Cargada)</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>E (Vuelta)</span>"],
+                lore: "Un guerrero ascendido de Shurima consumido por la locura y el odio hacia su hermano Nasus.",
+                matchups: {
+                    counters: [{ name: "Garen", reason: "Silencio te corta el combo." }, { name: "Vayne", reason: "Te kitea post-E." }],
+                    synergies: ["Lee Sin", "Nidalee", "Elise"],
+                    survival: "Gestiona tu furia. Tu W cargada rompe escudos (ej: el de Sett), úsala para castigar defensas."
+                }
+            },
+            Pantheon: {
+                scaling: [{ label: "Q: Lanza Cometa", val: "Crítico por Vida Baja" }, { label: "W: Salto con Escudo", val: "CC Instantaneo" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                combos: ["<span class='combo-key'>W (Cargada)</span> → <span class='combo-key'>AA (x3)</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>E</span>"],
+                lore: "Un guerrero que una vez fue el recipiente de la Guerra, ahora lucha como un hombre contra los dioses.",
+                matchups: {
+                    counters: [{ name: "Olaf", reason: "Te ignora el CC y te gana en trade largo." }, { name: "Malphite", reason: "Demasiada armadura para tu burst físico." }],
+                    synergies: ["Ahri", "Taliyah", "Graves"],
+                    survival: "Tu E bloquea TODO el daño frontal. Úsala para salir de trades o bloquear definitivas clave."
+                }
+            },
+            Kayn: {
+                scaling: [{ label: "Pasiva: La Guadaña Darkin", val: "Transformación Azul/Roja" }, { label: "R: Invasión Sombría", val: "Intargeteabilidad" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                combos: ["<span class='combo-key'>W</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>R</span>"],
+                lore: "Un practicante de la magia sombría que lucha por el control de su cuerpo contra el Darkin Rhaast.",
+                matchups: {
+                    counters: [{ name: "Lee Sin", reason: "Te invade y te mata antes de que te transformes." }, { name: "Yi", reason: "Te outscala si no lo cierras rápido." }],
+                    synergies: ["Yuumi", "Lulu", "Orianna"],
+                    survival: "Tu prioridad absoluta es la forma. No busques ganks difíciles, busca ganks donde puedas 'farmear' orbes."
+                }
+            },
+            MissFortune: {
+                scaling: [{ label: "R: Lluvia de Plomo", val: "Daño de Área Crítico" }, { label: "Pasiva: Toque de Amor", val: "Daño extra primer impacto" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                combos: ["<span class='combo-key'>AA</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA</span>"],
+                lore: "Una capitana de Bilgewater famosa por su belleza y temida por su crueldad.",
+                matchups: {
+                    counters: [{ name: "Yasuo", reason: "Su muro de viento anula toda tu R." }, { name: "Braum", reason: "Su escudo bloquea tu lluvia de balas." }],
+                    synergies: ["Seraphine", "Leona", "Amumu"],
+                    survival: "Tu posición en la pelea es fundamental. No tires la R si no tienes a tu equipo protegiéndote el flanco."
+                }
+            },
+            Ashe: {
+                scaling: [{ label: "R: Flecha de Cristal Encantada", val: "Stun Global" }, { label: "W: Descarga", val: "Ralentización Constante" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                lore: "La Hija del Hielo que busca unir a las tribus de Freljord bajo una sola bandera.",
+                matchups: {
+                    counters: [{ name: "Ezreal", reason: "Puede esquivar tu R con su E fácilmente." }, { name: "Draven", reason: "Te gana en daño directo puro." }],
+                    synergies: ["Nautilus", "Leona", "Braum"],
+                    survival: "Usa tu E (Halcón) constantemente para localizar al jungla enemigo. La información es tu mejor defensa."
+                }
+            },
+            Tristana: {
+                scaling: [{ label: "E: Carga Explosiva", val: "Daño por AA acumulado" }, { label: "R: Tiro Destructor", val: "Knockback Defensivo" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                aaReset: "Q otorga 110% Velocidad de Ataque",
+                combos: ["<span class='combo-key'>W</span> → <span class='combo-key'>E</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>AA...</span>"],
+                lore: "Una yordle artillera con un cañón enorme y un espíritu de aventura inquebrantable.",
+                matchups: {
+                    counters: [{ name: "Caitlyn", reason: "Su rango superior te impide saltar con seguridad." }, { name: "Jax", reason: "Su E bloquea tus básicos para cargar la bomba." }],
+                    synergies: ["Lulu", "Leona", "Yuumi"],
+                    survival: "No uses tu W para entrar a menos que estés seguro de conseguir el reset de la habilidad."
+                }
+            },
+            Draven: {
+                scaling: [{ label: "Q: Hacha Giratoria", val: "100% AD Extra" }, { label: "Pasiva: Liga de Draven", val: "Oro por ejecución" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                lore: "El ejecutor de Noxus más carismático y narcisista que jamás haya pisado la arena.",
+                matchups: {
+                    counters: [{ name: "Varus", reason: "Su R te clava al suelo donde van a caer tus hachas." }, { name: "Caitlyn", reason: "Te pockea fuera de rango." }],
+                    synergies: ["Thresh", "Leona", "Pyke"],
+                    survival: "Si pierdes las hachas, pierdes el duelo. Aprende a controlar dónde caen para no quedar vendido."
+                }
+            },
+            Varus: {
+                scaling: [{ label: "Q: Flecha Penetrante", val: "Daño por Carga de Infección" }, { label: "R: Cadena de Corrupción", val: "CC de Propagación" }],
+                damage: { phys: 70, mag: 30, true: 0 },
+                combos: ["<span class='combo-key'>AA</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>E</span> → <span class='combo-key'>Q</span>"],
+                lore: "Un Darkin que habita en un arco, buscando venganza contra los que destruyeron a su raza.",
+                matchups: {
+                    counters: [{ name: "Yasuo", reason: "Muro de viento bloquea tu flecha cargada (Q)." }, { name: "Vi", reason: "Te alcanza y te borra antes de que reacciones." }],
+                    synergies: ["Karma", "Lulu", "Lux"],
+                    survival: "Tu R es una herramienta defensiva increíble. No tengas miedo de usarla para escapar de un asesino."
+                }
+            },
+            Samira: {
+                scaling: [{ label: "R: Gatillo Infernal", val: "Daño circular crítico" }, { label: "W: Giro de Espada", val: "Bloqueo de Proyectiles" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>Q</span> → <span class='combo-key'>W</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>R</span>"],
+                lore: "Una mercenaria que busca el peligro y el estilo en igual medida.",
+                matchups: {
+                    counters: [{ name: "Alistar", reason: "Te empuja fuera de tu R instantáneamente." }, { name: "Leona", reason: "Demasiado CC para que puedas cargar tu rango S." }],
+                    synergies: ["Nautilus", "Thresh", "Alistar"],
+                    survival: "No entres a la pelea hasta que los enemigos hayan gastado su CC principal. Samira es 'all-in' o nada."
+                }
+            },
+            Fizz: {
+                scaling: [{ label: "E: Juguetón/Gamberro", val: "Intargeteabilidad" }, { label: "R: Carnada para Tiburones", val: "Daño masivo por distancia" }],
+                damage: { phys: 0, mag: 100, true: 0 },
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>AA</span> → <span class='combo-key'>E</span> → <span class='combo-key'>R</span>"],
+                lore: "Un espíritu de las aguas que vive en las profundidades de Bilgewater.",
+                matchups: {
+                    counters: [{ name: "Lucian", reason: "Te pockea en mid antes de que puedas acercarte." }, { name: "Kassadin", reason: "Su escudo mágico anula tu burst inicial." }],
+                    synergies: ["Jarvan IV", "Vi", "Amumu"],
+                    survival: "Usa tu E para esquivar la habilidad más fuerte del enemigo, no solo para hacer daño."
+                }
+            },
+            Veigar: {
+                scaling: [{ label: "Pasiva: Poder de Maldad Ineludible", val: "AP Infinito por golpes" }, { label: "R: Estallido Primordial", val: "Daño por Vida Faltante" }],
+                damage: { phys: 0, mag: 100, true: 0 },
+                lore: "El hechicero más malvado de la historia... o al menos eso intenta parecer.",
+                matchups: {
+                    counters: [{ name: "Katarina", reason: "Salta fuera de tu jaula (E) fácilmente." }, { name: "Zed", reason: "Te borra antes de que puedas poner la jaula." }],
+                    synergies: ["Jarvan IV", "Nautilus", "Camille"],
+                    survival: "Tu objetivo es llegar al minuto 15 con 300 cargas. Farmea con la Q siempre que sea posible."
+                }
+            },
+            Brand: {
+                scaling: [{ label: "Pasiva: Llamarada", val: "Daño por porcentaje de vida" }, { label: "R: Tormenta de Fuego", val: "Rebote de proyectiles" }],
+                damage: { phys: 0, mag: 100, true: 0 },
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>Q (Stun)</span> → <span class='combo-key'>W</span> → <span class='combo-key'>R</span>"],
+                lore: "Una criatura de fuego puro que busca quemar el mundo por los pecados del pasado.",
+                matchups: {
+                    counters: [{ name: "Fizz", reason: "Esquiva tus combos con su E." }, { name: "Yasuo", reason: "Su muro de viento para tu R." }],
+                    synergies: ["Amumu", "Malphite", "Jarvan IV"],
+                    survival: "Si vas a morir, intenta tirar el combo E+Q+R antes. Tu daño pasivo hará el resto del trabajo."
+                }
+            },
+            Katarina: {
+                scaling: [{ label: "Pasiva: Ansia", val: "Reseteo de habilidades por muerte" }, { label: "R: Loto Mortal", val: "Heridas Graves masivas" }],
+                damage: { phys: 20, mag: 80, true: 0 },
+                lore: "Una asesina de Noxus que siempre encuentra el camino hacia el corazón de sus enemigos.",
+                matchups: {
+                    counters: [{ name: "Lulu", reason: "Polimorfia te corta la R al instante." }, { name: "Vi", reason: "CC inevitable que detiene tu giro." }],
+                    synergies: ["Amumu", "Malphite", "Galio"],
+                    survival: "Nunca entres primero. Espera a que la pelea esté desordenada y los CCs principales gastados."
+                }
+            },
+            Diana: {
+                scaling: [{ label: "R: Lluvia de Luna", val: "CC de succión + Daño de Área" }, { label: "E: Torrente Lunar", val: "Dash infinito con marca" }],
+                damage: { phys: 0, mag: 100, true: 0 },
+                combos: ["<span class='combo-key'>Q</span> → <span class='combo-key'>E</span> → <span class='combo-key'>W</span> → <span class='combo-key'>R</span>"],
+                lore: "La guerrera de la Luna que busca venganza contra los Solari por perseguir su fe.",
+                matchups: {
+                    counters: [{ name: "Sett", reason: "Te agarra en el aire y te destruye de vuelta." }, { name: "Renekton", reason: "Demasiada resistencia contra tu burst." }],
+                    synergies: ["Yasuo", "Jarvan IV", "Orianna"],
+                    survival: "Tu R hace más daño según cuántos enemigos atrapes. Úsala en medio del equipo enemigo."
+                }
+            },
+            Riven: {
+                scaling: [{ label: "Q: Alas rotas", val: "Triple dash + CC" }, { label: "Pasiva: Espada Rúnica", val: "Daño extra en AA" }],
+                damage: { phys: 100, mag: 0, true: 0 },
+                aaReset: "Q/E resetean el ritmo del AA",
+                combos: ["<span class='combo-key'>E</span> → <span class='combo-key'>R</span> → <span class='combo-key'>Q...</span>"],
+                lore: "Una exiliada de Noxus que busca redención por los crímenes que cometió en nombre del imperio.",
+                matchups: {
+                    counters: [{ name: "Garen", reason: "Silencio te corta las Q." }, { name: "Renekton", reason: "Superioridad en trades cortos." }],
+                    synergies: ["Lee Sin", "Ahri", "Vi"],
+                    survival: "Aprende a cancelar las animaciones de la Q con ataques básicos. Sin eso, tu daño es mediocre."
+                }
+            },
+            Shen: {
+                scaling: [{ label: "R: Mantener la Unión", val: "Escudo Global" }, { label: "W: Refugio del Espíritu", val: "Bloqueo de AA de área" }],
+                damage: { phys: 50, mag: 50, true: 0 },
+                lore: "El Ojo del Crepúsculo que mantiene el equilibrio entre el mundo espiritual y el físico.",
+                matchups: {
+                    counters: [{ name: "Olaf", reason: "Inmune a tu stun (E)." }, { name: "Vayne", reason: "Daño verdadero que ignora tu escudo." }],
+                    synergies: ["Akali", "Zed", "Kennen"],
+                    survival: "Mira el minimapa constantemente. Tu R puede cambiar el curso de una pelea en el otro lado del mapa."
+                }
+            },
+            Rammus: {
+                scaling: [{ label: "W: Posición Defensiva", val: "Reflejo de daño" }, { label: "R: Golpe de Tierra", val: "Salto + Daño de ráfaga" }],
+                damage: { phys: 30, mag: 70, true: 0 },
+                lore: "Una criatura enigmática de Shurima conocida por su resistencia inquebrantable.",
+                matchups: {
+                    counters: [{ name: "Vayne", reason: "Daño verdadero masivo." }, { name: "Truindamere", reason: "Demasiado sustain para tu daño reflejado." }],
+                    synergies: ["Lulu", "Seraphine", "Karma"],
+                    survival: "Busca siempre al ADC enemigo. Tu W + Provocación (E) los obligará a suicidarse pegándote."
+                }
+            },
+            Olaf: {
+                scaling: [{ label: "R: Ragnarok", val: "Inmunidad a todo el CC" }, { label: "Pasiva: Furia Berseker", val: "Velocidad de ataque por vida baja" }],
+                damage: { phys: 90, mag: 0, true: 10 },
+                combos: ["<span class='combo-key'>Q (Recoger)</span> → <span class='combo-key'>E</span> → <span class='combo-key'>AA...</span>"],
+                lore: "Un guerrero de Freljord que busca una muerte gloriosa en el campo de batalla.",
+                matchups: {
+                    counters: [{ name: "Vayne", reason: "Te kitea incluso con tu R activa." }, { name: "Jarvan IV", reason: "Su R crea un muro físico que tu inmunidad a CC no rompe." }],
+                    synergies: ["Lulu", "Yuumi", "Karma"],
+                    survival: "No tengas miedo de estar a poca vida. Ahí es cuando Olaf es más peligroso por su pasiva de robo de vida."
+                }
+            }
+        };
+
+        function openDossier(champ) {
+            const modal = document.getElementById('champModal');
+            const roleInfo = {
+                baron: { desc: "Especialista en duelos y presión lateral. Su función es absorber daño y dividir al equipo enemigo.", diff: "Alta" },
+                jungle: { desc: "Arquitecto del juego temprano. Controla los objetivos y asegura las ventajas mediante emboscadas.", diff: "Muy Alta" },
+                mid: { desc: "Núcleo de daño táctico. Responsable de las rotaciones rápidas y el control del carril central.", diff: "Media/Alta" },
+                dragon: { desc: "Fuente principal de daño sostenido. Requiere posicionamiento impecable para sobrevivir en batallas.", diff: "Alta" },
+                support: { desc: "Pilar de utilidad y visión. Protege a los aliados y dicta el ritmo de las iniciaciones.", diff: "Media" }
+            };
+
+            const info = roleInfo[champ.role] || roleInfo.mid;
+
+            // Búsqueda insensible a mayúsculas para evitar fallos de mapeo
+            const champKey = Object.keys(detailedChampionData).find(k => k.toLowerCase() === champ.name.toLowerCase());
+            const detail = detailedChampionData[champKey] || {
+                scaling: [
+                    { label: "Habilidad Base", val: "Escalado Variable" },
+                    { label: "Impacto Progresivo", val: "Nivel 1-15" }
+                ],
+                damage: { phys: 50, mag: 50, true: 0 },
+                aaReset: null,
+                combos: ["> ANALIZANDO PATRONES DE ATAQUE... Esperando datos oficiales."],
+                synergy: "Composiciones estándar de Wild Rift.",
+                warn: "Seguir protocolos estándar de posicionamiento.",
+                lore: `Este campeón es un pilar fundamental en la región de Runaterra, aportando sus habilidades únicas para el equilibrio de la Grieta.`,
+                rivals: "Información reservada",
+                synergyNarr: "Alianzas variables"
+            };
+
+            document.getElementById('modalName').innerText = champ.name;
+            document.getElementById('modalRole').innerText = champ.role.toUpperCase() + " LANE";
+            document.getElementById('modalImg').src = `imagen/campeones/${champ.name}.png`;
+            document.getElementById('modalTier').innerText = `PRIORITY STATUS: ${champ.tier}`;
+            document.getElementById('modalDesc').innerText = info.desc;
+            document.getElementById('modalDiff').innerText = info.diff;
+            document.getElementById('modalWarn').innerText = detail.warn;
+
+            // Technical Scaling
+            const scalingContainer = document.getElementById('modalScaling');
+            scalingContainer.innerHTML = '';
+            detail.scaling.forEach(s => {
+                const item = document.createElement('div');
+                item.className = 'scaling-item';
+                item.innerHTML = `
+                    <div class="scaling-label">${s.label}</div>
+                    <div class="scaling-value">${s.val}</div>
+                `;
+                scalingContainer.appendChild(item);
+            });
+
+            // Damage Bar
+            const damageBar = document.getElementById('modalDamageBar');
+            damageBar.innerHTML = `
+                <div class="damage-bar damage-physical" style="width: ${detail.damage.phys}%" title="Físico: ${detail.damage.phys}%"></div>
+                <div class="damage-bar damage-magic" style="width: ${detail.damage.mag}%" title="Mágico: ${detail.damage.mag}%"></div>
+                <div class="damage-bar damage-true" style="width: ${detail.damage.true}%" title="Verdadero: ${detail.damage.true}%"></div>
+            `;
+
+            // AA Reset
+            const aaContainer = document.getElementById('modalAAReset');
+            aaContainer.innerHTML = detail.aaReset ? `<div class="aa-reset-badge">⚡ RESET DE AA: ${detail.aaReset}</div>` : '';
+
+            // Combos
+            const comboContainer = document.getElementById('modalCombos');
+            comboContainer.innerHTML = detail.combos.map(c => `<div>${c}</div>`).join('');
+
+            // Lore & Interactions
+            document.getElementById('modalLore').innerText = detail.lore || "Datos biográficos encriptados en el servidor Hextech.";
+            document.getElementById('modalRivals').innerText = detail.rivals || "Sin rivalidades activas registradas.";
+            document.getElementById('modalSynergyNarr').innerText = detail.synergyNarr || "Vínculos neutros detectados.";
+
+            // Special Missions
+            const missionContainer = document.getElementById('modalMissionContainer');
+            if (detail.specialMission) {
+                missionContainer.innerHTML = `
+                    <div class="special-mission">
+                        <div class="mission-icon">⚔️</div>
+                        <div class="mission-info">
+                            <h4>${detail.specialMission.title}</h4>
+                            <p>${detail.specialMission.desc}</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                missionContainer.innerHTML = '';
+            }
+
+            // Patch Info
+            const patchVersion = document.getElementById('modalPatchVersion');
+            const patchBadge = document.getElementById('modalPatchBadge');
+            if (detail.lastPatch) {
+                patchVersion.innerText = `Parche ${detail.lastPatch.version}`;
+                patchBadge.innerText = detail.lastPatch.status.toUpperCase();
+                patchBadge.className = `patch-badge patch-${detail.lastPatch.status}`;
+            } else {
+                patchVersion.innerText = "Parche v7.2";
+                patchBadge.innerText = "ESTABLE";
+                patchBadge.className = "patch-badge patch-adj";
+            }
+
+
+            // Matchups & Counter-Intelligence
+            const counterContainer = document.getElementById('modalCounters');
+            const synergyContainer = document.getElementById('modalSinergies');
+            const survivalText = document.getElementById('modalSurvival');
+
+            if (detail.matchups) {
+                counterContainer.innerHTML = detail.matchups.counters.map(c => `
+                    <div class="counter-item">
+                        <img src="imagen/campeones/${c.name}.png" class="counter-img" onerror="this.src='imagen/logo.png'">
+                        <div class="counter-info">
+                            <h5>${c.name}</h5>
+                            <p>${c.reason}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                synergyContainer.innerHTML = detail.matchups.synergies.map(s => `
+                    <span class="synergy-tag">${s}</span>
+                `).join('');
+
+                survivalText.innerText = detail.matchups.survival;
+            } else {
+                // Fallback inteligente basado en ROL
+                const roleAdvice = {
+                    baron: {
+                        counters: [{ name: "Fiora", reason: "Duelistas de alto rendimiento." }, { name: "Ignite", reason: "Reduce curaciones." }],
+                        synergies: ["Jungla CC", "Mid Global"],
+                        survival: "Prioriza el control de oleadas cerca de tu torre."
+                    },
+                    jungle: {
+                        counters: [{ name: "Lee Sin", reason: "Invasores tempranos." }, { name: "Wards", reason: "Anulan gankeos." }],
+                        synergies: ["Follow-up CC", "Líneas con prioridad"],
+                        survival: "No reveles tu posición si no vas a gankear."
+                    },
+                    mid: {
+                        counters: [{ name: "Zed", reason: "Asesinos explosivos." }, { name: "Zhonyas", reason: "Anula definitivas." }],
+                        synergies: ["Roamers", "Jungla AP/AD balance"],
+                        survival: "Wardea ambos lados del río constantemente."
+                    },
+                    dragon: {
+                        counters: [{ name: "Leona", reason: "CC de proximidad duro." }, { name: "Diving", reason: "Asedios bajo torre." }],
+                        synergies: ["Support Peel", "Tanques frontales"],
+                        survival: "El posicionamiento es tu único seguro de vida."
+                    },
+                    support: {
+                        counters: [{ name: "Pyke", reason: "Supports de ejecución." }, { name: "Oracle Lens", reason: "Destruye tu visión." }],
+                        synergies: ["ADC Hipercarry", "Jungla Agresivo"],
+                        survival: "Tu vida vale menos que la de tu carry, pero no la regales."
+                    }
+                };
+
+                const advice = roleAdvice[champ.role] || roleAdvice.mid;
+
+                counterContainer.innerHTML = advice.counters.map(c => `
+                    <div class="counter-item">
+                        <img src="imagen/logo.png" class="counter-img">
+                        <div class="counter-info">
+                            <h5>ENEMIGOS CLAVE</h5>
+                            <p>${c.reason}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                synergyContainer.innerHTML = advice.synergies.map(s => `
+                    <span class="synergy-tag">${s}</span>
+                `).join('');
+
+                survivalText.innerText = advice.survival;
+            }
+
+            // Tags
+            const tags = ["Tactical Precision", "Combat Ready", "Strategic Asset", "High Intelligence"];
+            const tagContainer = document.getElementById('modalTags');
+            tagContainer.innerHTML = '';
+            tags.forEach(t => {
+                const span = document.createElement('span');
+                span.className = 'dossier-tag';
+                span.innerText = t;
+                tagContainer.appendChild(span);
+            });
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('champModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
         const roleBtns = document.querySelectorAll('.filter-btn');
@@ -343,6 +1803,200 @@
 
         document.addEventListener('DOMContentLoaded', () => renderChampions());
     </script>
+    <footer style="background: #010a13; border-top: 2px solid var(--gold-hex); padding: 80px 0;">
+        <div class="nav-container"
+            style="max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding: 0 40px; justify-items: start;">
+            <div>
+                <div class="logo">
+                    <div class="logo-icon"><i>WR</i></div>
+                    <span style="font-size: 1.2rem;">GUÍA HEXTECH<br><small
+                            style="font-size: 0.7rem; color: var(--gold-dark);">CENTRO DE MANDO</small></span>
+                </div>
+                <p style="color: var(--gold-dark); margin-top: 20px; font-size: 0.85rem; line-height: 1.8;">
+                    Analizamos cada píxel de la Grieta para asegurar tu victoria.
+                    El recurso más completo para la comunidad de Wild Rift.
+                </p>
+            </div>
+            <div>
+                <h4
+                    style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px; font-size: 0.8rem; letter-spacing: 2px;">
+                    Recursos</h4>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 12px;"><a href="campeones.html"
+                            style="color: #ccc; text-decoration: none;">Campeones</a></li>
+                    <li style="margin-bottom: 12px;"><a href="runas.html"
+                            style="color: #ccc; text-decoration: none;">Runas</a></li>
+                    <li style="margin-bottom: 12px;"><a href="objetos.html"
+                            style="color: #ccc; text-decoration: none;">Objetos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px; font-size: 0.8rem; letter-spacing: 2px;">
+                    Estrategia</h4>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 12px;"><a href="mapa.html" style="color: #ccc; text-decoration: none;">El
+                            Mapa</a></li>
+                    <li style="margin-bottom: 12px;"><a href="roles.html"
+                            style="color: #ccc; text-decoration: none;">Roles</a></li>
+                    <li style="margin-bottom: 12px;"><a href="avanzado.html"
+                            style="color: #ccc; text-decoration: none;">Guía Elite</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    style="color: var(--gold-hex); text-transform: uppercase; margin-bottom: 25px; font-size: 0.8rem; letter-spacing: 2px;">
+                    Comunidad</h4>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 12px;"><a href="#" style="color: #ccc; text-decoration: none;">Discord</a>
+                    </li>
+                    <li style="margin-bottom: 12px;"><a href="#" style="color: #ccc; text-decoration: none;">Reddit</a>
+                    </li>
+                    <li style="margin-bottom: 12px;"><a href="#" style="color: #ccc; text-decoration: none;">Patch
+                            Notes</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(200, 155, 60, 0.1);">
+            <p style="color: var(--gold-dark); font-size: 0.7rem;">© 2026 PROYECTO FAN HEXTECH. LEAGUE OF LEGENDS: WILD
+                RIFT ES PROPIEDAD DE RIOT GAMES.</p>
+        </div>
+    </footer>
+    <div class="modal-overlay" id="champModal">
+        <div class="dossier-modal">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="dossier-layout">
+                <div class="dossier-sidebar">
+                    <img id="modalImg" src="" alt="Champion" onerror="this.src='imagen/logo.png'">
+                    <div class="dossier-tier" id="modalTier">PRIORITY: SS</div>
+
+                    <div class="patch-history" id="modalPatchContainer">
+                        <span class="patch-label">Último Ajuste de Meta</span>
+                        <div class="patch-status">
+                            <span class="patch-version" id="modalPatchVersion">v14.23</span>
+                            <span class="patch-badge" id="modalPatchBadge">AJUSTE</span>
+                        </div>
+                    </div>
+
+                    <div class="info-box" style="margin-top: 20px;">
+                        <h4>Dificultad de Manejo</h4>
+                        <p id="modalDiff">Alta</p>
+                    </div>
+                    <div id="modalTags"></div>
+                </div>
+                <div class="dossier-main">
+                    <h2 id="modalName">Nara</h2>
+                    <span class="dossier-role" id="modalRole">MID LANE</span>
+
+                    <div class="terminal-text" style="font-size: 0.8rem; margin-bottom: 30px;">
+                        > INICIANDO SECUENCIA DE ANÁLISIS HEXTECH...<br>
+                        > EXTRAYENDO DATOS DE COMBATE DEL CAMPEÓN...<br>
+                        > INFORME DE INTELIGENCIA TÁCTICA v7.2 DISPONIBLE.
+                    </div>
+
+                    <div class="dossier-grid">
+                        <div class="info-box">
+                            <h4>Análisis de Rol</h4>
+                            <p id="modalDesc">Este campeón se destaca por su capacidad de controlar el flujo de la
+                                partida mediante habilidades disruptivas y daño masivo.</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>Protocolo de Combate</h4>
+                            <p>Priorizar objetivos de alto valor y mantener el control del mapa mediante visión
+                                estratégica.</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>Advertencia Táctica</h4>
+                            <p id="modalWarn">Vulnerable ante inmovilizaciones pesadas y falta de coordinación en el
+                                juego medio.</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-section">
+                        <div class="tech-title">⚙️ MICRO-MECÁNICA Y ESCALADOS</div>
+                        <div class="scaling-grid" id="modalScaling">
+                            <!-- Injected -->
+                        </div>
+
+                        <div style="margin-top: 20px;">
+                            <h4 style="font-size: 0.75rem; color: var(--gold-hex); text-transform: uppercase;">
+                                Distribución de Tipos de Daño</h4>
+                            <div class="damage-bar-container" id="modalDamageBar">
+                                <!-- Injected -->
+                            </div>
+                            <div
+                                style="display: flex; gap: 15px; margin-top: 5px; font-size: 0.6rem; color: var(--gold-dark);">
+                                <span><i style="color: #ff4655;">■</i> FÍSICO</span>
+                                <span><i style="color: var(--blue-magic);">■</i> MÁGICO</span>
+                                <span><i style="color: #ffffff;">■</i> VERDADERO</span>
+                            </div>
+                        </div>
+
+                        <div id="modalAAReset" style="margin-top: 15px;">
+                            <!-- Injected badge if applicable -->
+                        </div>
+
+                        <div style="margin-top: 25px;">
+                            <h4 style="font-size: 0.75rem; color: var(--gold-hex); text-transform: uppercase;">Protocolo
+                                de Combates (Combos)</h4>
+                            <div class="combo-box" id="modalCombos">
+                                <!-- Injected -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Matriz de Enfrentamientos -->
+                    <div class="matchup-grid">
+                        <div class="matchup-box">
+                            <div class="matchup-title">🚫 CONTRA-INTELIGENCIA (COUNTERS)</div>
+                            <div class="counter-list" id="modalCounters">
+                                <!-- Injected -->
+                            </div>
+                        </div>
+                        <div class="matchup-box">
+                            <div class="matchup-title">💎 SINERGIAS DE ÉLITE</div>
+                            <div id="modalSinergies">
+                                <!-- Injected -->
+                            </div>
+                            <div class="info-box" style="margin-top: 15px; border-left-color: var(--blue-magic);">
+                                <h4 style="font-size: 0.65rem;">PROTOCOLO DE SUPERVIVENCIA</h4>
+                                <p id="modalSurvival" style="font-size: 0.75rem; font-style: italic; color: #aaa;">
+                                    Adaptando protocolo de defensa...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lore-section">
+                        <div class="lore-title">📜 ARCHIVO DE ORIGEN</div>
+                        <p class="lore-text" id="modalLore">Analizando registros de Runaterra... Datos biográficos
+                            encriptados.</p>
+
+                        <div class="interaction-box">
+                            <div class="interaction-item">
+                                <div class="interaction-label">Rivalidades de Sangre</div>
+                                <div class="interaction-value" id="modalRivals">Ninguna detectada</div>
+                            </div>
+                            <div class="interaction-item">
+                                <div class="interaction-label">Sinergia Narrativa</div>
+                                <div class="interaction-value" id="modalSynergyNarr">Efecto neutro</div>
+                            </div>
+                        </div>
+
+                        <div id="modalMissionContainer">
+                            <!-- Injected if exists -->
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 40px; text-align: center;">
+                        <button class="wr-btn" onclick="closeModal()"
+                            style="padding: 10px 30px; font-size: 0.8rem;">CERRAR ARCHIVO</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 
