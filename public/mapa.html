@@ -281,6 +281,35 @@
             display: flex;
         }
 
+        .event-visual {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--gold-hex);
+            background: rgba(1, 10, 19, 0.8);
+            transition: 0.3s;
+        }
+
+        .event-visual:not([src]),
+        .event-visual[src*="logo.png"] {
+            padding: 20px;
+            filter: grayscale(1) brightness(0.7) sepia(1) hue-rotate(140deg) saturate(2);
+            animation: pulse-hex 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-hex {
+            0% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 0.4;
+            }
+        }
+
         .dossier-modal {
             background: rgba(1, 10, 19, 0.95);
             border: 2px solid var(--gold-hex);
@@ -424,8 +453,7 @@
             <div class="map-section fade-in">
                 <!-- Main Map Visual -->
                 <div class="map-display">
-                    <img src="imagen/Guia%20de%20vis%C3%A3o%20-%20League%20of%20Legends.jpg" class="map-image"
-                        alt="Guía de Visión Wild Rift">
+                    <img src="imagen/core/guia_vision.jpg" class="map-image" alt="Guía de Visión Wild Rift">
                     <div
                         style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 10px; border: 1px solid var(--gold-hex); font-size: 0.7rem; color: var(--gold-hex);">
                         GUÍA TÁCTICA DE VISIÓN
@@ -446,7 +474,7 @@
                     </div>
 
                     <div class="timeline-item" style="cursor: pointer;" onclick="openTimelineDossier('dragon')">
-                        <div class="time-badge">03:00</div>
+                        <div class="time-badge">04:00</div>
                         <div class="objective-info">
                             <h4>PRIMER DRAGÓN</h4>
                             <p>Buff elemental para todo el equipo.</p>
@@ -454,15 +482,15 @@
                     </div>
 
                     <div class="timeline-item" style="cursor: pointer;" onclick="openTimelineDossier('herald')">
-                        <div class="time-badge">05:00</div>
+                        <div class="time-badge">06:00</div>
                         <div class="objective-info">
                             <h4>EL HERALDO</h4>
-                            <p>Asedio para romper la torre de primera sangre.</p>
+                            <p>Asedio para romper la torre (Sólo aparece una vez).</p>
                         </div>
                     </div>
 
                     <div class="timeline-item" style="cursor: pointer;" onclick="openTimelineDossier('baron')">
-                        <div class="time-badge">12:00</div>
+                        <div class="time-badge">10:00</div>
                         <div class="objective-info">
                             <h4>BARÓN NASHOR</h4>
                             <p>El impulso final para asediar el Nexo.</p>
@@ -484,32 +512,104 @@
                 <div class="hextech-card fade-in">
                     <div class="inner-content">
                         <h3 style="color: var(--blue-magic); margin-bottom: 15px;">MEJORA AZUL (SENTINEL)</h3>
-                        <p style="font-size: 0.9rem; line-height: 1.6;">Otorga regeneración de maná/energía y
-                            aceleración de habilidades. Crítico para magos y campeones que dependen de sus combos
-                            constantes.</p>
-                        <div style="margin-top: 15px; font-size: 0.8rem; color: var(--gold-dark);">Respawn: 150 segundos
-                        </div>
+                        <p style="font-size: 0.9rem; line-height: 1.6;">Otorga regeneración de Vida adicional (en lugar
+                            de reducción de enfriamiento). Se vuelve mucho más fuerte en fases tardías de la partida.
+                        </p>
+                        <div style="margin-top: 15px; font-size: 0.8rem; color: var(--gold-dark);">Aparición: 00:20 |
+                            Respawn: 150s</div>
                     </div>
                 </div>
 
                 <div class="hextech-card fade-in">
                     <div class="inner-content">
                         <h3 style="color: #ff4655; margin-bottom: 15px;">MEJORA ROJA (CINDERLING)</h3>
-                        <p style="font-size: 0.9rem; line-height: 1.6;">Añade daño verdadero y ralentización a los
-                            ataques básicos. Esencial para gankeos efectivos y duelistas de ataques constantes.</p>
-                        <div style="margin-top: 15px; font-size: 0.8rem; color: var(--gold-dark);">Respawn: 150 segundos
-                        </div>
+                        <p style="font-size: 0.9rem; line-height: 1.6;">Añade daño verdadero y ralentización. Se vuelve
+                            mucho más fuerte en la etapa tardía. Vital para el control de campeones con movilidad.</p>
+                        <div style="margin-top: 15px; font-size: 0.8rem; color: var(--gold-dark);">Aparición: 00:20 |
+                            Respawn: 150s</div>
                     </div>
                 </div>
 
                 <div class="hextech-card fade-in">
                     <div class="inner-content">
-                        <h3 style="color: var(--gold-hex); margin-bottom: 15px;">DOMINIO ESTRATÉGICO</h3>
-                        <p style="font-size: 0.9rem; line-height: 1.6;">Utiliza la guía de visión superior para
-                            identificar los puntos de control críticos. Un mapa iluminado es la diferencia entre una
-                            emboscada exitosa y una derrota segura.</p>
-                        <div style="margin-top: 15px; font-size: 0.8rem; color: var(--blue-magic);">Referencia: Guía de
-                            Visión Integrada</div>
+                        <h3 style="color: var(--gold-hex); margin-bottom: 15px;">INTERFAZ Y CONTROLES</h3>
+                        <p style="font-size: 0.9rem; line-height: 1.6;"><strong>Cámara en Espejo:</strong> El mapa
+                            siempre se orienta hacia arriba para ambos equipos; el lado rojo tiene indicadores de carril
+                            específicos. <strong>Controles Dual-Stick:</strong> Una palanca para movimiento y otra para
+                            apuntar habilidades con precisión quirúrgica.</p>
+                        <div style="margin-top: 15px; font-size: 0.8rem; color: var(--blue-magic);">Estructura: Sin
+                            inhibidores ni torres de nexo individuales.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anatomy of the Rift Section -->
+            <section class="info-section fade-in" style="margin-top: 80px;">
+                <div style="text-align: center; margin-bottom: 50px;">
+                    <span class="section-tag">ANATOMÍA DE LA GRIETA</span>
+                    <h2 class="heading-epic" style="border: none;">INFRAESTRUCTURA OPERATIVA</h2>
+                </div>
+
+                <div class="structure-grid">
+                    <div class="glass-card">
+                        <h4 style="color: var(--gold-hex); margin-bottom: 15px;"><i class="fas fa-landmark"></i> EL
+                            NEXO: DEFENSA ACTIVA</h4>
+                        <p style="font-size: 0.85rem; line-height: 1.6;">A diferencia de la versión PC, el Nexo en Wild
+                            Rift posee un <strong>sistema de defensa integrado</strong> que ataca como una torreta de
+                            alto poder. Destruirlo es el objetivo final para asegurar la victoria.</p>
+                        <div class="terminal-text" style="font-size: 0.7rem; margin-top: 15px;">
+                            > ESTADO: ÚLTIMA LÍNEA DE DEFENSA.<br>
+                            > CAPACIDAD: ATAQUE DE ENERGÍA INTEGRADO.
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h4 style="color: var(--blue-magic); margin-bottom: 15px;"><i class="fas fa-shield-alt"></i>
+                            TORRETAS INHIBIDORAS</h4>
+                        <p style="font-size: 0.85rem; line-height: 1.6;">Las torretas que protegen la entrada de la base
+                            actúan también como inhibidores. Al destruirlas, tu Nexo comenzará a desplegar <strong>Súper
+                                Súbditos</strong> en ese carril específico.</p>
+                        <div class="terminal-text" style="font-size: 0.7rem; margin-top: 15px;">
+                            > PROTOCOLO: GENERACIÓN DE SÚPER SÚBDITOS ACTIVA TRAS DERRIBO.
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h4 style="color: #ff4655; margin-bottom: 15px;"><i class="fas fa-leaf"></i> MALEZA Y EMBOSCADAS
+                        </h4>
+                        <p style="font-size: 0.85rem; line-height: 1.6;">La maleza bloquea la línea de visión. Utilízala
+                            para armar emboscadas quirúrgicas o para desaparecer del radar enemigo durante una
+                            persecución táctica.</p>
+                        <div class="terminal-text" style="font-size: 0.7rem; margin-top: 15px;">
+                            > ADVERTENCIA: SECTORES SIN VISIÓN DETECTADOS.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation System Note -->
+            <div class="macro-module fade-in"
+                style="margin-top: 60px; border-color: var(--blue-magic); background: rgba(10, 200, 185, 0.05);">
+                <div class="macro-header">
+                    <i class="fas fa-map-signs"></i>
+                    <h3 style="margin:0; color: var(--blue-magic); font-size: 1.1rem;">TERMINOLOGÍA DE CARRILES (SISTEMA
+                        DE ESPEJO)</h3>
+                </div>
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; padding: 20px;">
+                    <div>
+                        <p style="font-size: 0.9rem; line-height: 1.7; color: #ccc;">En Wild Rift, los carriles se
+                            nombran según el objetivo épico que albergan. Debido a la cámara rotada, el "Carril
+                            Superior" de un equipo puede ser el "Carril Inferior" visual del otro.</p>
+                        <div class="terminal-text" style="font-size: 0.75rem;">
+                            > CARRIL DE BARÓN: Carril solitario (Solo Lane).<br>
+                            > CARRIL DE DRAGÓN: Carril de pareja (Duo Lane).
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <h4 style="color: var(--gold-hex);">Identificación Visual</h4>
+                        <p style="font-size: 0.85rem;">Sigue las marcas en el suelo (iconos azul para Dragón, púrpura
+                            para Barón) al inicio de cada despliegue operativo.</p>
                     </div>
                 </div>
             </div>
@@ -741,9 +841,9 @@
                 <div class="dossier-sidebar">
                     <div
                         style="background: #000; padding: 10px; border: 2px solid var(--gold-hex); margin-bottom: 20px;">
-                        <img id="modalTimelineImg"
-                            src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Herald_0.jpg"
-                            class="event-visual" alt="Event">
+                        <img id="modalTimelineImg" src="imagen/core/logo.png" referrerpolicy="no-referrer"
+                            class="event-visual" alt="Event"
+                            onerror="this.src='imagen/core/logo.png'; this.style.filter='grayscale(1) opacity(0.5)';">
                     </div>
                     <div class="info-box">
                         <h4>Fase de Aparición</h4>
@@ -807,7 +907,7 @@
                 tags: "VISIÓN | VELOCIDAD | RÍO",
                 time: "01:25 MIN",
                 reward: "Círculo de visión y velocidad permanente en la zona del río.",
-                img: "https://static.wikia.nocookie.net/leagueoflegends/images/2/20/Rift_Scuttler_Original_Square.png",
+                img: "imagen/timeline/scuttle.png",
                 purpose: "Proporcionar visión crítica en las entradas de la jungla y velocidad de movimiento para rotaciones rápidas.",
                 capture: "Los junglas deben pelearlo a nivel 3 o 4. El control de masas (CC) reduce su armadura drásticamente.",
                 macro: "Controlar ambos escurridizos anula la presión temprana del jungla enemigo en gran medida.",
@@ -817,45 +917,45 @@
             dragon: {
                 title: "DRAGONES ELEMENTALES",
                 tags: "BUFF GLOBAL | ESCALADO",
-                time: "03:00 MIN",
-                reward: "Buffs permanentes (Daño, Vida, Velocidad o Aceleración) para todo el equipo.",
-                img: "https://static.wikia.nocookie.net/leagueoflegends/images/1/16/Infernal_Drake_Original_Square.png",
-                purpose: "Aumentar el poder de combate del equipo de forma permanente durante toda la partida.",
+                time: "04:00 MIN",
+                reward: "Buffs permanentes según el elemento: Montaña (+6% Escudo), Océano (8% Vampirismo), Nubes (7.5%-15% Vel. Movimiento) o Infernal (8% Daño).",
+                img: "imagen/timeline/dragon.png",
+                purpose: "Aumentar el poder de combate del equipo de forma permanente. El Dragón Ancestral aparece con cualquier elemento y otorga ejecución.",
                 capture: "Requiere coordinación entre el bot lane y el jungla. La visión previa es obligatoria.",
-                macro: "Priorizar el primer dragón da una ventaja psicológica y mecánica que facilita el control del mapa.",
-                risk: "Un 'smite' fallido puede entregar el buff al rival y arruinar la fase de líneas.",
-                proTip: "No inicies el dragón si el jungla enemigo está vivo y tiene visión. Limpia el área primero."
+                macro: "Priorizar dragones facilita el control del juego tardío.",
+                risk: "Un 'smite' fallido puede entregar el buff al rival.",
+                proTip: "Dragón de Nubes es excelente para rotaciones; Infernal para composiciones de burst."
             },
             herald: {
                 title: "EL HERALDO DE LA GRIETA",
-                tags: "ASEDIO | PRESIÓN DE ESTRUCTURAS",
-                time: "05:00 MIN",
-                reward: "El Ojo del Heraldo, capaz de destruir placas de torreta y torretas completas.",
-                img: "https://static.wikia.nocookie.net/leagueoflegends/images/6/64/Rift_Herald_Original_Square.png",
+                tags: "ASEDIO | ÚNICO",
+                time: "06:00 MIN",
+                reward: "El Ojo del Heraldo. IMPORTANTE: Solo aparece una vez por partida.",
+                img: "imagen/timeline/herald.png",
                 purpose: "Acelerar la toma de la primera torre para abrir el mapa y permitir rotaciones masivas.",
                 capture: "Golpea el ojo en su espalda cuando se abra para infligir daño verdadero masivo.",
-                macro: "Invocándolo antes de los 7 minutos garantiza llevarse las valiosas placas de oro de las torres.",
-                risk: "El enemigo puede robar el Ojo incluso si tú matas al Heraldo. Recógelo inmediatamente.",
-                proTip: "Úsalo en la línea que tenga más placas de vida para maximizar la inyección de oro global."
+                macro: "Uso estratégico para asegurar la Torre de Primera Sangre.",
+                risk: "Solo hay una oportunidad; si se pierde, no vuelve a aparecer.",
+                proTip: "Invócalo en una línea con placas para maximizar la recompensa de oro."
             },
             baron: {
                 title: "BARÓN NASHOR",
                 tags: "BUFF DE ASEDIO | FINALIZADOR",
-                time: "12:00 MIN",
-                reward: "Retorno a base potenciado y súbditos extremadamente fuertes cercanos a ti.",
-                img: "https://static.wikia.nocookie.net/leagueoflegends/images/d/d4/Baron_Nashor_Original_Square.png",
-                purpose: "Permitir el asedio final de las defensas enemigas (Inhibidores y Nexo) mediante oleadas imparables.",
+                time: "10:00 MIN",
+                reward: "Retorno a base potenciado y súbditos extremadamente fuertes.",
+                img: "imagen/timeline/baron.png",
+                purpose: "Permitir el asedio final de las defensas enemigas mediante oleadas imparables.",
                 capture: "Requiere al menos 3 miembros del equipo. El Barón reduce el daño de quien tenga su agro.",
-                macro: "La mayor herramienta para remontar o sentenciar. Fuerza al enemigo a salir de su base.",
-                risk: "Es el momento de mayor peligro. Un robo de Barón suele significar la derrota inmediata.",
-                proTip: "No te agrupes demasiado mientras lo haces; sus ataques de área pueden dejar a todo el equipo vulnerable a un contraataque."
+                macro: "Fuerza al enemigo a salir de su base o perder estructuras críticas.",
+                risk: "Un robo de Barón suele significar la derrota inmediata. Visión impecable requerida.",
+                proTip: "No te agrupes demasiado; sus ataques de área son devastadores."
             },
             elder: {
                 title: "DRAGÓN ANCIANO",
                 tags: "EJECUCIÓN | VICTORY CONDITION",
                 time: "16:00 MIN",
                 reward: "Quemadura de fuego en ataques y ejecución inmediata de enemigos por debajo del 20% de vida.",
-                img: "https://static.wikia.nocookie.net/leagueoflegends/images/1/14/Elder_Dragon_Original_Square.png",
+                img: "imagen/timeline/elder.png",
                 purpose: "Poner fin a la partida. Con este buff, es virtualmente imposible perder una pelea 5v5 nivelada.",
                 capture: "Aparición única. Solo un equipo puede tener este poder devastador al mismo tiempo.",
                 macro: "Si el enemigo tiene el Anciano, tu única misión es sobrevivir hasta que el buff expire.",
@@ -867,16 +967,16 @@
         const tacticalMicroData = {
             early: {
                 clock: "00:00 - 05:00",
-                title: "FASE DE CARRILES",
-                desc: "Prioridad absoluta en el farmeo y control de oleadas.",
-                map: "Control de River & Planchas",
-                mapSub: "Asegurar visión en arbustos laterales y pelear el primer Escurridizo.",
-                gold: "Last Hit Precision",
-                goldSub: "Maximizar el oro de súbditos. Cada placa de torre es vital.",
+                title: "INICIO DE OPERACIONES",
+                desc: "Los monstruos aparecen al 0:20. Importante: Limpia 4 campamentos para evolucionar tu Castigo.",
+                map: "Control de River & Buffs",
+                mapSub: "Asegurar visión en arbustos laterales. El Rojo y Azul escalan su poder en late.",
+                gold: "Evolución de Castigo",
+                goldSub: "Matar 4 campamentos principales desbloquea el Castigo Desafiante o Devastador.",
                 team: "Seguridad Individual",
-                teamSub: "Juego reactivo. No morir ante gankeos predecibles nivel 2-3.",
-                alert: "Level 2 PowerSpike",
-                alertSub: "Respeta el nivel 2 del enemigo en el carril de Dragon y Baron."
+                teamSub: "Juego reactivo nivel 1-3. No morir ante gankeos. Respeta el Nivel 2 enemigo.",
+                alert: "Spawn de Jungla: 00:20",
+                alertSub: "Prepárate para el leash. El control del primer mapa se decide en estos segundos."
             },
             mid: {
                 clock: "05:00 - 12:00",

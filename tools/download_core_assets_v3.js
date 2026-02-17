@@ -7,7 +7,7 @@ const downloads = [
     { name: 'background.jpg', url: 'https://images.alphacoders.com/131/1318040.png' }
 ];
 
-const dir = path.join(__dirname, 'public', 'imagen');
+const dir = path.join(__dirname, '..', 'public', 'imagen', 'core');
 
 downloads.forEach(item => {
     const file = fs.createWriteStream(path.join(dir, item.name));

@@ -574,7 +574,7 @@
                         ${items.map(item => `
                             <div class="item-card-new fade-in" style="cursor:pointer" onclick="openItemDossier('${category}', '${item.name}')">
                                 <div class="item-icon-box">
-                                    <img src="imagen/objetos/${item.name}.png" alt="${item.es}" onerror="this.src='imagen/logo.png'">
+                                    <img src="imagen/objetos/${item.name}.png" alt="${item.es}" onerror="this.src='imagen/core/logo.png'">
                                 </div>
                                 <div class="item-info-new">
                                     <span class="item-name-new">${item.es}</span>
@@ -691,7 +691,7 @@
             pathContainer.innerHTML = details.path.map((p, index) => `
                 <div class="path-step">
                     <div class="path-icon">
-                        <img src="imagen/objetos/${p.name}.png" alt="${p.name}" onerror="this.src='imagen/logo.png'">
+                        <img src="imagen/objetos/${p.name}.png" alt="${p.name}" onerror="this.src='imagen/core/logo.png'">
                     </div>
                     <div class="path-priority">${p.priority}</div>
                 </div>

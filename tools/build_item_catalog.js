@@ -80,7 +80,7 @@ const categories = {
     ]
 };
 
-const dir = path.join(__dirname, 'public', 'imagen', 'objetos');
+const dir = path.join(__dirname, '..', 'public', 'imagen', 'objetos');
 if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
 }
@@ -114,5 +114,5 @@ allItems.forEach(item => {
 });
 
 // Generate local JSON for the page
-fs.writeFileSync(path.join(__dirname, 'public', 'items_data.json'), JSON.stringify(categories, null, 2));
+fs.writeFileSync(path.join(__dirname, '..', 'public', 'items_data.json'), JSON.stringify(categories, null, 2));
 console.log('JSON data generated');

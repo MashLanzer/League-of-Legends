@@ -598,6 +598,12 @@
                 <input type="text" id="champSearch" placeholder="BUSCAR CAMPEÓN (EJ: YASUO, AHRI, LUX...)">
             </div>
 
+            <div class="terminal-text fade-in"
+                style="font-size: 0.75rem; text-align: center; margin-bottom: 40px; border-left: none; border-right: 2px solid var(--blue-magic); padding-right: 20px;">
+                > LANZAMIENTO INICIAL: 40 CAMPEONES LEGENDARIOS.<br>
+                > TODOS LOS CAMPEONES SON OBTENIBLES GRATUITAMENTE. EL PODER NO TIENE COSTO.
+            </div>
+
             <div class="filter-bar fade-in">
                 <button class="filter-btn active" data-role="all">TODOS</button>
                 <button class="filter-btn" data-role="baron">BARON LANE</button>
@@ -754,7 +760,7 @@
                 card.onclick = () => openDossier(c);
                 card.innerHTML = `
                     <div class="tier-badge">${c.tier}</div>
-                    <img src="imagen/campeones/${c.name}.png" alt="${c.name}" onerror="this.src='imagen/logo.png'">
+                    <img src="imagen/campeones/${c.name}.png" alt="${c.name}" onerror="this.src='imagen/core/logo.png'">
                     <div class="champion-name">${c.name}</div>
                     <div class="champion-role">${c.role}</div>
                 `;
@@ -1703,7 +1709,7 @@
             if (detail.matchups) {
                 counterContainer.innerHTML = detail.matchups.counters.map(c => `
                     <div class="counter-item">
-                        <img src="imagen/campeones/${c.name}.png" class="counter-img" onerror="this.src='imagen/logo.png'">
+                        <img src="imagen/campeones/${c.name}.png" class="counter-img" onerror="this.src='imagen/core/logo.png'">
                         <div class="counter-info">
                             <h5>${c.name}</h5>
                             <p>${c.reason}</p>
@@ -1750,7 +1756,7 @@
 
                 counterContainer.innerHTML = advice.counters.map(c => `
                     <div class="counter-item">
-                        <img src="imagen/logo.png" class="counter-img">
+                        <img src="imagen/core/logo.png" class="counter-img">
                         <div class="counter-info">
                             <h5>ENEMIGOS CLAVE</h5>
                             <p>${c.reason}</p>
@@ -1868,7 +1874,7 @@
             <span class="modal-close" onclick="closeModal()">&times;</span>
             <div class="dossier-layout">
                 <div class="dossier-sidebar">
-                    <img id="modalImg" src="" alt="Champion" onerror="this.src='imagen/logo.png'">
+                    <img id="modalImg" src="" alt="Champion" onerror="this.src='imagen/core/logo.png'">
                     <div class="dossier-tier" id="modalTier">PRIORITY: SS</div>
 
                     <div class="patch-history" id="modalPatchContainer">
@@ -1997,7 +2003,24 @@
         </div>
     </div>
 
+    <footer style="background: #010a13; border-top: 2px solid var(--gold-hex); padding: 40px 0; margin-top: 80px;">
+        <div class="container" style="text-align: center;">
+            <div class="terminal-text"
+                style="font-size: 0.7rem; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(10, 200, 185, 0.2); padding: 15px;">
+                > REPORTE VISUAL: Algunas ilustraciones (Splash Arts) han sido remasterizadas para Wild Rift.<br>
+                > ACTUALIZADOS: Soraka, Ahri Raposa de Fuego, Garen Caballero del Terror, Graves Ciudad del Crimen y
+                más.
+            </div>
+            <p style="color: var(--gold-dark); font-size: 0.7rem;">© 2026 ARCHIVO HEXTECH. ASSETS PROPIEDAD DE RIOT
+                GAMES.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
+
+</html>
+
+
 
 </html>
